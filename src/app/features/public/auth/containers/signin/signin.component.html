@@ -1,0 +1,10 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <mat-card>
+      <public-auth-signin-form
+        [status]="status$ | ngrxPush"
+        (submitted)="onSubmit($event)"
+      ></public-auth-signin-form>
+    </mat-card>
+  </div>
+</div>

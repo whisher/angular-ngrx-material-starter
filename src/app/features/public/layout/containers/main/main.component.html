@@ -1,0 +1,11 @@
+<div class="d-flex flex-column min-vh-100">
+  <public-layout-header
+    [isAuthenticated]="isAuthenticated$ | ngrxPush"
+  ></public-layout-header>
+  <main class="flex-fill">
+    <div class="container mt-5">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <public-layout-footer></public-layout-footer>
+</div>

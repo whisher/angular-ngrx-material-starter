@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+.alert {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.alert-danger {
+  color: #e82d2d;
+  background-color: #fff;
+  border-color: #f16060;
+}

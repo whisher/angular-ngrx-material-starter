@@ -1,0 +1,33 @@
+<ng-container
+  *ngTemplateOutlet="isAuthenticated ? logout : login"
+></ng-container>
+
+<ng-template #login>
+  <ul class="d-flex gap-3">
+    <li>
+      <a
+        routerLink="/auth/login"
+        mat-mini-fab
+        color="primary"
+        aria-label="go to login"
+      >
+        <mat-icon>lock_open</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/auth/signin"
+        mat-mini-fab
+        color="primary"
+        aria-label="go to signin"
+      >
+        <mat-icon>person_add</mat-icon>
+      </a>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #logout>
+  <a routerLink="/logout" mat-mini-fab color="primary" aria-label="logout">
+    <mat-icon>logout</mat-icon>
+  </a>
+</ng-template>
