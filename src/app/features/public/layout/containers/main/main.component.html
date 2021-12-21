@@ -1,9 +1,9 @@
-<div class="d-flex flex-column min-vh-100">
+<div class="flex flex-col min-h-screen">
   <public-layout-header
     [isAuthenticated]="isAuthenticated$ | ngrxPush"
   ></public-layout-header>
-  <main class="flex-fill">
-    <div class="container mt-5">
+  <main class="flex-1">
+    <div class="md:container md:mx-auto">
       <router-outlet></router-outlet>
     </div>
   </main>
