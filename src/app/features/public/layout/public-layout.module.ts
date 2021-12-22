@@ -10,6 +10,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 // Components
 import * as fromContainers from './containers';
@@ -22,7 +24,9 @@ import * as fromComponents from './components';
     ReactiveComponentModule,
     MatBadgeModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components]
 })
