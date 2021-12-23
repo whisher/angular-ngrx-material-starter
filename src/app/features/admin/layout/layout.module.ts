@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 // Material
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -18,7 +17,6 @@ import * as fromComponents from './components';
     CommonModule,
     RouterModule,
     MatButtonModule,
-    MatIconModule,
     MatSidenavModule,
     MatToolbarModule
   ],

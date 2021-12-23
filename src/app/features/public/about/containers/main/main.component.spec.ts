@@ -2,23 +2,23 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Components
-import { IwdfAlertComponent } from './alert.component';
+import { PublicAboutMainComponent } from './main.component';
 
-describe('IwdfAlertComponent', () => {
-  let component: IwdfAlertComponent;
-  let fixture: ComponentFixture<IwdfAlertComponent>;
-
+describe('PublicAboutMainComponent', () => {
+  let component: PublicAboutMainComponent;
+  let fixture: ComponentFixture<PublicAboutMainComponent>;
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [],
-        declarations: [IwdfAlertComponent]
+        declarations: [PublicAboutMainComponent],
+        providers: []
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IwdfAlertComponent);
+    fixture = TestBed.createComponent(PublicAboutMainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -26,9 +26,19 @@ export const routes: Routes = [
           import('./auth/auth.module').then((m) => m.PublicAuthModule)
       },
       {
+        path: 'contact-us',
+        loadChildren: () =>
+          import('./contact/contact.module').then((m) => m.PublicContactModule)
+      },
+      {
         path: 'home',
         loadChildren: () =>
           import('./home/home.module').then((m) => m.PublicHomeModule)
+      },
+      {
+        path: 'about-us',
+        loadChildren: () =>
+          import('./about/about.module').then((m) => m.PublicAboutModule)
       },
       {
         path: 'user',

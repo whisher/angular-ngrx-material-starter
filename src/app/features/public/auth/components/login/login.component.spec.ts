@@ -7,7 +7,6 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 // Model
@@ -36,7 +35,6 @@ describe('PublicAuthLoginFormComponent', () => {
           ReactiveFormsModule,
           NoopAnimationsModule,
           MatFormFieldModule,
-          MatIconModule,
           MatInputModule,
           IwdfAlertModule,
           IwdfButtonSpinnerModule

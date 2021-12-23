@@ -7,10 +7,8 @@
       [isAuthenticated]="isAuthenticated$ | ngrxPush"
       [sidenav]="sidenav"
     ></public-layout-header>
-    <main>
-      <div class="md:container md:mx-auto">
-        <router-outlet></router-outlet>
-      </div>
+    <main class="md:container md:mx-auto mt-3 prose">
+      <router-outlet></router-outlet>
     </main>
     <public-layout-footer></public-layout-footer>
   </div>

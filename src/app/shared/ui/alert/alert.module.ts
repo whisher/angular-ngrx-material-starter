@@ -1,10 +1,15 @@
+// Core
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
+
+// Fortawesome
+import { IwdfFortawesomeModule } from '../fortawesome';
+
+// Components
 import { IwdfAlertComponent } from './alert.component';
 
 @NgModule({
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, IwdfFortawesomeModule],
   declarations: [IwdfAlertComponent],
   exports: [IwdfAlertComponent]
 })

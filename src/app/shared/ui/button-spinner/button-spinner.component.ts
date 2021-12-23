@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       mat-raised-button
       [color]="color"
       [disabled]="loading"
-      class="d-block w-100"
+      class="block w-full"
     >
       <div class="d-flex justify-content-center align-items-center">
         <ng-content></ng-content>

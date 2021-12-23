@@ -1,9 +1,9 @@
 import { AbstractControl } from '@angular/forms';
 
-export function passwordMatchValidator(
+export const passwordMatchValidator = (
   controlName: string,
   matchingControlName: string
-) {
+) => {
   return (group: AbstractControl): { invalidRePassword: boolean } | null => {
     const passwordCtrl: AbstractControl | null = group.get(controlName);
     const passwordConfirmCtrl: AbstractControl | null =
@@ -18,4 +18,4 @@ export function passwordMatchValidator(
     }
     return null;
   };
-}
+};

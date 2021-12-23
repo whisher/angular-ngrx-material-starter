@@ -11,7 +11,11 @@
         color="accent"
         aria-label="go to login"
       >
-        <mat-icon>lock_open</mat-icon>
+        <fa-icon
+          class="text-icon"
+          size="lg"
+          [icon]="['fas', 'lock-open']"
+        ></fa-icon>
       </a>
     </li>
     <li>
@@ -21,13 +25,38 @@
         color="accent"
         aria-label="go to signin"
       >
-        <mat-icon>person_add</mat-icon>
+        <fa-icon
+          class="text-icon"
+          size="lg"
+          [icon]="['fas', 'user-plus']"
+        ></fa-icon>
       </a>
     </li>
   </ul>
 </ng-template>
 <ng-template #logout>
-  <a routerLink="/logout" mat-mini-fab color="primary" aria-label="logout">
-    <mat-icon>logout</mat-icon>
-  </a>
+  <button
+    mat-mini-fab
+    color="accent"
+    aria-label="open menu"
+    [matMenuTriggerFor]="navUserMenu"
+  >
+    <fa-icon
+      class="text-icon"
+      size="lg"
+      [icon]="['fas', 'user-circle']"
+    ></fa-icon>
+  </button>
+  <mat-menu #navUserMenu="matMenu">
+    <a
+      routerLink="/logout"
+      mat-mini-fab
+      mat-menu-item
+      color="primary"
+      aria-label="logout"
+    >
+      <fa-icon [icon]="['fas', 'power-off']"></fa-icon>
+      <span>Log out</span>
+    </a>
+  </mat-menu>
 </ng-template>

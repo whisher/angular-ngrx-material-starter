@@ -10,11 +10,13 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 // Routing
 import { PublicAuthRoutingModule } from './auth-routing.module';
+
+// Fortawesome
+import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
 // Ui
 import { IwdfAlertModule } from '@shared/ui/alert';
@@ -32,11 +34,11 @@ import * as fromComponents from './components';
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatIconModule,
     MatInputModule,
     PublicAuthRoutingModule,
     IwdfAlertModule,
-    IwdfButtonSpinnerModule
+    IwdfButtonSpinnerModule,
+    IwdfFortawesomeModule
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
   providers: []

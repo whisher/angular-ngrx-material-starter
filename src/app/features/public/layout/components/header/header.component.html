@@ -1,13 +1,25 @@
 <header class="h-24 flex justify-between items-center bg-primary px-3">
   <div class="block md:hidden">
     <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon aria-hidden="false" aria-label="Show menu">menu</mat-icon>
+      <fa-icon
+        size="2x"
+        [icon]="['fas', 'bars']"
+        aria-hidden="false"
+        aria-label="Show menu"
+      ></fa-icon>
     </button>
   </div>
   <h1 class="flex items-center m-0">
-    <img class="h-12 w-12" src="assets/logo.png" alt="logo" />
-    <a routerLink="/" class="block">Angular NgRx Material Starter</a>
+    <img
+      class="h-12 w-12 rounded-2xl shadow shadow-white/50"
+      src="assets/logo.png"
+      alt="logo"
+    />
+    <a routerLink="/" class="block pl-3 text-white text-xl">
+      Angular NgRx Material Starter
+    </a>
   </h1>
+
   <public-layout-header-account
     [isAuthenticated]="isAuthenticated"
   ></public-layout-header-account>

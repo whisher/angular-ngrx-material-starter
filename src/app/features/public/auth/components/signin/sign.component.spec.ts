@@ -8,7 +8,6 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 // Material
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 // Model
@@ -40,7 +39,6 @@ describe('PublicAuthSigninFormComponent', () => {
           NoopAnimationsModule,
           MatCheckboxModule,
           MatFormFieldModule,
-          MatIconModule,
           MatInputModule,
           IwdfAlertModule,
           IwdfButtonSpinnerModule

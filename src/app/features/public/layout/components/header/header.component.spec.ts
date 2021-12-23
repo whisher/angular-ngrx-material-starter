@@ -7,7 +7,6 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 // Material
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 // Components
 import { PublicLayoutHeaderComponent } from './header.component';
@@ -28,7 +27,7 @@ describe('PublicLayoutHeaderComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [MatBadgeModule, MatButtonModule, MatIconModule],
+        imports: [MatBadgeModule, MatButtonModule],
         declarations: [
           MockPublicLayoutHeaderAccountComponent,
           PublicLayoutHeaderComponent

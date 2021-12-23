@@ -9,9 +9,12 @@ import { ReactiveComponentModule } from '@ngrx/component';
 // Material
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
+// Fortawesome
+import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
 // Components
 import * as fromContainers from './containers';
@@ -24,9 +27,10 @@ import * as fromComponents from './components';
     ReactiveComponentModule,
     MatBadgeModule,
     MatButtonModule,
-    MatIconModule,
     MatListModule,
-    MatSidenavModule
+    MatMenuModule,
+    MatSidenavModule,
+    IwdfFortawesomeModule
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components]
 })
