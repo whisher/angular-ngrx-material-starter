@@ -48,15 +48,16 @@
     ></fa-icon>
   </button>
   <mat-menu #navUserMenu="matMenu">
-    <a
-      routerLink="/logout"
-      mat-mini-fab
-      mat-menu-item
-      color="primary"
-      aria-label="logout"
-    >
-      <fa-icon [icon]="['fas', 'power-off']"></fa-icon>
-      <span>Log out</span>
-    </a>
+    <buttom routerLink="/logout" mat-menu-item>
+      <div class="flex">
+        <fa-icon
+          size="lg"
+          class="text-icon"
+          [icon]="['fas', 'power-off']"
+          aria-label="logout"
+        ></fa-icon>
+        <span class="flex-1 text-center">Log out</span>
+      </div>
+    </buttom>
   </mat-menu>
 </ng-template>

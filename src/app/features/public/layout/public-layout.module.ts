@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 // Fortawesome
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
@@ -30,6 +31,7 @@ import * as fromComponents from './components';
     MatListModule,
     MatMenuModule,
     MatSidenavModule,
+    MatToolbarModule,
     IwdfFortawesomeModule
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components]

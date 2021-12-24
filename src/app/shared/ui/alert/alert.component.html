@@ -1,6 +1,11 @@
-<div class="d-flex justify-content-start alert" [ngClass]="type" role="alert">
+<div class="flex justify-between" [ngClass]="type" role="alert">
   <div class="pr-3">
-    <mat-icon aria-hidden="false" aria-label="alert">{{ icon }}</mat-icon>
+    <fa-icon
+      size="2x"
+      [icon]="['fas', 'bars']"
+      aria-hidden="false"
+      aria-label="Show menu"
+    ></fa-icon>
   </div>
   <p class="m-0">{{ msg }}</p>
 </div>

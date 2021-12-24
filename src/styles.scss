@@ -1,8 +1,15 @@
-@import "./theme/light-theme";
+@import "./themes/light-theme";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Global */
+* {
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
 /* Material Custom Style */
 .mat-button,
 .mat-flat-button,

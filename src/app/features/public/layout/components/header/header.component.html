@@ -1,4 +1,4 @@
-<header class="h-24 flex justify-between items-center bg-primary px-3">
+<mat-toolbar color="primary">
   <div class="block md:hidden">
     <button mat-icon-button (click)="sidenav.toggle()">
       <fa-icon
@@ -19,8 +19,8 @@
       Angular NgRx Material Starter
     </a>
   </h1>
-
+  <span class="flex-1"></span>
   <public-layout-header-account
     [isAuthenticated]="isAuthenticated"
   ></public-layout-header-account>
-</header>
+</mat-toolbar>

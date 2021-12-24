@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       [disabled]="loading"
       class="block w-full"
     >
-      <div class="d-flex justify-content-center align-items-center">
+      <div class="flex justify-center items-center gap-3">
         <ng-content></ng-content>
         <ng-container *ngIf="loading">
           <mat-progress-spinner
@@ -23,14 +23,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         </ng-container>
       </div>
     </button>
-  `,
-  styles: [
-    `
-      .mat-progress-spinner {
-        margin-left: 0.5rem;
-      }
-    `
-  ]
+  `
 })
 export class IwdfButtonSpinnerComponent {
   @Input() color: 'primary' | 'accent' | 'warn' = 'primary';
