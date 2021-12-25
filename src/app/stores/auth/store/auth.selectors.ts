@@ -24,6 +24,19 @@ export const selectLoading = createSelector(selectFeature, (state: State) => {
   return state.loading;
 });
 
+export const selectStatus = createSelector(
+  selectError,
+  selectLoading,
+  (error, loading) => {
+    return {
+      status: {
+        error,
+        loading
+      }
+    };
+  }
+);
+
 export const selectToken = createSelector(selectFeature, (state: State) => {
   if (state.data) {
     return state.data.token;

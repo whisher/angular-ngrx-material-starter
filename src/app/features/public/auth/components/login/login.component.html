@@ -1,6 +1,9 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="frm" autocomplete="off">
-  <ng-container *ngIf="status?.error">
-    <iwdf-alert color="danger" [msg]="status?.error?.message"></iwdf-alert>
+  <ng-container *ngIf="status?.status?.error">
+    <iwdf-alert
+      color="danger"
+      [msg]="status!.status!.error!.message"
+    ></iwdf-alert>
   </ng-container>
 
   <mat-form-field class="w-full" appearance="outline">
@@ -43,7 +46,7 @@
     </mat-error>
   </mat-form-field>
 
-  <iwdf-button-spinner [loading]="!!status?.loading">
+  <iwdf-button-spinner [loading]="!!(status?.status)!.loading">
     <span>Login</span>
   </iwdf-button-spinner>
 </form>

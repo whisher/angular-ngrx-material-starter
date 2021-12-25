@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Models
 import { LoginRequestDto } from '@api/models';
-import { FormStatusDto } from '@shared/services/form-status';
+import { AuthStatus } from '@stores/auth';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,7 +19,7 @@ import { FormStatusDto } from '@shared/services/form-status';
   templateUrl: './login.component.html'
 })
 export class PublicAuthLoginFormComponent implements OnInit {
-  @Input() status!: FormStatusDto | undefined;
+  @Input() status!: AuthStatus | undefined;
   @Output() submitted = new EventEmitter<LoginRequestDto>();
 
   frm!: FormGroup;

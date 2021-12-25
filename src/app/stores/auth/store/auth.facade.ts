@@ -16,11 +16,18 @@ import {
   selectError,
   selectIsAuthenticated,
   selectLoading,
+  selectStatus,
   selectToken
 } from './auth.selectors';
 
 import * as AuthActions from './auth.actions';
 
+export interface AuthStatus {
+  status: {
+    error: ErrorDto | null;
+    loading: boolean;
+  };
+}
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
   get error$(): Observable<ErrorDto | null> {
@@ -33,6 +40,10 @@ export class AuthFacade {
 
   get loading$(): Observable<boolean> {
     return this.store.pipe(select(selectLoading));
+  }
+
+  get status$(): Observable<AuthStatus> {
+    return this.store.pipe(select(selectStatus));
   }
 
   get token$(): Observable<string | null> {

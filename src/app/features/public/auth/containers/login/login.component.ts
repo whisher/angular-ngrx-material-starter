@@ -7,16 +7,14 @@ import {
 } from '@angular/core';
 
 // Rxjs
-import { combineLatest, Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 
 // Store
 import { AccountFacade } from '@stores/account';
-import { AuthFacade } from '@stores/auth';
+import { AuthFacade, AuthStatus } from '@stores/auth';
 
 // Models
 import { LoginRequestDto } from '@api/models';
-import { FormStatusDto } from '@shared/services/form-status';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,14 +23,7 @@ import { FormStatusDto } from '@shared/services/form-status';
 })
 export class PublicAuthLoginComponent implements OnDestroy, OnInit {
   private subscription = new Subscription();
-  status$: Observable<FormStatusDto> = combineLatest([
-    this.authFacade.error$,
-    this.authFacade.loading$
-  ]).pipe(
-    map(([error, loading]) => {
-      return { error, loading };
-    })
-  );
+  status$: Observable<AuthStatus> = this.authFacade.status$;
   constructor(
     private accountFacade: AccountFacade,
     private authFacade: AuthFacade

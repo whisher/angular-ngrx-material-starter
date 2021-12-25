@@ -127,7 +127,24 @@ $iwdf-theme: mat.define-light-theme(
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
+  $linkColor: mat.get-color-from-palette($primary);
+  $linkColorHover: darken($linkColor, 20%);
+  a {
+    color: $linkColor;
 
+    &:hover {
+      color: $linkColorHover;
+    }
+  }
+  .prose {
+    a {
+      color: $linkColor;
+
+      &:hover {
+        color: $linkColorHover;
+      }
+    }
+  }
   mat-sidenav-container {
     footer {
       background-color: mat.get-color-from-palette($primary);
@@ -144,3 +161,14 @@ $iwdf-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($iwdf-theme);
 @include custom-components-theme($iwdf-theme);
+$focus-indicator: true;
+@if $focus-indicator {
+  @include mat.strong-focus-indicators-theme($iwdf-theme);
+} @else {
+  * {
+    &:active,
+    :focus {
+      outline: none !important;
+    }
+  }
+}

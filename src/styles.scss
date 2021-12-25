@@ -3,13 +3,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Global */
-* {
-  &:active,
-  :focus {
-    outline: none !important;
-  }
-}
 /* Material Custom Style */
 .mat-button,
 .mat-flat-button,
