@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="frm" autocomplete="off">
   <ng-container *ngIf="status?.error">
-    <iwdf-alert color="danger" [msg]="status?.error?.message"></iwdf-alert>
+    <iwdf-alert color="warn" [msg]="status?.error?.message"></iwdf-alert>
   </ng-container>
 
   <mat-form-field class="w-full" appearance="outline">
