@@ -8,9 +8,8 @@
 .mat-flat-button,
 .mat-raised-button,
 .mat-stroked-button {
-  /* stylelint-disable-next-line declaration-no-important */
+  color: #f54306 !important;
   line-height: 40px !important;
-  /* stylelint-disable-next-line declaration-no-important */
   text-decoration: none !important;
   text-transform: uppercase;
 }

@@ -2,6 +2,7 @@
   "name": "angular-ngrx-material-starter",
   "version": "1.0.0",
   "scripts": {
+    "sass": "sass ./src/themes/dark-theme.scss ./src/themes/dark-theme.css",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

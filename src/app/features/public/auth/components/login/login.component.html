@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="frm" autocomplete="off">
   <ng-container *ngIf="status?.status?.error">
     <iwdf-alert
-      color="danger"
+      color="warn"
       [msg]="status!.status!.error!.message"
     ></iwdf-alert>
   </ng-container>

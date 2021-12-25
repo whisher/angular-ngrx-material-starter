@@ -8,9 +8,11 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import {
   faBars,
+  faCheckCircle,
   faExclamationCircle,
   faEye,
   faEyeSlash,
+  faInfoCircle,
   faLockOpen,
   faPowerOff,
   faUserCircle,
@@ -25,9 +27,11 @@ export class IwdfFortawesomeModule {
   constructor(faIconLibrary: FaIconLibrary) {
     faIconLibrary.addIcons(
       faBars,
+      faCheckCircle,
       faExclamationCircle,
       faEye,
       faEyeSlash,
+      faInfoCircle,
       faLockOpen,
       faPowerOff,
       faUserCircle,

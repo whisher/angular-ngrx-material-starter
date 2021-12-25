@@ -1,10 +1,14 @@
-<div class="flex justify-between" [ngClass]="type" role="alert">
-  <div class="pr-3">
+<div
+  class="flex justify-start items-center gap-3 mb-3 py-2 px-4 rounded-md"
+  [ngClass]="cls"
+  role="alert"
+>
+  <div>
     <fa-icon
       size="2x"
-      [icon]="['fas', 'bars']"
+      [icon]="['fas', type]"
       aria-hidden="false"
-      aria-label="Show menu"
+      aria-label="Alert message"
     ></fa-icon>
   </div>
   <p class="m-0">{{ msg }}</p>

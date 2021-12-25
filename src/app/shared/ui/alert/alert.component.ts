@@ -1,26 +1,29 @@
 import { Attribute, Component, Input, OnInit } from '@angular/core';
-
-enum AlertTypes {
-  danger = 'danger'
+import { IconName } from '@fortawesome/fontawesome-common-types';
+enum AlertColor {
+  accent = 'accent',
+  primary = 'accent',
+  warn = 'warn'
 }
 
 @Component({
   selector: 'iwdf-alert',
-  templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss']
+  templateUrl: './alert.component.html'
 })
 export class IwdfAlertComponent implements OnInit {
   @Input() msg: string | undefined = 'Something went wrong';
-  PREFIX = 'alert';
+  private readonly PREFIX = 'alert';
+  cls!: string;
   icons = {
-    danger: 'error_outline'
+    accent: 'info-circle',
+    primary: 'check-circle',
+    warn: 'exclamation-circle'
   };
-  icon!: string;
-  type!: string;
-  constructor(@Attribute('color') public color: AlertTypes) {}
+  type!: IconName;
+  constructor(@Attribute('color') public color: AlertColor) {}
 
   ngOnInit(): void {
-    this.icon = this.icons[this.color];
-    this.type = `${this.PREFIX}-${this.color}`;
+    this.cls = `${this.PREFIX}-${this.color}`;
+    this.type = this.icons[this.color] as IconName;
   }
 }

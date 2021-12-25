@@ -15,7 +15,7 @@ export interface State {
 
 export const initialState: State = {
   error: null,
-  loading: true,
+  loading: false,
   data: undefined
 };
 

@@ -1,102 +1,7 @@
-$iwdf-primary: (
-  50: #feeee3,
-  100: #fdd5b9,
-  200: #fcb98b,
-  300: #fb9d5c,
-  400: #fa8839,
-  500: #f97316,
-  600: #f86b13,
-  700: #f76010,
-  800: #f6560c,
-  900: #f54306,
-  A100: #ffffff,
-  A200: #ffeee9,
-  A400: #ffc5b6,
-  A700: #ffb19d,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000
-  )
-);
-$iwdf-accent: (
-  50: #e3f3fe,
-  100: #b9e1fd,
-  200: #8bcdfc,
-  300: #5cb8fb,
-  400: #39a9fa,
-  500: #169af9,
-  600: #1392f8,
-  700: #1088f7,
-  800: #0c7ef6,
-  900: #066cf5,
-  A100: #ffffff,
-  A200: #e9f1ff,
-  A400: #b6d2ff,
-  A700: #9dc2ff,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000
-  )
-);
-$iwdf-warn: (
-  50: #fee3e5,
-  100: #fdb9bf,
-  200: #fc8b94,
-  300: #fb5c69,
-  400: #fa3949,
-  500: #f91629,
-  600: #f81324,
-  700: #f7101f,
-  800: #f60c19,
-  900: #f5060f,
-  A100: #ffffff,
-  A200: #ffe9e9,
-  A400: #ffb6b7,
-  A700: #ff9d9e,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000
-  )
-);
+@use "../../node_modules/@angular/material" as mat;
 
-@use "@angular/material" as mat;
-
+@import "./custom-palette";
+@import "./styles-reset.scss-theme";
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -105,15 +10,15 @@ $iwdf-warn: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$iwdf-primary-palette: mat.define-palette($iwdf-primary, 700, 300, 900);
-$iwdf-accent-palette: mat.define-palette($iwdf-accent, 400);
+$iwdf-primary-palette: mat.define-palette($iwdf-primary, 300, 500, 300);
+$iwdf-accent-palette: mat.define-palette($iwdf-accent, 300);
 
 // The warn palette is optional (defaults to red).
-$iwdf-warn-palette: mat.define-palette($iwdf-warn, 500);
+$iwdf-warn-palette: mat.define-palette($iwdf-warn, 300);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$iwdf-theme: mat.define-light-theme(
+$iwdf-theme: mat.define-dark-theme(
   (
     color: (
       primary: $iwdf-primary-palette,
@@ -127,23 +32,9 @@ $iwdf-theme: mat.define-light-theme(
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
-  $linkColor: mat.get-color-from-palette($primary);
-  $linkColorHover: darken($linkColor, 20%);
-  a {
-    color: $linkColor;
 
-    &:hover {
-      color: $linkColorHover;
-    }
-  }
   .prose {
-    a {
-      color: $linkColor;
-
-      &:hover {
-        color: $linkColorHover;
-      }
-    }
+    @include iwdf-styles-reset-theme($primary);
   }
   mat-sidenav-container {
     footer {
@@ -155,13 +46,13 @@ $iwdf-theme: mat.define-light-theme(
 @mixin custom-components-theme($theme) {
   @include iwdf-app-component-theme($theme);
 }
-
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($iwdf-theme);
 @include custom-components-theme($iwdf-theme);
 $focus-indicator: true;
+
 @if $focus-indicator {
   @include mat.strong-focus-indicators-theme($iwdf-theme);
 } @else {
