@@ -1,10 +1,40 @@
+// Core
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+// Guards
+import { AccountUserGuard } from '@stores/account';
+import { AuthGuard } from '@stores/auth';
+
+const routes: Routes = [
+  {
+    path: 'admin',
+    canLoad: [AuthGuard, AccountUserGuard],
+    loadChildren: () =>
+      import('./features/admin/admin.module').then((m) => m.AdminModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () =>
+      import('./features/logout/logout.module').then((m) => m.LogoutModule)
+  },
+  {
+    path: 'not-found',
+    loadChildren: () =>
+      import('./features/not-found/not-found.module').then(
+        (m) => m.NotFoundModule
+      )
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./features/public/public.module').then((m) => m.PublicModule)
+  },
+  { path: '**', redirectTo: 'not-found' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

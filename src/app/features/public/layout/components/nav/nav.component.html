@@ -1,0 +1,10 @@
+<mat-nav-list class="flex">
+  <a
+    mat-list-item
+    *ngFor="let item of navigationSideMenu"
+    [routerLink]="[item.link]"
+    routerLinkActive="active"
+  >
+    {{ item.label }}
+  </a>
+</mat-nav-list>

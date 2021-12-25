@@ -1,0 +1,15 @@
+<mat-sidenav-container>
+  <mat-sidenav class="w-full" #sidenav mode="push">
+    <public-layout-nav></public-layout-nav>
+  </mat-sidenav>
+  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+    <public-layout-header
+      [isAuthenticated]="isAuthenticated$ | ngrxPush"
+      [sidenav]="sidenav"
+    ></public-layout-header>
+    <main class="md:container md:mx-auto mt-3 prose">
+      <router-outlet></router-outlet>
+    </main>
+    <public-layout-footer></public-layout-footer>
+  </div>
+</mat-sidenav-container>

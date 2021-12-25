@@ -1,0 +1,11 @@
+<admin-layout-header (toggled)="onToggle()"></admin-layout-header>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+  <mat-drawer-content>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

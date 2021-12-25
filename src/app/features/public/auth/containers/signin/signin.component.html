@@ -1,0 +1,11 @@
+<div class="flex justify-center">
+  <div class="w-full md:w-2/5">
+    <mat-card>
+      <h2>Sign In</h2>
+      <public-auth-signin-form
+        [status]="status$ | ngrxPush"
+        (submitted)="onSubmit($event)"
+      ></public-auth-signin-form>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<ng-container
+  *ngTemplateOutlet="isAuthenticated ? logout : login"
+></ng-container>
+
+<ng-template #login>
+  <ul class="flex gap-3">
+    <li>
+      <a
+        routerLink="/auth/login"
+        mat-mini-fab
+        color="accent"
+        aria-label="go to login"
+      >
+        <fa-icon
+          class="text-icon"
+          size="lg"
+          [icon]="['fas', 'lock-open']"
+        ></fa-icon>
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/auth/signin"
+        mat-mini-fab
+        color="accent"
+        aria-label="go to signin"
+      >
+        <fa-icon
+          class="text-icon"
+          size="lg"
+          [icon]="['fas', 'user-plus']"
+        ></fa-icon>
+      </a>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #logout>
+  <button
+    mat-mini-fab
+    color="accent"
+    aria-label="open menu"
+    [matMenuTriggerFor]="navUserMenu"
+  >
+    <fa-icon
+      class="text-icon"
+      size="lg"
+      [icon]="['fas', 'user-circle']"
+    ></fa-icon>
+  </button>
+  <mat-menu #navUserMenu="matMenu">
+    <buttom routerLink="/logout" mat-menu-item>
+      <div class="flex">
+        <fa-icon
+          size="lg"
+          class="text-icon"
+          [icon]="['fas', 'power-off']"
+          aria-label="logout"
+        ></fa-icon>
+        <span class="flex-1 text-center">Log out</span>
+      </div>
+    </buttom>
+  </mat-menu>
+</ng-template>
