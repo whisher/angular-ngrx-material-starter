@@ -5,6 +5,7 @@ import { Inject, Injectable, Renderer2 } from '@angular/core';
 export class IwdfThemeSwitchService {
   private readonly SK = 'THEME-IS-DARK';
   private isDark = this.getStorageStatus();
+
   get body(): HTMLElement {
     return this.document.body;
   }
