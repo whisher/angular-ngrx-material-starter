@@ -17,6 +17,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Fortawesome
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
+// UI
+import { IwdfThemeSwitchModule } from '@shared/ui/theme-switch';
+
 // Components
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
@@ -32,7 +35,8 @@ import * as fromComponents from './components';
     MatMenuModule,
     MatSidenavModule,
     MatToolbarModule,
-    IwdfFortawesomeModule
+    IwdfFortawesomeModule,
+    IwdfThemeSwitchModule
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components]
 })
