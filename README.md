@@ -1,6 +1,6 @@
 # Angular 13 Ngrx And Material Starter
 
-by [@](https://twitter.com/ilwebdifabio)
+by [@ilwebdifabio](https://twitter.com/ilwebdifabio)
 
 Buy me a coofee (todo)
 

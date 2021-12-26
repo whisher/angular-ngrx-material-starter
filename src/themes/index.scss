@@ -1,6 +1,5 @@
-@use "../../node_modules/@angular/material" as mat;
+@use "@angular/material" as mat;
 @import "./custom-palette";
-@import "./styles-reset.scss-theme";
 
 $iwdf-custom-typography: mat.define-typography-config(
   $font-family: "'Work Sans', sans-serif"
@@ -13,6 +12,8 @@ $iwdf-custom-typography: mat.define-typography-config(
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
+  $linkColor: mat.get-color-from-palette($primary);
+  $linkColorHover: darken($linkColor, 20%);
   .dark-theme {
     h1,
     h2,
@@ -25,12 +26,29 @@ $iwdf-custom-typography: mat.define-typography-config(
     }
   }
   .prose {
-    @include iwdf-styles-reset-theme($primary);
+    a {
+      color: $linkColor;
+
+      &:hover {
+        color: $linkColorHover;
+      }
+    }
   }
   mat-sidenav-container {
     footer {
       background-color: mat.get-color-from-palette($primary);
     }
+  }
+  .mat-button,
+  .mat-flat-button,
+  .mat-raised-button,
+  .mat-stroked-button {
+    line-height: 40px !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+  }
+  .mat-mini-fab .mat-button-wrapper {
+    padding: 0 !important;
   }
 }
 

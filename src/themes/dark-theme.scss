@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
 @import "./custom-palette";
-@import "./styles-reset.scss-theme";
+
 $iwdf-primary-palette: mat.define-palette($iwdf-primary, 300, 500, 300);
 $iwdf-accent-palette: mat.define-palette($iwdf-accent, 300);
 $iwdf-warn-palette: mat.define-palette($iwdf-warn, 300);
