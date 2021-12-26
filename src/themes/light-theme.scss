@@ -1,24 +1,6 @@
-@use "../../node_modules/@angular/material" as mat;
-
-@import "./custom-palette";
-@import "./styles-reset.scss-theme";
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $iwdf-primary-palette: mat.define-palette($iwdf-primary, 300, 500, 300);
 $iwdf-accent-palette: mat.define-palette($iwdf-accent, 300);
-
-// The warn palette is optional (defaults to red).
 $iwdf-warn-palette: mat.define-palette($iwdf-warn, 300);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $iwdf-theme: mat.define-light-theme(
   (
     color: (
@@ -28,51 +10,3 @@ $iwdf-theme: mat.define-light-theme(
     )
   )
 );
-
-@mixin iwdf-app-component-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-
-  .prose {
-    @include iwdf-styles-reset-theme($primary);
-  }
-  .alert-accent {
-    background-color: lighten(mat.get-color-from-palette($accent), 30%);
-    color: darken(mat.get-color-from-palette($accent), 40%);
-  }
-  .alert-primary {
-    background-color: lighten(mat.get-color-from-palette($primary), 30%);
-    color: darken(mat.get-color-from-palette($primary), 40%);
-  }
-  .alert-warn {
-    background-color: lighten(mat.get-color-from-palette($warn), 30%);
-    color: darken(mat.get-color-from-palette($warn), 40%);
-  }
-  mat-sidenav-container {
-    footer {
-      background-color: mat.get-color-from-palette($primary);
-    }
-  }
-}
-
-@mixin custom-components-theme($theme) {
-  @include iwdf-app-component-theme($theme);
-}
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($iwdf-theme);
-@include custom-components-theme($iwdf-theme);
-$focus-indicator: true;
-
-@if $focus-indicator {
-  @include mat.strong-focus-indicators-theme($iwdf-theme);
-} @else {
-  * {
-    &:active,
-    :focus {
-      outline: none !important;
-    }
-  }
-}

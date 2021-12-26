@@ -1,0 +1,7 @@
+<mat-slide-toggle
+  color="accent"
+  [checked]="isChecked"
+  (change)="onToggle($event)"
+>
+  <span class="text-sm text-white">{{ isChecked ? 'Dark' : 'Light' }}</span>
+</mat-slide-toggle>

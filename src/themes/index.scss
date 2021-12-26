@@ -1,0 +1,66 @@
+@use "../../node_modules/@angular/material" as mat;
+@import "./custom-palette";
+@import "./styles-reset.scss-theme";
+
+$iwdf-custom-typography: mat.define-typography-config(
+  $font-family: "'Work Sans', sans-serif"
+);
+@include mat.core($iwdf-custom-typography);
+
+@import "./light-theme";
+
+@mixin iwdf-app-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  .dark-theme {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      color: #fff;
+    }
+  }
+  .prose {
+    @include iwdf-styles-reset-theme($primary);
+  }
+  mat-sidenav-container {
+    footer {
+      background-color: mat.get-color-from-palette($primary);
+    }
+  }
+}
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+//@include mat.all-component-themes($iwdf-theme);
+@include mat.core-theme($iwdf-theme);
+@include mat.button-theme($iwdf-theme);
+@include mat.card-theme($iwdf-theme);
+@include mat.checkbox-theme($iwdf-theme);
+@include mat.form-field-theme($iwdf-theme);
+@include mat.input-theme($iwdf-theme);
+@include mat.list-theme($iwdf-theme);
+@include mat.menu-theme($iwdf-theme);
+@include mat.progress-spinner-theme($iwdf-theme);
+@include mat.sidenav-theme($iwdf-theme);
+@include mat.slide-toggle-theme($iwdf-theme);
+@include mat.toolbar-theme($iwdf-theme);
+@include iwdf-app-component-theme($iwdf-theme);
+
+$focus-indicator: true;
+
+@if $focus-indicator {
+  @include mat.strong-focus-indicators-theme($iwdf-theme);
+} @else {
+  * {
+    &:active,
+    :focus {
+      outline: none !important;
+    }
+  }
+}

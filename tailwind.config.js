@@ -11,7 +11,7 @@ module.exports = {
         secondary: '#f9e616'
       },
       fontFamily: {
-        sans: ['Roboto', ...defaultTheme.fontFamily.sans]
+        sans: ['Work Sans', ...defaultTheme.fontFamily.sans]
       }
     }
   },
