@@ -1,48 +1,87 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, Renderer2 } from '@angular/core';
 
 @Injectable()
 export class IwdfThemeSwitchService {
-  isDark = false;
+  private readonly SK = 'THEME-IS-DARK';
+  private isDark = this.getStorageStatus();
+  get body(): HTMLElement {
+    return this.document.body;
+  }
 
-  toggleDarkTheme() {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2
+  ) {
+    if (this.isDark) {
+      this.addStyle('dark-theme');
+    }
+  }
+
+  private setIsDark(val: boolean) {
+    this.isDark = val;
+  }
+
+  getIsDark(): boolean {
+    return this.getStorageStatus();
+  }
+
+  private getStorageStatus(): boolean {
+    return localStorage.getItem(this.SK) === 'true';
+  }
+
+  private setStorageStatus(val: string): void {
+    return localStorage.setItem(this.SK, val);
+  }
+
+  toggleTheme() {
     if (this.isDark) {
       this.removeStyle('dark-theme');
-      document.body.classList.remove('dark-theme');
-      this.isDark = false;
     } else {
-      const href = 'dark-theme.css';
-      getLinkElementForKey('dark-theme').setAttribute('href', href);
-      document.body.classList.add('dark-theme');
-      this.isDark = true;
+      this.addStyle('dark-theme');
     }
   }
 
-  removeStyle(key: string) {
-    const existingLinkElement = getExistingLinkElementByKey(key);
+  private addStyle(key: string) {
+    const href = `${key}.css`;
+    this.renderer.setAttribute(this.getLinkElementForKey(key), 'href', href);
+    this.renderer.addClass(this.body, key);
+    this.setIsDark(true);
+    this.setStorageStatus('true');
+  }
+
+  private removeStyle(key: string) {
+    const existingLinkElement = this.getExistingLinkElementByKey(key);
     if (existingLinkElement) {
-      document.head.removeChild(existingLinkElement);
+      this.renderer.removeChild(document.head, existingLinkElement);
+      this.renderer.removeClass(this.body, key);
+      this.setIsDark(false);
+      this.setStorageStatus('false');
     }
   }
-}
 
-function getLinkElementForKey(key: string) {
-  return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);
-}
+  getLinkElementForKey(key: string) {
+    return (
+      this.getExistingLinkElementByKey(key) ||
+      this.createLinkElementWithKey(key)
+    );
+  }
 
-function getExistingLinkElementByKey(key: string) {
-  return document.head.querySelector(
-    `link[rel="stylesheet"].${getClassNameForKey(key)}`
-  );
-}
+  private getExistingLinkElementByKey(key: string) {
+    return this.document.head.querySelector(
+      `link[rel="stylesheet"].${this.getClassNameForKey(key)}`
+    );
+  }
 
-function createLinkElementWithKey(key: string) {
-  const linkEl = document.createElement('link');
-  linkEl.setAttribute('rel', 'stylesheet');
-  linkEl.classList.add(getClassNameForKey(key));
-  document.head.appendChild(linkEl);
-  return linkEl;
-}
+  private createLinkElementWithKey(key: string) {
+    const linkEl = this.renderer.createElement('link');
+    this.renderer.setAttribute(linkEl, 'rel', 'stylesheet');
+    this.renderer.addClass(linkEl, this.getClassNameForKey(key));
+    this.renderer.appendChild(this.document.head, linkEl);
+    return linkEl;
+  }
 
-function getClassNameForKey(key: string) {
-  return `style-manager-${key}`;
+  private getClassNameForKey(key: string) {
+    return `theme-switch-${key}`;
+  }
 }

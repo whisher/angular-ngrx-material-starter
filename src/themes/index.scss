@@ -13,7 +13,17 @@ $iwdf-custom-typography: mat.define-typography-config(
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
-
+  .dark-theme {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      color: #fff;
+    }
+  }
   .prose {
     @include iwdf-styles-reset-theme($primary);
   }

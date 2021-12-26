@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 // Models
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -12,16 +12,12 @@ import { IwdfThemeSwitchService } from './theme-switch.service';
   templateUrl: './theme-switch.component.html',
   providers: [IwdfThemeSwitchService]
 })
-export class IwdfThemeSwitchComponent implements OnInit {
-  isChecked = false;
+export class IwdfThemeSwitchComponent {
+  isChecked = this.themeSwitchService.getIsDark();
   constructor(private themeSwitchService: IwdfThemeSwitchService) {}
 
-  ngOnInit(): void {
-    console.log('pippo');
-  }
   onToggle(event: MatSlideToggleChange) {
-    console.log('pippo');
     this.isChecked = event.checked;
-    this.themeSwitchService.toggleDarkTheme();
+    this.themeSwitchService.toggleTheme();
   }
 }
