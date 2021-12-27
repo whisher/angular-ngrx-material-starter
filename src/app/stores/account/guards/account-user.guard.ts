@@ -26,7 +26,6 @@ export class AccountUserGuard implements CanLoad {
         return of(hasRole);
       }),
       catchError(() => {
-        console.log('PIPPO');
         return of(false);
       })
     );

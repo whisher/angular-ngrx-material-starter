@@ -2,14 +2,13 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { MemoizedSelector } from '@ngrx/store';
-import { cold } from 'jasmine-marbles';
 
 // Models
 import { UserAccountResponseDto, UserRoleDto } from '@api/models';
 
 // Store
 import { AccountFacade } from '../store/account.facade';
-import { State } from '../store/account.reducer';
+import { initialState, State } from '../store/account.reducer';
 import { selectAccount, selectLoaded } from '../store/account.selectors';
 
 import { AccountUserGuard } from './account-user.guard';
@@ -33,7 +32,7 @@ describe('AccountUserGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],
-      providers: [AccountFacade, provideMockStore()]
+      providers: [AccountFacade, provideMockStore({ initialState })]
     });
 
     accountUserGuard = TestBed.inject(AccountUserGuard);
@@ -47,22 +46,25 @@ describe('AccountUserGuard', () => {
   });
 
   it('should return false if the account state is undefined', () => {
-    const expected = cold('(a|)', { a: false });
     loaded.setResult(true);
-    expect(accountUserGuard.canLoad()).toBeObservable(expected);
+    accountUserGuard.canLoad().subscribe((canLoad) => {
+      expect(canLoad).toBe(false);
+    });
   });
 
   it('should return true if the account state is defined and the role is user', () => {
-    const expected = cold('(a|)', { a: true });
     loaded.setResult(true);
     account.setResult(loadResponseUserPayload);
-    expect(accountUserGuard.canLoad()).toBeObservable(expected);
+    accountUserGuard.canLoad().subscribe((canLoad) => {
+      expect(canLoad).toBe(true);
+    });
   });
 
   it('should return true if the account state is defined and the role is admin', () => {
-    const expected = cold('(a|)', { a: true });
     loaded.setResult(true);
     account.setResult(loadResponseAdminPayload);
-    expect(accountUserGuard.canLoad()).toBeObservable(expected);
+    accountUserGuard.canLoad().subscribe((canLoad) => {
+      expect(canLoad).toBe(true);
+    });
   });
 });
