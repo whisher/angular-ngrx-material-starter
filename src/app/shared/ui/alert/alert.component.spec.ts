@@ -1,8 +1,11 @@
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Fortawesome
+import { IwdfFortawesomeModule } from '../fortawesome';
+
 // Components
-import { IwdfAlertComponent } from './alert.component';
+import { IwdfAlertComponent, AlertColor } from './alert.component';
 
 describe('IwdfAlertComponent', () => {
   let component: IwdfAlertComponent;
@@ -11,7 +14,7 @@ describe('IwdfAlertComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [],
+        imports: [IwdfFortawesomeModule],
         declarations: [IwdfAlertComponent]
       }).compileComponents();
     })
@@ -20,6 +23,7 @@ describe('IwdfAlertComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(IwdfAlertComponent);
     component = fixture.componentInstance;
+    component.color = 'accent' as AlertColor;
     fixture.detectChanges();
   });
 

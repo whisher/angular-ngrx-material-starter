@@ -1,9 +1,13 @@
+// Core
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TestBed, ComponentFixture } from '@angular/core/testing';
 
+// Testing
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
+// Components
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {

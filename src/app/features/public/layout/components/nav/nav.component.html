@@ -3,7 +3,7 @@
     <a
       mat-list-item
       *ngFor="let item of navigation"
-      (click)="sidenav.close()"
+      (click)="sidenav?.close()"
       [routerLink]="[item.link]"
       routerLinkActive="active"
     >

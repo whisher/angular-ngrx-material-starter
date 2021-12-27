@@ -1,16 +1,21 @@
 // Core
 import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 // Ngrx
 import { Store, StoreModule } from '@ngrx/store';
 import { ReactiveComponentModule } from '@ngrx/component';
+
+// Material
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 // Store
 import { AuthFacade } from '@stores/auth';
@@ -34,6 +39,13 @@ class MockPublicLayoutHeaderComponent {
   @Input() isAuthenticated: boolean | undefined = undefined;
 }
 
+@Component({
+  selector: 'public-layout-nav',
+  template: ''
+})
+export class MockPublicLayoutNavComponent {
+  @Input() sidenav?: MatDrawer;
+}
 describe('PublicLayoutMainComponent', () => {
   let component: PublicLayoutMainComponent;
   let debugElement: DebugElement;
@@ -44,14 +56,17 @@ describe('PublicLayoutMainComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           RouterTestingModule,
+          NoopAnimationsModule,
           StoreModule.forRoot({
             auth: authReducer
           }),
-          ReactiveComponentModule
+          ReactiveComponentModule,
+          MatSidenavModule
         ],
         declarations: [
           MockPublicLayoutFooterComponent,
           MockPublicLayoutHeaderComponent,
+          MockPublicLayoutNavComponent,
           PublicLayoutMainComponent
         ],
         providers: [Store, AuthFacade]

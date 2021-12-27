@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { ReactiveComponentModule } from '@ngrx/component';
 
 // Material
-import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -29,7 +28,6 @@ import * as fromComponents from './components';
     CommonModule,
     RouterModule,
     ReactiveComponentModule,
-    MatBadgeModule,
     MatButtonModule,
     MatListModule,
     MatMenuModule,

@@ -2,11 +2,10 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { MemoizedSelector } from '@ngrx/store';
-import { cold } from 'jasmine-marbles';
 
 // Store
 import { AuthFacade } from '../store/auth.facade';
-import { State } from '../store/auth.reducer';
+import { initialState, State } from '../store/auth.reducer';
 import { selectIsAuthenticated } from '../store/auth.selectors';
 
 import { AuthGuard } from './auth.guard';
@@ -18,7 +17,7 @@ describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],
-      providers: [AuthFacade, provideMockStore()]
+      providers: [AuthFacade, provideMockStore({ initialState })]
     });
 
     authGuard = TestBed.inject(AuthGuard);
@@ -31,16 +30,15 @@ describe('AuthGuard', () => {
   });
 
   it('should return false if the user state is not logged in', () => {
-    const expected = cold('(a|)', { a: false });
-
-    expect(authGuard.canLoad()).toBeObservable(expected);
+    authGuard.canLoad().subscribe((canLoad) => {
+      expect(canLoad).toBe(false);
+    });
   });
 
   it('should return true if the user state is logged in', () => {
-    const expected = cold('(a|)', { a: true });
-
     isAuthenticated.setResult(true);
-
-    expect(authGuard.canLoad()).toBeObservable(expected);
+    authGuard.canLoad().subscribe((canLoad) => {
+      expect(canLoad).toBe(true);
+    });
   });
 });

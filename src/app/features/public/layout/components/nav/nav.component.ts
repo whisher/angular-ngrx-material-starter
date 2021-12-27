@@ -11,7 +11,7 @@ import { MatDrawer } from '@angular/material/sidenav';
   styleUrls: ['./nav.component.scss']
 })
 export class PublicLayoutNavComponent {
-  @Input() sidenav!: MatDrawer;
+  @Input() sidenav?: MatDrawer;
   navigation = [
     { link: '/', label: 'Home' },
     { link: 'about-us', label: 'About' },

@@ -1,3 +1,6 @@
+// Core
+import { Renderer2 } from '@angular/core';
+
 // Testing
 import { TestBed } from '@angular/core/testing';
 
@@ -9,7 +12,7 @@ describe('IwdfThemeSwitchService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [IwdfThemeSwitchService]
+      providers: [Renderer2, IwdfThemeSwitchService]
     });
     iwdfThemeSwitchService = TestBed.inject(IwdfThemeSwitchService);
   });
