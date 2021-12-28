@@ -51,12 +51,6 @@ describe('PublicAuthLoginFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PublicAuthLoginFormComponent);
     component = fixture.componentInstance;
-    component.status = {
-      status: {
-        error: null,
-        loading: false
-      }
-    };
     //fixture.detectChanges();
   });
 
@@ -72,10 +66,8 @@ describe('PublicAuthLoginFormComponent', () => {
   it('should show alert component when error is present', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     component.status = {
-      status: {
-        error: { message: 'Error' },
-        loading: false
-      }
+      error: { message: 'Error' },
+      loading: false
     };
     fixture.detectChanges();
     expect(compiled.querySelector('iwdf-alert')).toBeTruthy();

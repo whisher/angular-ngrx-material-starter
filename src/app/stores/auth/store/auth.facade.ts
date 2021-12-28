@@ -23,10 +23,8 @@ import {
 import * as AuthActions from './auth.actions';
 
 export interface AuthStatus {
-  status: {
-    error: ErrorDto | null;
-    loading: boolean;
-  };
+  error: ErrorDto | null;
+  loading: boolean;
 }
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {

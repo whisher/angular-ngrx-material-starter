@@ -29,10 +29,8 @@ export const selectStatus = createSelector(
   selectLoading,
   (error, loading) => {
     return {
-      status: {
-        error,
-        loading
-      }
+      error,
+      loading
     };
   }
 );

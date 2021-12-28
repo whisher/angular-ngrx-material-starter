@@ -1,5 +1,6 @@
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 // Material
 import { MatListModule } from '@angular/material/list';
@@ -14,7 +15,7 @@ describe('PublicLayoutFooterComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [MatListModule],
+        imports: [RouterTestingModule, MatListModule],
         declarations: [PublicLayoutNavComponent],
         providers: []
       }).compileComponents();

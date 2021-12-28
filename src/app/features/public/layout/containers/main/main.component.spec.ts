@@ -37,6 +37,7 @@ class MockPublicLayoutFooterComponent {}
 })
 class MockPublicLayoutHeaderComponent {
   @Input() isAuthenticated: boolean | undefined = undefined;
+  @Input() sidenav!: MatDrawer;
 }
 
 @Component({
