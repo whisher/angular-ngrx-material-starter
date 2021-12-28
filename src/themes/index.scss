@@ -60,11 +60,13 @@ $iwdf-custom-typography: mat.define-typography-config(
 @include mat.button-theme($iwdf-theme);
 @include mat.card-theme($iwdf-theme);
 @include mat.checkbox-theme($iwdf-theme);
+@include mat.divider-theme($iwdf-theme);
 @include mat.form-field-theme($iwdf-theme);
 @include mat.input-theme($iwdf-theme);
 @include mat.list-theme($iwdf-theme);
 @include mat.menu-theme($iwdf-theme);
 @include mat.progress-spinner-theme($iwdf-theme);
+@include mat.select-theme($iwdf-theme);
 @include mat.sidenav-theme($iwdf-theme);
 @include mat.slide-toggle-theme($iwdf-theme);
 @include mat.toolbar-theme($iwdf-theme);

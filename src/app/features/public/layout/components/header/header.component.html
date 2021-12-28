@@ -33,10 +33,14 @@
   <div class="pl-3">
     <iwdf-theme-switch></iwdf-theme-switch>
   </div>
-  <div class="w-10 ml-10">
-    <mat-select (selectionChange)="onUseLanguage($event)">
+  <div class="w-14 ml-8" *ngIf="language$ | ngrxPush as language">
+    <mat-select
+      class="text-lg"
+      [ngModel]="language"
+      (selectionChange)="onUseLanguage($event)"
+    >
       <mat-option *ngFor="let lang of languages" [value]="lang">
-        {{ lang.toUpperCase() }}
+        <span class="text-lg">{{ lang.toUpperCase() }}</span>
       </mat-option>
     </mat-select>
   </div>

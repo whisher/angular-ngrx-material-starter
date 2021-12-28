@@ -18,11 +18,13 @@ $iwdf-theme: mat.define-dark-theme(
   @include mat.button-color($iwdf-theme);
   @include mat.card-color($iwdf-theme);
   @include mat.checkbox-color($iwdf-theme);
+  @include mat.divider-color($iwdf-theme);
   @include mat.form-field-color($iwdf-theme);
   @include mat.input-color($iwdf-theme);
   @include mat.list-color($iwdf-theme);
   @include mat.menu-color($iwdf-theme);
   @include mat.progress-spinner-color($iwdf-theme);
+  @include mat.select-color($iwdf-theme);
   @include mat.sidenav-color($iwdf-theme);
   @include mat.slide-toggle-color($iwdf-theme);
   @include mat.toolbar-color($iwdf-theme);
