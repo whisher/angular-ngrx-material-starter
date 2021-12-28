@@ -33,4 +33,11 @@
   <div class="pl-3">
     <iwdf-theme-switch></iwdf-theme-switch>
   </div>
+  <div class="w-10 ml-10">
+    <mat-select (selectionChange)="onUseLanguage($event)">
+      <mat-option *ngFor="let lang of languages" [value]="lang">
+        {{ lang.toUpperCase() }}
+      </mat-option>
+    </mat-select>
+  </div>
 </mat-toolbar>

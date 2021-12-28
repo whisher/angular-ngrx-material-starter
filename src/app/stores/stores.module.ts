@@ -25,6 +25,8 @@ import { AccountEffects } from './account/store/account.effects';
 import { accountReducer } from './account/store/account.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
 import { authReducer } from './auth/store/auth.reducer';
+import { SettingsEffects } from './settings/store/settings.effects';
+import { settingsReducer } from './settings/store/settings.reducer';
 import * as fromInterceptors from './auth/interceptors';
 
 @NgModule({
@@ -33,6 +35,7 @@ import * as fromInterceptors from './auth/interceptors';
       {
         account: accountReducer,
         auth: authReducer,
+        settings: settingsReducer,
         ...routerReducers
       },
       {
@@ -47,7 +50,12 @@ import * as fromInterceptors from './auth/interceptors';
         }
       }
     ),
-    EffectsModule.forRoot([RouterEffects, AccountEffects, AuthEffects]),
+    EffectsModule.forRoot([
+      RouterEffects,
+      AccountEffects,
+      AuthEffects,
+      SettingsEffects
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

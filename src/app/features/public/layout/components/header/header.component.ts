@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 // Material
 import { MatDrawer } from '@angular/material/sidenav';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,4 +12,8 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class PublicLayoutHeaderComponent {
   @Input() isAuthenticated: boolean | undefined = undefined;
   @Input() sidenav!: MatDrawer;
+  languages = ['en', 'it'];
+  onUseLanguage(event: MatSelectChange) {
+    console.log(event.value);
+  }
 }
