@@ -15,6 +15,7 @@ export function onLogoutReset(reducer: ActionReducer<any>): ActionReducer<any> {
       if (data) {
         state = { ...state, ...{ auth: { data } } };
       }
+      console.log(LocalStorageService.loadInitialState2());
     }
     return reducer(state, action);
   };

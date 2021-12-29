@@ -12,6 +12,22 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Work Sans', ...defaultTheme.fontFamily.sans]
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            /*color: 'green',
+            a: {
+              color: 'red',
+              '&:hover': {
+                color: 'green'
+              }
+            },
+            h1: {
+              color: 'var(--main-bg-color)'
+            }*/
+          }
+        }
       }
     }
   },

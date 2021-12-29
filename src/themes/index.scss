@@ -14,6 +14,10 @@ $iwdf-custom-typography: mat.define-typography-config(
   $warn: map-get($theme, warn);
   $linkColor: mat.get-color-from-palette($primary);
   $linkColorHover: darken($linkColor, 20%);
+
+  :root {
+    --main-bg-color: #{$linkColor};
+  }
   .dark-theme {
     h1,
     h2,
@@ -27,7 +31,7 @@ $iwdf-custom-typography: mat.define-typography-config(
   }
   .prose {
     a {
-      color: $linkColor;
+      color: var(--main-bg-color);
 
       &:hover {
         color: $linkColorHover;
@@ -49,6 +53,9 @@ $iwdf-custom-typography: mat.define-typography-config(
   }
   .mat-mini-fab .mat-button-wrapper {
     padding: 0 !important;
+  }
+  .mat-select {
+    color: red !important;
   }
 }
 
