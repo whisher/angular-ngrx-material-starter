@@ -1,10 +1,10 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { SettingsState } from '../models';
+import { State } from './settings.reducer';
 
-export const selectFeature = createFeatureSelector<SettingsState>('settings');
+export const selectFeature = createFeatureSelector<State>('settings');
 
 export const selectLanguage = createSelector(
   selectFeature,
-  (state: SettingsState) => state.language
+  (state: State) => state.language
 );

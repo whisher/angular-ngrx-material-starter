@@ -1,1 +1,1 @@
-export { Language, SettingsState } from './settings.model';
+export { Language } from './settings.model';

@@ -7,7 +7,8 @@ import { select, Store } from '@ngrx/store';
 // Rxjs
 import { Observable } from 'rxjs';
 
-import { Language, SettingsState } from '../models';
+import { Language } from '../models';
+import { State } from './settings.reducer';
 import { selectLanguage } from './settings.selectors';
 
 import * as SettingsActions from './settings.actions';
@@ -18,7 +19,7 @@ export class SettingsFacade {
     return this.store.pipe(select(selectLanguage));
   }
 
-  constructor(private store: Store<SettingsState>) {}
+  constructor(private store: Store<State>) {}
 
   useLanguage(language: Language): void {
     this.store.dispatch(SettingsActions.changeLanguage({ language }));

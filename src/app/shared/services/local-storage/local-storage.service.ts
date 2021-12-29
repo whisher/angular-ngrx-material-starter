@@ -6,45 +6,18 @@ const APP_PREFIX = 'IWDF-';
   providedIn: 'root'
 })
 export class LocalStorageService {
-  static loadInitialState<T>(key: string): T | undefined {
-    const data = localStorage.getItem(`${APP_PREFIX}${key}`);
-    if (data) {
-      return JSON.parse(data) as T;
-    }
-    return undefined;
-  }
-  static loadInitialState2() {
+  static loadInitialState() {
     return Object.keys(localStorage).reduce((state: any, storageKey) => {
       if (storageKey.includes(APP_PREFIX)) {
-        const stateKeys = storageKey
-          .replace(APP_PREFIX, '')
-          .toLowerCase()
-          .split('.')
-          .map((key) =>
-            key
-              .split('-')
-              .map((token, index) => {
-                console.log('token', token);
-                const a =
-                  index === 0
-                    ? token
-                    : token.charAt(0).toUpperCase() + token.slice(1);
-                console.log('token2', a);
-                return a;
-              })
-              .join('')
-          );
+        const key = storageKey.replace(APP_PREFIX, '').toLowerCase();
+
         let currentStateRef = state;
-        stateKeys.forEach((key, index) => {
-          if (index === stateKeys.length - 1) {
-            currentStateRef[key] = JSON.parse(
-              localStorage.getItem(storageKey) || '{}'
-            );
-            return;
-          }
-          currentStateRef[key] = currentStateRef[key] || {};
-          currentStateRef = currentStateRef[key];
-        });
+        currentStateRef[key] = JSON.parse(
+          localStorage.getItem(storageKey) || '{}'
+        );
+
+        currentStateRef[key] = currentStateRef[key] || {};
+        currentStateRef = currentStateRef[key];
       }
       return state;
     }, {});

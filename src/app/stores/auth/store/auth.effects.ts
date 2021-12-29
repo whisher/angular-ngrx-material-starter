@@ -30,10 +30,12 @@ export class AuthEffects {
       exhaustMap((action) =>
         this.service.login(action.credentials).pipe(
           map((data: LoginResponseDto) => {
-            this.localStorageService.setItem<{ id: string }>('SETTINGS', {
-              id: 'abc'
-            });
-            this.localStorageService.setItem<LoginResponseDto>(AUTH_KEY, data);
+            this.localStorageService.setItem<{ data: LoginResponseDto }>(
+              AUTH_KEY,
+              {
+                data
+              }
+            );
             return AuthActions.loginSuccess({ data });
           }),
           catchError((error: ErrorDto) => {
