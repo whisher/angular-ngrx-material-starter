@@ -13,43 +13,27 @@ import { environment } from '../../environments/environment';
 // Meta
 import { metaReducers } from './metareducers';
 
-// Router
-import {
-  CustomRouterSerializer,
-  RouterEffects,
-  routerReducers
-} from './router';
-
 // Stores
 import { AccountEffects } from './account/store/account.effects';
-import { accountReducer } from './account/store/account.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
-import { authReducer } from './auth/store/auth.reducer';
+import { CustomRouterSerializer, RouterEffects } from './router';
 import { SettingsEffects } from './settings/store/settings.effects';
-import { settingsReducer } from './settings/store/settings.reducer';
 import * as fromInterceptors from './auth/interceptors';
+import { reducers } from './stores.state';
 
 @NgModule({
   imports: [
-    StoreModule.forRoot(
-      {
-        account: accountReducer,
-        auth: authReducer,
-        settings: settingsReducer,
-        ...routerReducers
-      },
-      {
-        metaReducers,
-        runtimeChecks: {
-          strictStateImmutability: true,
-          strictActionImmutability: true,
-          strictStateSerializability: true,
-          strictActionSerializability: true,
-          strictActionWithinNgZone: true,
-          strictActionTypeUniqueness: true
-        }
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true
       }
-    ),
+    }),
     EffectsModule.forRoot([
       RouterEffects,
       AccountEffects,

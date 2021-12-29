@@ -1,21 +1,17 @@
+// Ngrx
 import { Action, createReducer, on } from '@ngrx/store';
+
+// Store
+import { AccountState } from './account.state';
 import * as AccountActions from './account.actions';
 
-import { ErrorDto, UserAccountResponseDto } from '@api/models';
-
-export interface State {
-  error: ErrorDto | null;
-  loaded: boolean;
-  data: UserAccountResponseDto | undefined;
-}
-
-export const initialState: State = {
+export const initialState: AccountState = {
   error: null,
   loaded: false,
   data: undefined
 };
 
-const _accountReducer = createReducer<State>(
+const _accountReducer = createReducer<AccountState>(
   initialState,
   on(AccountActions.load, () => {
     return initialState;
@@ -46,6 +42,9 @@ const _accountReducer = createReducer<State>(
   )
 );
 
-export function accountReducer(state: State | undefined, action: Action) {
+export function accountReducer(
+  state: AccountState | undefined,
+  action: Action
+) {
   return _accountReducer(state, action);
 }

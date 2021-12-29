@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 // Models
 import { ErrorDto, LoginRequestDto, LoginResponseDto } from '@api/models';
 
-import { State } from './auth.reducer';
+import { AuthState } from './auth.state';
 import {
   selectError,
   selectIsAuthenticated,
@@ -49,7 +49,7 @@ export class AuthFacade {
   }
 
   constructor(
-    private store: Store<State>,
+    private store: Store<AuthState>,
     private actionsSubject: ActionsSubject
   ) {}
 

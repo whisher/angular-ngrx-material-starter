@@ -1,21 +1,26 @@
+// Ngrx
 import { Action, createReducer, on } from '@ngrx/store';
-import { Language } from '../models';
-import { changeLanguage } from './settings.actions';
 
-export interface State {
-  language: Language;
-  theme: string;
-}
-export const initialState: State = {
+// Store
+import { SettingsState } from './settings.state';
+import * as SettingsActions from './settings.actions';
+
+export const initialState: SettingsState = {
   language: 'en',
   theme: 'light-theme'
 };
 
 const _settingsReducer = createReducer(
   initialState,
-  on(changeLanguage, (state, action) => ({ ...state, ...action }))
+  on(SettingsActions.changeLanguage, (state, action) => ({
+    ...state,
+    ...action
+  }))
 );
 
-export function settingsReducer(state: State | undefined, action: Action) {
+export function settingsReducer(
+  state: SettingsState | undefined,
+  action: Action
+) {
   return _settingsReducer(state, action);
 }

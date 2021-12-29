@@ -1,25 +1,17 @@
 // NgRx
 import { Action, createReducer, on } from '@ngrx/store';
 
-// Models
-import { ErrorDto, LoginResponseDto } from '@api/models';
-
 // Store
+import { AuthState } from './auth.state';
 import * as AuthActions from './auth.actions';
 
-export interface State {
-  error: ErrorDto | null;
-  loading: boolean;
-  data: LoginResponseDto | undefined;
-}
-
-export const initialState: State = {
+export const initialState: AuthState = {
   error: null,
   loading: false,
   data: undefined
 };
 
-const _authReducer = createReducer<State>(
+const _authReducer = createReducer<AuthState>(
   initialState,
   on(AuthActions.login, (state) => {
     return {
@@ -50,6 +42,6 @@ const _authReducer = createReducer<State>(
   })
 );
 
-export function authReducer(state: State | undefined, action: Action) {
+export function authReducer(state: AuthState | undefined, action: Action) {
   return _authReducer(state, action);
 }
