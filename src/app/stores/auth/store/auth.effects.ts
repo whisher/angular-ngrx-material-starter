@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 // Rxjs
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
 
 // Ngrx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -49,10 +49,8 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
-      tap(() => {
-        this.localStorageService.removeItem(AUTH_KEY);
-      }),
       map(() => {
+        this.localStorageService.removeItem(AUTH_KEY);
         return RouterActions.routerGo({
           path: ['/auth/login'],
           extras: { replaceUrl: true }

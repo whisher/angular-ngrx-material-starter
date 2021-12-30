@@ -1,6 +1,6 @@
-import { Language } from '../models';
+import { Language, Theme } from '@api/models';
 
 export interface SettingsState {
   language: Language;
-  theme: string;
+  theme: Theme;
 }

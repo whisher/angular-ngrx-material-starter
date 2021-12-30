@@ -1,5 +1,5 @@
 // Core
-import { Component } from '@angular/core';
+import { Component /*, Input */ } from '@angular/core';
 
 // Models
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -13,6 +13,7 @@ import { IwdfThemeSwitchService } from './theme-switch.service';
   providers: [IwdfThemeSwitchService]
 })
 export class IwdfThemeSwitchComponent {
+  //@Input() theme!: string;
   isChecked = this.themeSwitchService.getIsDark();
   constructor(private themeSwitchService: IwdfThemeSwitchService) {}
 

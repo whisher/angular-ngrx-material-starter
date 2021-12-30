@@ -7,8 +7,10 @@ import { select, Store } from '@ngrx/store';
 // Rxjs
 import { Observable } from 'rxjs';
 
+// Models
+import { Language } from '@api/models';
+
 // Store
-import { Language } from '../models';
 import { SettingsState } from './settings.state';
 import { selectLanguage } from './settings.selectors';
 import * as SettingsActions from './settings.actions';

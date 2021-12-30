@@ -1,16 +1,18 @@
+// Ngrx
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { State } from './auth.reducer';
+// Store
+import { AuthState } from './auth.state';
 
-export const selectFeature = createFeatureSelector<State>('auth');
+export const selectFeature = createFeatureSelector<AuthState>('auth');
 
-export const selectError = createSelector(selectFeature, (state: State) => {
+export const selectError = createSelector(selectFeature, (state: AuthState) => {
   return state.error;
 });
 
 export const selectIsAuthenticated = createSelector(
   selectFeature,
-  (state: State) => {
+  (state: AuthState) => {
     if (!state.data) {
       return false;
     }
@@ -20,9 +22,12 @@ export const selectIsAuthenticated = createSelector(
   }
 );
 
-export const selectLoading = createSelector(selectFeature, (state: State) => {
-  return state.loading;
-});
+export const selectLoading = createSelector(
+  selectFeature,
+  (state: AuthState) => {
+    return state.loading;
+  }
+);
 
 export const selectStatus = createSelector(
   selectError,
@@ -35,7 +40,7 @@ export const selectStatus = createSelector(
   }
 );
 
-export const selectToken = createSelector(selectFeature, (state: State) => {
+export const selectToken = createSelector(selectFeature, (state: AuthState) => {
   if (state.data) {
     return state.data.token;
   }

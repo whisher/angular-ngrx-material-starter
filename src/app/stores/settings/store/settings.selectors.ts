@@ -1,10 +1,17 @@
+// Ngrx
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { State } from './settings.reducer';
+// Store
+import { SettingsState } from './settings.state';
 
-export const selectFeature = createFeatureSelector<State>('settings');
+export const selectFeature = createFeatureSelector<SettingsState>('settings');
+
+export const selectSettings = createSelector(
+  selectFeature,
+  (state: SettingsState) => state
+);
 
 export const selectLanguage = createSelector(
   selectFeature,
-  (state: State) => state.language
+  (state: SettingsState) => state.language
 );
