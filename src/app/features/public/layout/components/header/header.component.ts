@@ -16,10 +16,11 @@ export class PublicLayoutHeaderComponent {
   @Input() isAuthenticated: boolean | undefined = undefined;
   @Input() sidenav!: MatDrawer;
   language$ = this.settingsFacade.language$;
+  theme$ = this.settingsFacade.theme$;
   languages = ['en', 'it'];
+  themes = ['light', 'dark'];
   constructor(private settingsFacade: SettingsFacade) {}
   onUseLanguage(event: MatSelectChange) {
-    console.log(event.value);
     this.settingsFacade.useLanguage(event.value);
   }
 }

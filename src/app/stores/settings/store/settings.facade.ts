@@ -8,11 +8,11 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 // Models
-import { Language } from '@api/models';
+import { Language, Theme } from '@api/models';
 
 // Store
 import { SettingsState } from './settings.state';
-import { selectLanguage } from './settings.selectors';
+import { selectLanguage, selectTheme } from './settings.selectors';
 import * as SettingsActions from './settings.actions';
 
 @Injectable({ providedIn: 'root' })
@@ -21,6 +21,9 @@ export class SettingsFacade {
     return this.store.pipe(select(selectLanguage));
   }
 
+  get theme$(): Observable<Theme> {
+    return this.store.pipe(select(selectTheme));
+  }
   constructor(private store: Store<SettingsState>) {}
 
   useLanguage(language: Language): void {

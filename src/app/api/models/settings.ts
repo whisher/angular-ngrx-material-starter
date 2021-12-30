@@ -1,3 +1,3 @@
 export type Language = 'en' | 'it';
 
-export type Theme = 'dark-theme' | 'light-theme';
+export type Theme = 'dark' | 'light';

@@ -30,17 +30,26 @@
   <public-layout-header-account
     [isAuthenticated]="isAuthenticated"
   ></public-layout-header-account>
-  <div class="pl-3">
-    <iwdf-theme-switch></iwdf-theme-switch>
+
+  <div class="w-14 ml-8" *ngIf="theme$ | ngrxPush as theme">
+    <mat-select
+      class="text-sm"
+      [ngModel]="theme"
+      (selectionChange)="onUseLanguage($event)"
+    >
+      <mat-option *ngFor="let theme of themes" [value]="theme">
+        <span class="text-sm">{{ theme.toUpperCase() }}</span>
+      </mat-option>
+    </mat-select>
   </div>
   <div class="w-14 ml-8" *ngIf="language$ | ngrxPush as language">
     <mat-select
-      class="text-lg"
+      class="text-sm"
       [ngModel]="language"
       (selectionChange)="onUseLanguage($event)"
     >
       <mat-option *ngFor="let lang of languages" [value]="lang">
-        <span class="text-lg">{{ lang.toUpperCase() }}</span>
+        <span class="text-sm">{{ lang.toUpperCase() }}</span>
       </mat-option>
     </mat-select>
   </div>

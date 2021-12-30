@@ -39,12 +39,15 @@ export class SettingsEffects {
         ofType(SettingsActions.updateSettingsStorage),
         withLatestFrom(this.store.pipe(select(selectSettings))),
         tap(([action, settings]) => {
-          console.log('settings', settings as SettingsState);
-          this.localStorageService.setItem(SETTINGS_KEY, settings);
+          this.localStorageService.setItem<SettingsState>(
+            SETTINGS_KEY,
+            settings
+          );
         })
       ),
     { dispatch: false }
   );
+
   constructor(
     private actions$: Actions,
     private store: Store<SettingsState>,

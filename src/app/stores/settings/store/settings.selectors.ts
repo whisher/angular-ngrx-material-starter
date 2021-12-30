@@ -15,3 +15,8 @@ export const selectLanguage = createSelector(
   selectFeature,
   (state: SettingsState) => state.language
 );
+
+export const selectTheme = createSelector(
+  selectFeature,
+  (state: SettingsState) => state.theme
+);

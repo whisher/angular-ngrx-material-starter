@@ -7,7 +7,7 @@ import * as SettingsActions from './settings.actions';
 
 export const initialState: SettingsState = {
   language: 'en',
-  theme: 'light-theme'
+  theme: 'light'
 };
 
 const _settingsReducer = createReducer(
