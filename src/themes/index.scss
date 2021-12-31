@@ -8,15 +8,14 @@ $iwdf-custom-typography: mat.define-typography-config(
 
 @import "./light-theme";
 
-@mixin iwdf-app-component-theme($theme) {
+@mixin iwdf-app-light-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
-  $linkColor: mat.get-color-from-palette($primary);
-  $linkColorHover: darken($linkColor, 20%);
-
+  $linkColor: mat.get-color-from-palette($primary, lighter);
+  $linkColorHover: mat.get-color-from-palette($primary, darker);
   :root {
-    --main-bg-color: #{$linkColor};
+    --iwdf-link-color: #{$linkColor};
   }
   .dark-theme {
     h1,
@@ -31,7 +30,7 @@ $iwdf-custom-typography: mat.define-typography-config(
   }
   .prose {
     a {
-      color: var(--main-bg-color);
+      color: $linkColor;
 
       &:hover {
         color: $linkColorHover;
@@ -77,7 +76,7 @@ $iwdf-custom-typography: mat.define-typography-config(
 @include mat.sidenav-theme($iwdf-theme);
 @include mat.slide-toggle-theme($iwdf-theme);
 @include mat.toolbar-theme($iwdf-theme);
-@include iwdf-app-component-theme($iwdf-theme);
+@include iwdf-app-light-theme($iwdf-theme);
 
 $focus-indicator: true;
 

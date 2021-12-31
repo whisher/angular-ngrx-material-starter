@@ -4,6 +4,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatSelectChange } from '@angular/material/select';
 
+// Models
+import { Language, Theme } from '@api/models';
+
 // Store
 import { SettingsFacade } from '@stores/settings';
 
@@ -17,9 +20,12 @@ export class PublicLayoutHeaderComponent {
   @Input() sidenav!: MatDrawer;
   language$ = this.settingsFacade.language$;
   theme$ = this.settingsFacade.theme$;
-  languages = ['en', 'it'];
-  themes = ['light', 'dark'];
+  languages = ['en', 'it'] as Language[];
+  themes = ['blue', 'light', 'dark'] as Theme[];
   constructor(private settingsFacade: SettingsFacade) {}
+  onChangeTheme(theme: Theme) {
+    this.settingsFacade.changeTheme(theme);
+  }
   onUseLanguage(event: MatSelectChange) {
     this.settingsFacade.useLanguage(event.value);
   }

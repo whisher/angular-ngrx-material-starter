@@ -1,0 +1,41 @@
+<button
+  mat-mini-fab
+  color="accent"
+  [matMenuTriggerFor]="menu"
+  aria-label="Change Theme Menu"
+>
+  <fa-icon
+    class="text-icon"
+    size="2x"
+    [icon]="['fas', 'palette']"
+    aria-hidden="false"
+    aria-label="Picker theme"
+  ></fa-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button *ngFor="let t of themes" mat-menu-item (click)="onChangeTheme(t)">
+    <div class="flex justify-between items-center">
+      <ng-container *ngIf="t !== theme; else checked">
+        <svg
+          class="w-6 h-6 fill-white stroke-orange-500 stroke-2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="11" />
+        </svg>
+      </ng-container>
+      <ng-template #checked>
+        <svg
+          class="w-6 h-6 fill-white stroke-orange-500 stroke-2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="11" />
+          <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+        </svg>
+      </ng-template>
+      <span>{{ t.toUpperCase() }}</span>
+    </div>
+  </button>
+</mat-menu>

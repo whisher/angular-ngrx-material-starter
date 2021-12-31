@@ -20,7 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
 // UI
-import { IwdfThemeSwitchModule } from '@shared/ui/theme-switch';
+import { IwdfThemePickerModule } from '@shared/ui/theme-picker';
 
 // Components
 import * as fromContainers from './containers';
@@ -40,7 +40,7 @@ import * as fromComponents from './components';
     MatSidenavModule,
     MatToolbarModule,
     IwdfFortawesomeModule,
-    IwdfThemeSwitchModule
+    IwdfThemePickerModule
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components]
 })

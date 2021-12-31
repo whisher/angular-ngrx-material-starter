@@ -1,19 +1,11 @@
 @use "@angular/material" as mat;
-@import "./custom-palette";
 
-$iwdf-primary-palette: mat.define-palette($iwdf-primary, 300, 500, 300);
-$iwdf-accent-palette: mat.define-palette($iwdf-accent, 300);
-$iwdf-warn-palette: mat.define-palette($iwdf-warn, 300);
-$iwdf-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $iwdf-primary-palette,
-      accent: $iwdf-accent-palette,
-      warn: $iwdf-warn-palette
-    )
-  )
-);
-@mixin iwdf-app-dark-theme($theme) {
+$iwdf-primary: mat.define-palette(mat.$indigo-palette, 800, 300, 900);
+$iwdf-accent: mat.define-palette(mat.$light-blue-palette);
+$iwdf-warn: mat.define-palette(mat.$pink-palette, 600);
+
+$iwdf-theme: mat.define-light-theme($iwdf-primary, $iwdf-accent, $iwdf-warn);
+@mixin iwdf-app-blue-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
@@ -36,7 +28,7 @@ $iwdf-theme: mat.define-dark-theme(
   }
 }
 
-.dark-theme {
+.blue-theme {
   @include mat.core-color($iwdf-theme);
   @include mat.button-color($iwdf-theme);
   @include mat.card-color($iwdf-theme);
@@ -51,5 +43,5 @@ $iwdf-theme: mat.define-dark-theme(
   @include mat.sidenav-color($iwdf-theme);
   @include mat.slide-toggle-color($iwdf-theme);
   @include mat.toolbar-color($iwdf-theme);
-  @include iwdf-app-dark-theme($iwdf-theme);
+  @include iwdf-app-blue-theme($iwdf-theme);
 }

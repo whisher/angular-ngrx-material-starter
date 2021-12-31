@@ -26,6 +26,9 @@ export class SettingsFacade {
   }
   constructor(private store: Store<SettingsState>) {}
 
+  changeTheme(theme: Theme): void {
+    this.store.dispatch(SettingsActions.changeTheme({ theme }));
+  }
   useLanguage(language: Language): void {
     this.store.dispatch(SettingsActions.changeLanguage({ language }));
   }

@@ -13,6 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Fortawesome
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
+// UI
+import { IwdfThemePickerModule } from '@shared/ui/theme-picker';
+
 // Components
 import { PublicLayoutHeaderComponent } from './header.component';
 
@@ -50,7 +53,8 @@ describe('PublicLayoutHeaderComponent', () => {
           RouterTestingModule,
           MatButtonModule,
           MatToolbarModule,
-          IwdfFortawesomeModule
+          IwdfFortawesomeModule,
+          IwdfThemePickerModule
         ],
         declarations: [
           MockPublicLayoutHeaderAccountComponent,
