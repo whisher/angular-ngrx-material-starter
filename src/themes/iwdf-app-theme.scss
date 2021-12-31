@@ -1,0 +1,24 @@
+@mixin iwdf-app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $linkColor: mat.get-color-from-palette($primary, lighter);
+  $linkColorHover: mat.get-color-from-palette($primary, darker);
+
+  .prose {
+    a {
+      color: $linkColor;
+      &:hover {
+        color: $linkColorHover;
+      }
+    }
+  }
+  .stroke-primary {
+    stroke: $linkColor;
+  }
+  mat-sidenav-container {
+    footer {
+      background-color: mat.get-color-from-palette($primary);
+    }
+  }
+}
