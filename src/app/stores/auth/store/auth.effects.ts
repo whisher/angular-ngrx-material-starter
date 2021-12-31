@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 // Rxjs
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
 
 // Ngrx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -30,10 +30,12 @@ export class AuthEffects {
       exhaustMap((action) =>
         this.service.login(action.credentials).pipe(
           map((data: LoginResponseDto) => {
-            this.localStorageService.setItem<{ id: string }>('SETTINGS', {
-              id: 'abc'
-            });
-            this.localStorageService.setItem<LoginResponseDto>(AUTH_KEY, data);
+            this.localStorageService.setItem<{ data: LoginResponseDto }>(
+              AUTH_KEY,
+              {
+                data
+              }
+            );
             return AuthActions.loginSuccess({ data });
           }),
           catchError((error: ErrorDto) => {
@@ -47,10 +49,8 @@ export class AuthEffects {
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
-      tap(() => {
-        this.localStorageService.removeItem(AUTH_KEY);
-      }),
       map(() => {
+        this.localStorageService.removeItem(AUTH_KEY);
         return RouterActions.routerGo({
           path: ['/auth/login'],
           extras: { replaceUrl: true }

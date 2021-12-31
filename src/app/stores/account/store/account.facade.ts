@@ -6,7 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 // Store
-import { State } from './account.reducer';
+import { AccountState } from './account.state';
 import {
   selectAccount,
   selectError,
@@ -36,7 +36,7 @@ export class AccountFacade {
     return this.store.pipe(select(selectLoaded));
   }
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<AccountState>) {}
 
   load(): void {
     this.store.dispatch(AccountActions.load());

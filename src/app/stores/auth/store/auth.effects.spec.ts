@@ -12,7 +12,7 @@ import { ErrorDto, LoginRequestDto, LoginResponseDto } from '@api/models';
 
 // Store
 import { AuthEffects } from './auth.effects';
-import { initialState /*, State*/ } from './auth.reducer';
+import { initialState } from './auth.reducer';
 import * as AuthActions from './auth.actions';
 import * as RouterActions from '../../router/router.actions';
 

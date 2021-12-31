@@ -1,32 +1,46 @@
+// Ngrx
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { State } from './account.reducer';
+// Store
+import { AccountState } from './account.state';
 
-export const selectFeature = createFeatureSelector<State>('account');
+export const selectFeature = createFeatureSelector<AccountState>('account');
 
-export const selectAccount = createSelector(selectFeature, (state: State) => {
-  if (state) {
-    return state.data;
+export const selectAccount = createSelector(
+  selectFeature,
+  (state: AccountState) => {
+    if (state) {
+      return state.data;
+    }
+    return undefined;
   }
-  return undefined;
-});
+);
 
-export const selectError = createSelector(selectFeature, (state: State) => {
-  return state.error;
-});
-
-export const selectIsAdmin = createSelector(selectFeature, (state: State) => {
-  if (!state.data) {
-    return false;
+export const selectError = createSelector(
+  selectFeature,
+  (state: AccountState) => {
+    return state.error;
   }
-  const role = state.data.role;
-  if (!role) {
-    return false;
+);
+
+export const selectIsAdmin = createSelector(
+  selectFeature,
+  (state: AccountState) => {
+    if (!state.data) {
+      return false;
+    }
+    const role = state.data.role;
+    if (!role) {
+      return false;
+    }
+
+    return role === 'admin';
   }
+);
 
-  return role === 'admin';
-});
-
-export const selectLoaded = createSelector(selectFeature, (state: State) => {
-  return state.loaded;
-});
+export const selectLoaded = createSelector(
+  selectFeature,
+  (state: AccountState) => {
+    return state.loaded;
+  }
+);

@@ -1,10 +1,14 @@
 import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable, Renderer2 } from '@angular/core';
+import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
-@Injectable()
-export class IwdfThemeSwitchService {
-  private readonly SK = 'THEME-IS-DARK';
-  private isDark = this.getStorageStatus();
+import { Theme } from '@api/models';
+
+@Injectable({ providedIn: 'root' })
+export class ThemePickerService {
+  private renderer: Renderer2;
+  private PREFIX = '-theme';
+  current!: string;
+  mainTheme = 'light';
 
   get body(): HTMLElement {
     return this.document.body;
@@ -12,43 +16,37 @@ export class IwdfThemeSwitchService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2
+    rendererFactory: RendererFactory2
   ) {
-    if (this.isDark) {
-      this.addStyle('dark-theme');
+    this.renderer = rendererFactory.createRenderer(null, null);
+  }
+
+  init(theme: Theme) {
+    if (this.mainTheme !== theme) {
+      this.addStyle(`${theme}${this.PREFIX}`);
     }
+    this.current = theme;
   }
 
-  private setIsDark(val: boolean) {
-    this.isDark = val;
-  }
-
-  getIsDark(): boolean {
-    return this.getStorageStatus();
-  }
-
-  private getStorageStatus(): boolean {
-    return localStorage.getItem(this.SK) === 'true';
-  }
-
-  private setStorageStatus(val: string): void {
-    return localStorage.setItem(this.SK, val);
-  }
-
-  toggleTheme() {
-    if (this.isDark) {
-      this.removeStyle('dark-theme');
-    } else {
-      this.addStyle('dark-theme');
+  setStyle(theme: Theme) {
+    if (this.current !== theme) {
+      this.removeStyle(`${this.current}${this.PREFIX}`);
     }
+    if (this.mainTheme === theme) {
+      this.removeStyle(`${this.current}${this.PREFIX}`);
+    }
+    if (this.mainTheme !== theme) {
+      this.addStyle(`${theme}${this.PREFIX}`);
+    }
+
+    this.current = theme;
+    console.log('next', this.current);
   }
 
   private addStyle(key: string) {
     const href = `${key}.css`;
     this.renderer.setAttribute(this.getLinkElementForKey(key), 'href', href);
     this.renderer.addClass(this.body, key);
-    this.setIsDark(true);
-    this.setStorageStatus('true');
   }
 
   private removeStyle(key: string) {
@@ -56,12 +54,10 @@ export class IwdfThemeSwitchService {
     if (existingLinkElement) {
       this.renderer.removeChild(document.head, existingLinkElement);
       this.renderer.removeClass(this.body, key);
-      this.setIsDark(false);
-      this.setStorageStatus('false');
     }
   }
 
-  getLinkElementForKey(key: string) {
+  private getLinkElementForKey(key: string) {
     return (
       this.getExistingLinkElementByKey(key) ||
       this.createLinkElementWithKey(key)
@@ -82,7 +78,7 @@ export class IwdfThemeSwitchService {
     return linkEl;
   }
 
-  private getClassNameForKey(key: string) {
-    return `theme-switch-${key}`;
+  getClassNameForKey(key: string) {
+    return `iwdf-${key}`;
   }
 }

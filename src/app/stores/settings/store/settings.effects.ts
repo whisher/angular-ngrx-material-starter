@@ -2,29 +2,85 @@
 import { Injectable } from '@angular/core';
 
 // Rxjs
-import { tap } from 'rxjs/operators';
+import { map, tap, withLatestFrom } from 'rxjs/operators';
 
 // Ngrx
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 
 // Ngx Translate
 import { TranslateService } from '@ngx-translate/core';
 
-import { changeLanguage } from './settings.actions';
+// Services
+import { LocalStorageService } from '@shared/services/local-storage';
+import { ThemePickerService } from '@shared/services/theme-picker/theme-picker.service';
+
+// Store
+import { selectSettings, selectTheme } from './settings.selectors';
+import { SettingsState } from './settings.state';
+import * as SettingsActions from './settings.actions';
+
+export const SETTINGS_KEY = 'SETTINGS';
 
 @Injectable()
-export class SettingsEffects {
-  changeLanguage$ = createEffect(
+export class SettingsEffects implements OnInitEffects {
+  ngrxOnInitEffects() {
+    return { type: 'INIT' };
+  }
+  changeLanguage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.changeLanguage),
+      map((action) => {
+        this.translateService.use(action.language);
+        return SettingsActions.updateSettingsStorage();
+      })
+    )
+  );
+
+  changeTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SettingsActions.changeTheme),
+      withLatestFrom(this.store.pipe(select(selectSettings))),
+      map(([action, theme]) => {
+        console.log('inside', theme);
+        this.themePickerService.setStyle(action.theme);
+        return SettingsActions.updateSettingsStorage();
+      })
+    )
+  );
+
+  initSettings$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(changeLanguage),
-        tap((action) => this.translateService.use(action.language))
+        ofType('INIT'),
+        withLatestFrom(this.store.pipe(select(selectTheme))),
+        tap(([action, theme]) => {
+          this.themePickerService.init(theme);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  persistSettings$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(SettingsActions.updateSettingsStorage),
+        withLatestFrom(this.store.pipe(select(selectSettings))),
+        tap(([action, settings]) => {
+          this.localStorageService.setItem<SettingsState>(
+            SETTINGS_KEY,
+            settings
+          );
+        })
       ),
     { dispatch: false }
   );
 
   constructor(
     private actions$: Actions,
-    private translateService: TranslateService
+    private store: Store<SettingsState>,
+    private translateService: TranslateService,
+    private localStorageService: LocalStorageService,
+    private themePickerService: ThemePickerService
   ) {}
 }

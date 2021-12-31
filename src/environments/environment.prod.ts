@@ -1,6 +1,7 @@
-import { EnvironmentDto } from './environment.tdo';
+import { EnvironmentDto } from '@api/models';
 
 export const environment: EnvironmentDto = {
   apiEndpoint: '',
-  production: true
+  production: true,
+  test: false
 };

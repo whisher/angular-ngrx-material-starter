@@ -14,6 +14,7 @@ import {
   faEyeSlash,
   faInfoCircle,
   faLockOpen,
+  faPalette,
   faPowerOff,
   faUserCircle,
   faUserPlus
@@ -33,6 +34,7 @@ export class IwdfFortawesomeModule {
       faEyeSlash,
       faInfoCircle,
       faLockOpen,
+      faPalette,
       faPowerOff,
       faUserCircle,
       faUserPlus
