@@ -41,7 +41,6 @@
       *ngFor="let item of navigation"
       [routerLink]="[item.link]"
       routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
     >
       {{ item.label }}
     </a>

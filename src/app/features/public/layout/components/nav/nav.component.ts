@@ -12,7 +12,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class PublicLayoutNavComponent {
   @Input() sidenav?: MatDrawer;
   navigation = [
-    { link: '/', label: 'Home' },
+    { link: '/home', label: 'Home' },
     { link: 'about-us', label: 'About' },
     { link: 'contact-us', label: 'Contact' }
   ];
