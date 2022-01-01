@@ -6,8 +6,7 @@ import { PublicContactMainComponent } from './containers';
 export const routes: Routes = [
   {
     path: '',
-    component: PublicContactMainComponent,
-    pathMatch: 'full'
+    component: PublicContactMainComponent
   }
 ];
 

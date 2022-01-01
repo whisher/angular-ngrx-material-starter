@@ -4,13 +4,18 @@
   $warn: map-get($theme, warn);
   $linkColor: mat.get-color-from-palette($primary, lighter);
   $linkColorHover: mat.get-color-from-palette($primary, darker);
-
+  $accentColor: mat.get-color-from-palette($accent);
   .prose {
     a {
       color: $linkColor;
       &:hover {
         color: $linkColorHover;
       }
+    }
+  }
+  .nav-menu {
+    .active {
+      color: #{$accentColor} !important;
     }
   }
   .stroke-primary {

@@ -6,8 +6,7 @@ import { PublicHomeMainComponent } from './containers';
 export const routes: Routes = [
   {
     path: '',
-    component: PublicHomeMainComponent,
-    pathMatch: 'full'
+    component: PublicHomeMainComponent
   }
 ];
 

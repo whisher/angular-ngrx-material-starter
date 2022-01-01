@@ -16,12 +16,14 @@ import { SettingsFacade } from '@stores/settings';
   template: `
     <ng-container *ngIf="language$ | ngrxPush as language">
       <mat-select
-        class="text-lg"
+        class="text-lg text-current md:text-white"
         [ngModel]="language"
         (selectionChange)="onUseLanguage($event)"
       >
         <mat-option *ngFor="let lang of languages" [value]="lang">
-          <span class="text-lg">{{ lang.toUpperCase() }}</span>
+          <span class="text-lg">
+            {{ lang.toUpperCase() }}
+          </span>
         </mat-option>
       </mat-select>
     </ng-container>
