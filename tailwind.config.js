@@ -4,12 +4,9 @@ module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
-      /*colors: {
-        accent: '#39a9fa',
-        icon: '#44403c',
-        primary: '#fa8839',
-        secondary: '#f9e616'
-      },*/
+      colors: {
+        icon: '#44403c'
+      },
       fontFamily: {
         sans: ['Work Sans', ...defaultTheme.fontFamily.sans]
       },
