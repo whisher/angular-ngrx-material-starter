@@ -21,8 +21,8 @@
       </span>
     </a>
   </h1>
-  <span class="flex-1"></span>
-  <div class="pr-8">
+
+  <div class="ml-auto pr-8">
     <div class="hidden md:block">
       <public-layout-nav></public-layout-nav>
     </div>
@@ -31,22 +31,10 @@
     [isAuthenticated]="isAuthenticated"
   ></public-layout-header-account>
 
-  <div class="w-14 ml-8" *ngIf="theme$ | ngrxPush as theme">
-    <iwdf-theme-picker
-      [theme]="theme"
-      [themes]="themes"
-      (themeChange)="onChangeTheme($event)"
-    ></iwdf-theme-picker>
+  <div class="w-14 ml-8 hidden md:block">
+    <public-layout-theme-picker></public-layout-theme-picker>
   </div>
-  <div class="w-14 ml-8" *ngIf="language$ | ngrxPush as language">
-    <mat-select
-      class="text-lg text-white"
-      [ngModel]="language"
-      (selectionChange)="onUseLanguage($event)"
-    >
-      <mat-option *ngFor="let lang of languages" [value]="lang">
-        <span class="text-lg text-white">{{ lang.toUpperCase() }}</span>
-      </mat-option>
-    </mat-select>
+  <div class="w-14 ml-8 hidden md:block">
+    <public-layout-lang-picker></public-layout-lang-picker>
   </div>
 </mat-toolbar>

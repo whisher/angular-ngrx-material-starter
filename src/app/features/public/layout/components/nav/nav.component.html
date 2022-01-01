@@ -1,6 +1,6 @@
-<div class="block md:hidden">
+<div class="flex flex-col h-full md:hidden">
   <h1>
-    <a routerLink="/" class="flex items-center">
+    <a routerLink="/" class="h-16 flex items-center">
       <img
         class="h-12 w-12 rounded-2xl shadow shadow-white/50"
         src="assets/logo.png"
@@ -10,9 +10,9 @@
     </a>
   </h1>
   <mat-divider></mat-divider>
-  <ng-content></ng-content>
   <mat-nav-list>
     <a
+      class="!text-3xl !text-bold"
       mat-list-item
       *ngFor="let item of navigation"
       (click)="sidenav?.close()"
@@ -22,9 +22,18 @@
       {{ item.label }}
     </a>
   </mat-nav-list>
+
+  <footer class="flex justify-center items-center gap-3 h-14 mt-auto">
+    <div class="w-14">
+      <public-layout-theme-picker></public-layout-theme-picker>
+    </div>
+    <div class="w-14">
+      <public-layout-lang-picker></public-layout-lang-picker>
+    </div>
+  </footer>
 </div>
 <div class="hidden md:block">
-  <mat-nav-list class="menu text-2xl">
+  <mat-nav-list class="!flex text-2xl">
     <a
       mat-list-item
       *ngFor="let item of navigation"
