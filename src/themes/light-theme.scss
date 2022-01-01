@@ -1,6 +1,10 @@
+@import "./custom-palette";
+@import "./iwdf-app-theme";
+
 $iwdf-primary-palette: mat.define-palette($iwdf-primary, 300, 500, 300);
 $iwdf-accent-palette: mat.define-palette($iwdf-accent, 300);
 $iwdf-warn-palette: mat.define-palette($iwdf-warn, 300);
+
 $iwdf-theme: mat.define-light-theme(
   (
     color: (
@@ -10,3 +14,24 @@ $iwdf-theme: mat.define-light-theme(
     )
   )
 );
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+//@include mat.all-component-themes($iwdf-theme);
+
+@include mat.core-theme($iwdf-theme);
+@include mat.button-theme($iwdf-theme);
+@include mat.card-theme($iwdf-theme);
+@include mat.checkbox-theme($iwdf-theme);
+@include mat.divider-theme($iwdf-theme);
+@include mat.form-field-theme($iwdf-theme);
+@include mat.input-theme($iwdf-theme);
+@include mat.list-theme($iwdf-theme);
+@include mat.menu-theme($iwdf-theme);
+@include mat.progress-spinner-theme($iwdf-theme);
+@include mat.select-theme($iwdf-theme);
+@include mat.sidenav-theme($iwdf-theme);
+@include mat.slide-toggle-theme($iwdf-theme);
+@include mat.toolbar-theme($iwdf-theme);
+@include iwdf-app-theme($iwdf-theme);

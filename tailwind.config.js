@@ -5,10 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: '#39a9fa',
-        icon: '#44403c',
-        primary: '#fa8839',
-        secondary: '#f9e616'
+        icon: '#44403c'
       },
       fontFamily: {
         sans: ['Work Sans', ...defaultTheme.fontFamily.sans]
@@ -16,15 +13,12 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            /*color: 'green',
-            a: {
-              color: 'red',
+            /*color: 'green'
+             a: {
+              color: 'var(--iwdf-link-color)',
               '&:hover': {
-                color: 'green'
+                color: 'var(--iwdf-link-hover-color)'
               }
-            },
-            h1: {
-              color: 'var(--main-bg-color)'
             }*/
           }
         }

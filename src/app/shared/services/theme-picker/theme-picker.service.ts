@@ -40,7 +40,6 @@ export class ThemePickerService {
     }
 
     this.current = theme;
-    console.log('next', this.current);
   }
 
   private addStyle(key: string) {

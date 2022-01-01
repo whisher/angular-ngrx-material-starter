@@ -1,5 +1,4 @@
 @use "@angular/material" as mat;
-@import "./custom-palette";
 
 $iwdf-custom-typography: mat.define-typography-config(
   $font-family: "'Work Sans', sans-serif"
@@ -8,15 +7,7 @@ $iwdf-custom-typography: mat.define-typography-config(
 
 @import "./light-theme";
 
-@mixin iwdf-app-light-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $linkColor: mat.get-color-from-palette($primary, lighter);
-  $linkColorHover: mat.get-color-from-palette($primary, darker);
-  :root {
-    --iwdf-link-color: #{$linkColor};
-  }
+@mixin iwdf-app($theme) {
   .dark-theme {
     h1,
     h2,
@@ -28,20 +19,7 @@ $iwdf-custom-typography: mat.define-typography-config(
       color: #fff;
     }
   }
-  .prose {
-    a {
-      color: $linkColor;
 
-      &:hover {
-        color: $linkColorHover;
-      }
-    }
-  }
-  mat-sidenav-container {
-    footer {
-      background-color: mat.get-color-from-palette($primary);
-    }
-  }
   .mat-button,
   .mat-flat-button,
   .mat-raised-button,
@@ -53,31 +31,9 @@ $iwdf-custom-typography: mat.define-typography-config(
   .mat-mini-fab .mat-button-wrapper {
     padding: 0 !important;
   }
-  .mat-select {
-    color: red !important;
-  }
 }
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-//@include mat.all-component-themes($iwdf-theme);
-@include mat.core-theme($iwdf-theme);
-@include mat.button-theme($iwdf-theme);
-@include mat.card-theme($iwdf-theme);
-@include mat.checkbox-theme($iwdf-theme);
-@include mat.divider-theme($iwdf-theme);
-@include mat.form-field-theme($iwdf-theme);
-@include mat.input-theme($iwdf-theme);
-@include mat.list-theme($iwdf-theme);
-@include mat.menu-theme($iwdf-theme);
-@include mat.progress-spinner-theme($iwdf-theme);
-@include mat.select-theme($iwdf-theme);
-@include mat.sidenav-theme($iwdf-theme);
-@include mat.slide-toggle-theme($iwdf-theme);
-@include mat.toolbar-theme($iwdf-theme);
-@include iwdf-app-light-theme($iwdf-theme);
-
+@include iwdf-app-theme($iwdf-theme);
 $focus-indicator: true;
 
 @if $focus-indicator {

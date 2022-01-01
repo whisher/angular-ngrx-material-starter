@@ -1,33 +1,16 @@
 @use "@angular/material" as mat;
+@import "./iwdf-app-theme";
 
 $iwdf-primary: mat.define-palette(mat.$indigo-palette, 800, 300, 900);
 $iwdf-accent: mat.define-palette(mat.$light-blue-palette);
 $iwdf-warn: mat.define-palette(mat.$pink-palette, 600);
 
 $iwdf-theme: mat.define-light-theme($iwdf-primary, $iwdf-accent, $iwdf-warn);
-@mixin iwdf-app-blue-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $linkColor: mat.get-color-from-palette($primary, lighter);
-  $linkColorHover: mat.get-color-from-palette($primary, darker);
 
-  .prose {
-    a {
-      color: $linkColor;
-
-      &:hover {
-        color: $linkColorHover;
-      }
-    }
-  }
-  mat-sidenav-container {
-    footer {
-      background-color: mat.get-color-from-palette($primary);
-    }
-  }
-}
-
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+//@include mat.all-component-color($iwdf-theme);
 .blue-theme {
   @include mat.core-color($iwdf-theme);
   @include mat.button-color($iwdf-theme);
@@ -43,5 +26,5 @@ $iwdf-theme: mat.define-light-theme($iwdf-primary, $iwdf-accent, $iwdf-warn);
   @include mat.sidenav-color($iwdf-theme);
   @include mat.slide-toggle-color($iwdf-theme);
   @include mat.toolbar-color($iwdf-theme);
-  @include iwdf-app-blue-theme($iwdf-theme);
+  @include iwdf-app-theme($iwdf-theme);
 }

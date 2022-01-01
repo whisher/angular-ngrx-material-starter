@@ -32,7 +32,6 @@
   ></public-layout-header-account>
 
   <div class="w-14 ml-8" *ngIf="theme$ | ngrxPush as theme">
-    pp{{ theme }}
     <iwdf-theme-picker
       [theme]="theme"
       [themes]="themes"
@@ -40,14 +39,14 @@
     ></iwdf-theme-picker>
   </div>
   <div class="w-14 ml-8" *ngIf="language$ | ngrxPush as language">
-    <!-- <mat-select
-      class="text-sm"
+    <mat-select
+      class="text-lg text-white"
       [ngModel]="language"
       (selectionChange)="onUseLanguage($event)"
     >
       <mat-option *ngFor="let lang of languages" [value]="lang">
-        <span class="text-sm">{{ lang.toUpperCase() }}</span>
+        <span class="text-lg text-white">{{ lang.toUpperCase() }}</span>
       </mat-option>
-    </mat-select>-->
+    </mat-select>
   </div>
 </mat-toolbar>
