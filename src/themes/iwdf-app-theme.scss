@@ -4,7 +4,8 @@
   $warn: map-get($theme, warn);
   $linkColor: mat.get-color-from-palette($primary, lighter);
   $linkColorHover: mat.get-color-from-palette($primary, darker);
-  $accentColor: mat.get-color-from-palette($accent);
+  $accentColor: mat.get-color-from-palette($accent, darker);
+  $primaryColor: mat.get-color-from-palette($primary, darker);
   .prose {
     a {
       color: $linkColor;
@@ -16,7 +17,11 @@
   .nav-menu {
     .active {
       color: #{$accentColor} !important;
+      background-color: #fff;
     }
+  }
+  .text-icon {
+    color: darken($accentColor, 5%);
   }
   .stroke-primary {
     stroke: $linkColor;

@@ -4,9 +4,7 @@ module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
-      colors: {
-        icon: '#44403c'
-      },
+      colors: {},
       fontFamily: {
         sans: ['Work Sans', ...defaultTheme.fontFamily.sans]
       },
