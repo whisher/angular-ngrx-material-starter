@@ -1,3 +1,32 @@
 {
-  "iwdf.home.welcome": "Welcome!"
+  "iwdf": {
+    "auth": {
+      "header": {
+        "login": "Login",
+        "signin": "Sign in"
+      },
+      "form": {
+        "button": {
+          "login": "Login",
+          "signin": "Sign in"
+        },
+        "error": {
+          "acceptPrivacyPolicy": "You should authorize",
+          "confirm": "The confirm password doesn't match",
+          "email": "Email not valid",
+          "required": "{{field}} is required"
+        },
+        "label": {
+          "acceptPrivacyPolicy": "I authorize the use of my personal data.",
+          "confirm": "Confirm Password",
+          "email": "Email",
+          "password": "Password",
+          "username": "Username"
+        }
+      }
+    },
+    "home": {
+      "header": "Welcome!"
+    }
+  }
 }

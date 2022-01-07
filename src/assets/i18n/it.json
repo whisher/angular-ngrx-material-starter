@@ -1,3 +1,10 @@
 {
-  "iwdf.home.welcome": "Benvenuto!"
+  "iwdf": {
+    "auth": {
+      "header": "Login"
+    },
+    "home": {
+      "header": "Benvenuto!"
+    }
+  }
 }

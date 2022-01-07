@@ -1,10 +1,26 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="frm" autocomplete="off">
+<form
+  class="flex flex-col"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="frm"
+  autocomplete="off"
+>
   <ng-container *ngIf="status?.error">
     <iwdf-alert color="warn" [msg]="status?.error?.message"></iwdf-alert>
   </ng-container>
 
   <mat-form-field class="w-full" appearance="outline">
-    <mat-label>Email</mat-label>
+    <mat-label>{{ 'iwdf.auth.form.label.username' | translate }}</mat-label>
+    <input type="text" matInput formControlName="username" placeholder="" />
+    <mat-error *ngIf="frm.get('username')!.hasError('required')">
+      <span
+        [translate]="'iwdf.auth.form.error.required'"
+        [translateParams]="{ field: 'Username' }"
+      ></span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-full" appearance="outline">
+    <mat-label>{{ 'iwdf.auth.form.label.email' | translate }}</mat-label>
     <input
       type="email"
       matInput
@@ -13,76 +29,85 @@
       placeholder=""
     />
     <mat-error *ngIf="frm.get('email')!.hasError('required')">
-      <span>Email is required</span>
+      <span
+        [translate]="'iwdf.auth.form.error.required'"
+        [translateParams]="{ field: 'Email' }"
+      ></span>
     </mat-error>
     <mat-error *ngIf="frm.get('email')!.hasError('email')">
-      <span>Email is not valid</span>
+      <span translate>iwdf.auth.form.error.email</span>
     </mat-error>
   </mat-form-field>
+  <div class="flex flex-col md:flex-row gap-3">
+    <mat-form-field class="w-full md:w-1/2" appearance="outline">
+      <mat-label>{{ 'iwdf.auth.form.label.password' | translate }}</mat-label>
+      <div class="flex gap-1">
+        <input
+          class="flex-1"
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          autocomplete="current-password"
+          placeholder=""
+        />
+        <fa-icon
+          class="text-icon inline"
+          size="sm"
+          [icon]="['fas', hide ? 'eye-slash' : 'eye']"
+          (click)="hide = !hide"
+        ></fa-icon>
+      </div>
+      <mat-error *ngIf="frm.get('password')!.hasError('required')">
+        <span
+          [translate]="'iwdf.auth.form.error.required'"
+          [translateParams]="{ field: 'Password' }"
+        ></span>
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="w-full" appearance="outline">
-    <mat-label>Password</mat-label>
-    <div class="flex gap-1">
-      <input
-        class="flex-1"
-        matInput
-        [type]="hide ? 'password' : 'text'"
-        formControlName="password"
-        autocomplete="current-password"
-        placeholder=""
-      />
-      <fa-icon
-        class="text-icon inline"
-        size="sm"
-        [icon]="['fas', hide ? 'eye-slash' : 'eye']"
-        (click)="hide = !hide"
-      ></fa-icon>
-    </div>
-    <mat-error *ngIf="frm.get('password')!.hasError('required')">
-      <span>Password is required</span>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="w-full" appearance="outline">
-    <mat-label>Confirm Password</mat-label>
-    <div class="flex gap-1">
-      <input
-        class="flex-1"
-        matInput
-        [type]="hide ? 'password' : 'text'"
-        formControlName="passwordConfirm"
-        autocomplete="current-password"
-        placeholder=""
-      />
-      <fa-icon
-        class="text-icon inline"
-        size="sm"
-        [icon]="['fas', hide ? 'eye-slash' : 'eye']"
-        (click)="hide = !hide"
-      ></fa-icon>
-    </div>
-    <mat-error *ngIf="frm.get('passwordConfirm')!.hasError('required')">
-      <span>Password is required</span>
-    </mat-error>
-    <mat-error
-      *ngIf="frm.get('passwordConfirm')!.hasError('invalidRePassword')"
-    >
-      <span>The confirm password doesn't match</span>
-    </mat-error>
-  </mat-form-field>
-
+    <mat-form-field class="w-full md:w-1/2" appearance="outline">
+      <mat-label>{{ 'iwdf.auth.form.label.confirm' | translate }}</mat-label>
+      <div class="flex gap-1">
+        <input
+          class="flex-1"
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="passwordConfirm"
+          autocomplete="current-password"
+          placeholder=""
+        />
+        <fa-icon
+          class="text-icon inline"
+          size="sm"
+          [icon]="['fas', hide ? 'eye-slash' : 'eye']"
+          (click)="hide = !hide"
+        ></fa-icon>
+      </div>
+      <mat-error *ngIf="frm.get('passwordConfirm')!.hasError('required')">
+        <span
+          [translate]="'iwdf.auth.form.error.required'"
+          [translateParams]="{ field: 'Password' }"
+        ></span>
+      </mat-error>
+      <mat-error
+        *ngIf="frm.get('passwordConfirm')!.hasError('invalidRePassword')"
+      >
+        <span translate>iwdf.auth.form.error.confirm</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
   <div>
     <mat-checkbox formControlName="acceptPrivacyPolicy">
-      <span>I authorize the use of my personal data.</span>
+      <span translate>iwdf.auth.form.label.acceptPrivacyPolicy</span>
     </mat-checkbox>
     <mat-error *ngIf="frm.get('acceptPrivacyPolicy')!.hasError('required')">
-      <span>You should authorize</span>
+      <span translate>iwdf.auth.form.error.acceptPrivacyPolicy</span>
     </mat-error>
   </div>
 
   <div class="mt-3">
     <iwdf-button-spinner [loading]="!!status?.loading">
-      <span>Signin</span>
+      <span translate>iwdf.auth.form.button.signin</span>
     </iwdf-button-spinner>
   </div>
 </form>

@@ -14,7 +14,7 @@ export const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'dashboard',
+        redirectTo: 'dashboard'
       },
 
       {
@@ -22,14 +22,14 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./dashboard/dashboard.module').then(
             (m) => m.AdminDashboardModule
-          ),
-      },
-    ],
-  },
+          )
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule {}

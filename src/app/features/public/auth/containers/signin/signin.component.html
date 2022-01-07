@@ -1,7 +1,7 @@
 <div class="flex justify-center">
   <div class="w-full md:w-2/5">
     <mat-card>
-      <h2>Sign In</h2>
+      <h2 translate>iwdf.auth.header.signin</h2>
       <public-auth-signin-form
         [status]="status$ | ngrxPush"
         (submitted)="onSubmit($event)"
