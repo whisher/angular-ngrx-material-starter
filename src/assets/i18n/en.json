@@ -1,5 +1,12 @@
 {
   "iwdf": {
+    "header": {
+      "menu": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact"
+      }
+    },
     "auth": {
       "header": {
         "login": "Login",
