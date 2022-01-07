@@ -40,7 +40,7 @@ export class PublicAuthSigninFormComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
         passwordConfirm: ['', Validators.required],
-        acceptPrivacyPolicy: [false, Validators.required]
+        acceptPrivacyPolicy: [false, Validators.requiredTrue]
       },
       { validators: passwordMatchValidator('password', 'passwordConfirm') }
     );

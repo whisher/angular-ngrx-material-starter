@@ -100,7 +100,12 @@
     <mat-checkbox formControlName="acceptPrivacyPolicy">
       <span translate>iwdf.auth.form.label.acceptPrivacyPolicy</span>
     </mat-checkbox>
-    <mat-error *ngIf="frm.get('acceptPrivacyPolicy')!.hasError('required')">
+    <!--
+      Workaround
+      The Material Design spec does not prescribe an error display for toggle controls, so we leave that to the user to implement at the application level.
+      https://github.com/angular/components/issues/10995#issuecomment-384244608
+    -->
+    <mat-error *ngIf="frm!.touched && frm.get('acceptPrivacyPolicy')!.invalid">
       <span translate>iwdf.auth.form.error.acceptPrivacyPolicy</span>
     </mat-error>
   </div>
