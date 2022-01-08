@@ -18,8 +18,8 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 // Store
-import { AuthFacade } from '@stores/auth';
-import { authReducer } from '@stores/auth/store/auth.reducer';
+import { AccountFacade } from '@stores/account';
+import { accountReducer } from '@stores/account/store/account.reducer';
 
 // Components
 import { PublicLayoutMainComponent } from './main.component';
@@ -59,7 +59,7 @@ describe('PublicLayoutMainComponent', () => {
           RouterTestingModule,
           NoopAnimationsModule,
           StoreModule.forRoot({
-            auth: authReducer
+            account: accountReducer
           }),
           ReactiveComponentModule,
           MatSidenavModule
@@ -70,7 +70,7 @@ describe('PublicLayoutMainComponent', () => {
           MockPublicLayoutNavComponent,
           PublicLayoutMainComponent
         ],
-        providers: [Store, AuthFacade]
+        providers: [Store, AccountFacade]
       }).compileComponents();
     })
   );

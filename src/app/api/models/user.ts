@@ -6,4 +6,5 @@ export interface UserAccountResponseDto {
   id: string;
   email: string;
   role: UserRoleDto;
+  username: string;
 }

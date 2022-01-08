@@ -1,6 +1,4 @@
-<ng-container
-  *ngTemplateOutlet="isAuthenticated ? logout : login"
-></ng-container>
+<ng-container *ngTemplateOutlet="account ? logout : login"></ng-container>
 
 <ng-template #login>
   <ul class="flex gap-3">
@@ -47,6 +45,7 @@
       [icon]="['fas', 'user-circle']"
     ></fa-icon>
   </button>
+
   <mat-menu #navUserMenu="matMenu">
     <buttom
       routerLink="/logout"
@@ -63,4 +62,5 @@
       </div>
     </buttom>
   </mat-menu>
+  <span class="pl-1 text-sm text-white">@{{ account?.username }}</span>
 </ng-template>

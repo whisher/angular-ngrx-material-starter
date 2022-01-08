@@ -12,6 +12,7 @@ export function resetStateReducer(
     if (action !== null && action.type === AuthActions.logout.type) {
       state = undefined;
     }
+
     return reducer(state, action);
   };
 }

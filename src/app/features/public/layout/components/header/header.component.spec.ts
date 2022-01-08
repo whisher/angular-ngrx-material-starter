@@ -16,6 +16,9 @@ import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 // UI
 import { IwdfThemePickerModule } from '@shared/ui/theme-picker';
 
+// Models
+import { UserAccountResponseDto } from '@api/models';
+
 // Components
 import { PublicLayoutHeaderComponent } from './header.component';
 
@@ -25,7 +28,7 @@ import { PublicLayoutHeaderComponent } from './header.component';
   template: ''
 })
 export class MockPublicLayoutHeaderAccountComponent {
-  @Input() isAuthenticated: boolean | undefined = undefined;
+  @Input() account: UserAccountResponseDto | undefined = undefined;
 }
 
 @Component({
