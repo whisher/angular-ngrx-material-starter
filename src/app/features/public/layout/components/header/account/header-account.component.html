@@ -9,7 +9,7 @@
         routerLink="/auth/login"
         mat-mini-fab
         color="accent"
-        aria-label="go to login"
+        [attr.aria-label]="'iwdf.header.go_to_login' | translate"
       >
         <fa-icon
           class="text-icon"
@@ -23,7 +23,7 @@
         routerLink="/auth/signin"
         mat-mini-fab
         color="accent"
-        aria-label="go to signin"
+        [attr.aria-label]="'iwdf.header.go_to_signin' | translate"
       >
         <fa-icon
           class="text-icon"
@@ -38,8 +38,8 @@
   <button
     mat-mini-fab
     color="accent"
-    aria-label="open menu"
     [matMenuTriggerFor]="navUserMenu"
+    [attr.aria-label]="'iwdf.header.open_menu' | translate"
   >
     <fa-icon
       class="text-icon"
@@ -48,13 +48,16 @@
     ></fa-icon>
   </button>
   <mat-menu #navUserMenu="matMenu">
-    <buttom routerLink="/logout" mat-menu-item>
+    <buttom
+      routerLink="/logout"
+      mat-menu-item
+      [attr.aria-label]="'iwdf.header.logout' | translate"
+    >
       <div class="flex">
         <fa-icon
           size="lg"
           class="text-icon"
           [icon]="['fas', 'power-off']"
-          aria-label="logout"
         ></fa-icon>
         <span class="flex-1 text-center">Log out</span>
       </div>

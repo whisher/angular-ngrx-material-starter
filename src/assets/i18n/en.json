@@ -2,10 +2,14 @@
   "iwdf": {
     "header": {
       "menu": {
-        "home": "Home",
         "about": "About",
-        "contact": "Contact"
-      }
+        "contact": "Contact",
+        "home": "Home"
+      },
+      "go_to_login": "Go to login",
+      "go_to_signin": "Go to sign in",
+      "logout": "Logout",
+      "open_menu": "Open menu"
     },
     "auth": {
       "header": {

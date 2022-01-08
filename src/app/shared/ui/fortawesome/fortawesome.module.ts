@@ -19,6 +19,7 @@ import {
   faUserCircle,
   faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
   imports: [FontAwesomeModule],
@@ -37,7 +38,9 @@ export class IwdfFortawesomeModule {
       faPalette,
       faPowerOff,
       faUserCircle,
-      faUserPlus
+      faUserPlus,
+      faGithub,
+      faTwitter
     );
   }
 }

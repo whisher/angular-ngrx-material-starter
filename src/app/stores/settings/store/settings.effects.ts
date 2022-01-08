@@ -16,7 +16,7 @@ import { LocalStorageService } from '@shared/services/local-storage';
 import { ThemePickerService } from '@shared/services/theme-picker/theme-picker.service';
 
 // Store
-import { selectSettings, selectTheme } from './settings.selectors';
+import { selectSettings } from './settings.selectors';
 import { SettingsState } from './settings.state';
 import * as SettingsActions from './settings.actions';
 
@@ -25,7 +25,7 @@ export const SETTINGS_KEY = 'SETTINGS';
 @Injectable()
 export class SettingsEffects implements OnInitEffects {
   ngrxOnInitEffects() {
-    return { type: 'INIT' };
+    return { type: 'INIT_SETTINGS' };
   }
   changeLanguage$ = createEffect(() =>
     this.actions$.pipe(
@@ -42,7 +42,6 @@ export class SettingsEffects implements OnInitEffects {
       ofType(SettingsActions.changeTheme),
       withLatestFrom(this.store.pipe(select(selectSettings))),
       map(([action, theme]) => {
-        console.log('inside', theme);
         this.themePickerService.setStyle(action.theme);
         return SettingsActions.updateSettingsStorage();
       })
@@ -52,10 +51,11 @@ export class SettingsEffects implements OnInitEffects {
   initSettings$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType('INIT'),
-        withLatestFrom(this.store.pipe(select(selectTheme))),
-        tap(([action, theme]) => {
-          this.themePickerService.init(theme);
+        ofType('INIT_SETTINGS'),
+        withLatestFrom(this.store.pipe(select(selectSettings))),
+        tap(([action, settings]) => {
+          this.translateService.use(settings.language);
+          this.themePickerService.init(settings.theme);
         })
       ),
     { dispatch: false }
