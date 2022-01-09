@@ -11,6 +11,16 @@
       "logout": "Logout",
       "open_menu": "Open menu"
     },
+    "meta": {
+      "title": {
+        "about": "About us",
+        "contact": "Contact us",
+        "home": "Home",
+        "login": "Login",
+        "signin": "Sign in",
+        "user": "User"
+      }
+    },
     "auth": {
       "header": {
         "login": "Login",

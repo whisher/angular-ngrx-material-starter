@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 // Services
 import { LocalStorageService } from '@shared/services/local-storage';
-import { ThemePickerService } from '@shared/services/theme-picker/theme-picker.service';
+import { ThemePickerService } from '@shared/services/theme-picker';
 
 // Store
 import { selectSettings } from './settings.selectors';
@@ -61,7 +61,7 @@ export class SettingsEffects implements OnInitEffects {
     { dispatch: false }
   );
 
-  persistSettings$ = createEffect(
+  updateSettingsStorage$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(SettingsActions.updateSettingsStorage),
