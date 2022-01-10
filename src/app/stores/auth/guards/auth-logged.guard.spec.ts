@@ -9,15 +9,16 @@ import { MemoizedSelector } from '@ngrx/store';
 
 // Store
 import { AuthFacade } from '../store/auth.facade';
-import { initialState, State } from '../store/auth.reducer';
+import { initialState } from '../store/auth.reducer';
 import { selectIsAuthenticated } from '../store/auth.selectors';
+import { AuthState } from '../store/auth.state';
 
 // Services
 import { AuthLoggedGuard } from './auth-logged.guard';
 
 describe('AuthLoggedGuard', () => {
   let authLoggedGuard: AuthLoggedGuard;
-  let isAuthenticated: MemoizedSelector<State, boolean>;
+  let isAuthenticated: MemoizedSelector<AuthState, boolean>;
   let router: Router;
   let store: MockStore;
 

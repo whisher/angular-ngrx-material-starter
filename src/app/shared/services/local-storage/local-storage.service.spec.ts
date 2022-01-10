@@ -32,11 +32,9 @@ describe('LocalStorageService', () => {
   });
 
   it('should load initial state', () => {
-    service.setItem<string>('TEST', 'item');
-    expect(LocalStorageService.loadInitialState<string>('TEST')).toBe('item');
-    service.removeItem('TEST');
-    expect(LocalStorageService.loadInitialState<string>('TEST')).toEqual(
-      undefined
-    );
+    service.setItem('IWDF-TEST', { test: 'test' });
+    expect(LocalStorageService.loadInitialState()).toEqual({
+      test: { test: 'test' }
+    });
   });
 });

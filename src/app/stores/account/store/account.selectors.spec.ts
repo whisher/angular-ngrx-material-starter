@@ -2,8 +2,9 @@
 import { ErrorDto, UserAccountResponseDto, UserRoleDto } from '@api/models';
 
 // Store
+import { initialState } from './account.reducer';
 import * as fromAccountSelectors from './account.selectors';
-import { initialState, State } from './account.reducer';
+import { AccountState } from './account.state';
 
 // Mocks
 export const loadFailurePayload: ErrorDto = {
@@ -12,24 +13,26 @@ export const loadFailurePayload: ErrorDto = {
 export const loadResponseAdminPayload: UserAccountResponseDto = {
   id: 'abc',
   email: 'admin@admin.admin',
-  role: UserRoleDto.admin
+  role: UserRoleDto.admin,
+  username: 'admin'
 };
 export const loadResponseUserPayload: UserAccountResponseDto = {
   id: 'abc',
   email: 'test@test.test',
-  role: UserRoleDto.user
+  role: UserRoleDto.user,
+  username: 'test'
 };
-export const loadFailureState: State = {
+export const loadFailureState: AccountState = {
   error: loadFailurePayload,
   loaded: false,
   data: undefined
 };
-export const loadSuccessAdminState: State = {
+export const loadSuccessAdminState: AccountState = {
   error: null,
   loaded: true,
   data: loadResponseAdminPayload
 };
-export const loadSuccessUserState: State = {
+export const loadSuccessUserState: AccountState = {
   error: null,
   loaded: true,
   data: loadResponseUserPayload

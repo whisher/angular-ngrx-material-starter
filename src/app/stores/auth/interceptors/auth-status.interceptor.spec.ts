@@ -10,10 +10,9 @@ import {
 } from '@angular/common/http/testing';
 
 // Ngrx
-import { StoreModule, Store, combineReducers } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 
 // Store
-import { routerReducers } from '../../router/router.reducer';
 import { authReducer } from '../store/auth.reducer';
 import { AuthFacade } from '../store/auth.facade';
 
@@ -36,8 +35,7 @@ describe('AuthStatusInterceptor', () => {
       imports: [
         HttpClientTestingModule,
         StoreModule.forRoot({
-          ...routerReducers,
-          auth: combineReducers(authReducer)
+          auth: authReducer
         })
       ],
       providers: [

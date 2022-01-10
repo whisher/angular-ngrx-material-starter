@@ -1,7 +1,50 @@
 {
   "iwdf": {
+    "header": {
+      "menu": {
+        "about": "About",
+        "contact": "Contact",
+        "home": "Home"
+      },
+      "go_to_login": "Go to login",
+      "go_to_signin": "Go to sign in",
+      "logout": "Logout",
+      "open_menu": "Open menu"
+    },
+    "meta": {
+      "title": {
+        "about": "About us",
+        "contact": "Contact us",
+        "home": "Home",
+        "login": "Login",
+        "signin": "Sign in",
+        "user": "User"
+      }
+    },
     "auth": {
-      "header": "Login"
+      "header": {
+        "login": "Login",
+        "signin": "Sign in"
+      },
+      "form": {
+        "button": {
+          "login": "Login",
+          "signin": "Sign in"
+        },
+        "error": {
+          "acceptPrivacyPolicy": "You should authorize",
+          "confirm": "The confirm password doesn't match",
+          "email": "Email not valid",
+          "required": "{{field}} is required"
+        },
+        "label": {
+          "acceptPrivacyPolicy": "I authorize the use of my personal data.",
+          "confirm": "Confirm Password",
+          "email": "Email",
+          "password": "Password",
+          "username": "Username"
+        }
+      }
     },
     "home": {
       "header": "Benvenuto!"

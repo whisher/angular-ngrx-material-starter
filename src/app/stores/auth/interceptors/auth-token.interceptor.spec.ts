@@ -14,14 +14,11 @@ import { StoreModule, Store } from '@ngrx/store';
 
 // Store
 import * as AuthActions from '../store/auth.actions';
-import { routerReducers } from '../../router/router.reducer';
 import { authReducer } from '../store/auth.reducer';
 import { AuthFacade } from '../store/auth.facade';
 
 // Interceptor
 import { AuthTokenInterceptor } from './auth-token.interceptor';
-
-import { State } from '../store/auth.reducer';
 
 // Mocks
 interface Data {
@@ -38,7 +35,6 @@ describe('AuthTokenInterceptor', () => {
       imports: [
         HttpClientTestingModule,
         StoreModule.forRoot({
-          ...routerReducers,
           auth: authReducer
         })
       ],

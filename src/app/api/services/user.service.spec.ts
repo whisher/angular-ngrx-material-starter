@@ -12,7 +12,8 @@ import { UserService } from './user.service';
 const usersAccountResponseData: UserAccountResponseDto = {
   id: 'abcde',
   email: 'test@test.test',
-  role: UserRoleDto.user
+  role: UserRoleDto.user,
+  username: 'test'
 };
 
 describe('UserService', () => {
