@@ -14,7 +14,7 @@ import { ErrorDto, UserAccountResponseDto, UserRoleDto } from '@api/models';
 import { AccountEffects } from './account.effects';
 import { initialState } from './account.reducer';
 import * as AccountActions from './account.actions';
-//import * as RouterActions from '../../router/router.actions';
+import * as RouterActions from '../../router/router.actions';
 
 // Services
 import { UserService } from '@api/services/user.service';
@@ -71,37 +71,83 @@ describe('AccountEffects', () => {
       testScheduler.run(({ cold, expectObservable, hot }: RunHelpers) => {
         actions = hot('-a', { a: action });
         const response = cold('-b|', { b: accountSuccessPayload });
-        userService.load.and.returnValue(response);
+        userService.account.and.returnValue(response);
 
         expectObservable(effects.load$).toBe('--b', { b: outcome });
       });
     });
-    /*
-    it('should handle login action and return a loginFailure action', () => {
-      const action = AuthActions.login({ credentials: loginRequestPayload });
-      const outcome = AuthActions.loginFailure({ error: loginFailurePayload });
+
+    it('should handle load action and return a loadFailure action', () => {
+      const action = AccountActions.load();
+      const outcome = AccountActions.loadFailure({
+        error: accountFailurePayload
+      });
 
       testScheduler.run(({ cold, expectObservable, hot }: RunHelpers) => {
         actions = hot('-a', { a: action });
-        const response = cold('-#|', {}, loginFailurePayload);
-        authService.login.and.returnValue(response);
-        expectObservable(effects.login$).toBe('--b', { b: outcome });
+        const response = cold('-#|', {}, accountFailurePayload);
+        userService.account.and.returnValue(response);
+        expectObservable(effects.load$).toBe('--b', { b: outcome });
       });
-    });*/
+    });
   });
 
-  /*describe('logout$', () => {
-    it("should handle logout action and return a routerGo action with {path: ['/auth/login'],extras: { replaceUrl: true }}", () => {
-      const action = AuthActions.logout();
-      const outcome = RouterActions.routerGo({
-        path: ['/auth/login'],
-        extras: { replaceUrl: true }
+  describe('loadWithoutRedirect$', () => {
+    it('should handle loadWithoutRedirect action and return a loadWithoutRedirectSuccess action', () => {
+      const action = AccountActions.loadWithoutRedirect();
+      const outcome = AccountActions.loadWithoutRedirectSuccess({
+        data: accountSuccessPayload
       });
+
+      testScheduler.run(({ cold, expectObservable, hot }: RunHelpers) => {
+        actions = hot('-a', { a: action });
+        const response = cold('-b|', { b: accountSuccessPayload });
+        userService.account.and.returnValue(response);
+
+        expectObservable(effects.loadWithoutRedirect$).toBe('--b', {
+          b: outcome
+        });
+      });
+    });
+
+    it('should handle loadWithoutRedirect action and return a loadFailure action', () => {
+      const action = AccountActions.loadWithoutRedirect();
+      const outcome = AccountActions.loadFailure({
+        error: accountFailurePayload
+      });
+
+      testScheduler.run(({ cold, expectObservable, hot }: RunHelpers) => {
+        actions = hot('-a', { a: action });
+        const response = cold('-#|', {}, accountFailurePayload);
+        userService.account.and.returnValue(response);
+        expectObservable(effects.loadWithoutRedirect$).toBe('--b', {
+          b: outcome
+        });
+      });
+    });
+  });
+  describe('loadSuccess$', () => {
+    it("should handle loadSuccess action and return a routerGo action with { path: ['/user'] }", () => {
+      const action = AccountActions.loadSuccess({
+        data: accountSuccessPayload
+      });
+      const outcome = RouterActions.routerGo({ path: ['/user'] });
 
       testScheduler.run(({ expectObservable, hot }: RunHelpers) => {
         actions = hot('-a', { a: action });
-        expectObservable(effects.logout$).toBe('-b', { b: outcome });
+        expectObservable(effects.loadSuccess$).toBe('-b', { b: outcome });
       });
     });
-  });*/
+    it("should handle loadSuccess action and return a routerGo action with { path: ['/admin'] }", () => {
+      const action = AccountActions.loadSuccess({
+        data: { ...accountSuccessPayload, ...{ role: 'admin' as UserRoleDto } }
+      });
+      const outcome = RouterActions.routerGo({ path: ['/admin'] });
+
+      testScheduler.run(({ expectObservable, hot }: RunHelpers) => {
+        actions = hot('-a', { a: action });
+        expectObservable(effects.loadSuccess$).toBe('-b', { b: outcome });
+      });
+    });
+  });
 });

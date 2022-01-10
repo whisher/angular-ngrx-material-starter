@@ -5,6 +5,7 @@ import { ErrorDto, UserAccountResponseDto, UserRoleDto } from '@api/models';
 import { initialState } from './account.reducer';
 import * as fromAccountSelectors from './account.selectors';
 import { AccountState } from './account.state';
+import { AuthState } from '../../auth/store/auth.state';
 
 // Mocks
 export const loadFailurePayload: ErrorDto = {
@@ -36,6 +37,11 @@ export const loadSuccessUserState: AccountState = {
   error: null,
   loaded: true,
   data: loadResponseUserPayload
+};
+export const loginSuccessState: AuthState = {
+  error: null,
+  loading: false,
+  data: { token: 'abc', expirationEpochSeconds: Date.now() + 10000 }
 };
 describe('Account Selectors', () => {
   describe('With initialState state', () => {
@@ -81,8 +87,10 @@ describe('Account Selectors', () => {
 
   describe('With loadSuccessState state', () => {
     it('should return loadResponseUserPayload with selectAccount', () => {
-      const result =
-        fromAccountSelectors.selectAccount.projector(loadSuccessUserState);
+      const result = fromAccountSelectors.selectAccount.projector(
+        loginSuccessState,
+        loadResponseUserPayload
+      );
       expect(result).toEqual(loadResponseUserPayload);
     });
     it('should return null with selectError', () => {

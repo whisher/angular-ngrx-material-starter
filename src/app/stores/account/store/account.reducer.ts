@@ -16,18 +16,14 @@ const _accountReducer = createReducer<AccountState>(
   on(AccountActions.load, () => {
     return initialState;
   }),
-  on(
-    AccountActions.loadFailure,
-    AccountActions.loadWithoutRedirectFailure,
-    (state, { error }) => {
-      return {
-        ...state,
-        error,
-        loaded: false,
-        data: undefined
-      };
-    }
-  ),
+  on(AccountActions.loadFailure, (state, { error }) => {
+    return {
+      ...state,
+      error,
+      loaded: false,
+      data: undefined
+    };
+  }),
   on(
     AccountActions.loadSuccess,
     AccountActions.loadWithoutRedirectSuccess,
