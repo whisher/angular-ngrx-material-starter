@@ -14,8 +14,9 @@ import { StoreModule, Store } from '@ngrx/store';
 
 // Store
 import * as AuthActions from '../store/auth.actions';
-import { authReducer } from '../store/auth.reducer';
 import { AuthFacade } from '../store/auth.facade';
+import { authReducer } from '../store/auth.reducer';
+import { AuthState } from '../store/auth.state';
 
 // Interceptor
 import { AuthTokenInterceptor } from './auth-token.interceptor';
@@ -29,7 +30,7 @@ const testUrl = '/data';
 describe('AuthTokenInterceptor', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  let store: Store<State>;
+  let store: Store<AuthState>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
