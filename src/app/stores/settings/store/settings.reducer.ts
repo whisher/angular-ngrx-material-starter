@@ -16,7 +16,8 @@ const _settingsReducer = createReducer(
     SettingsActions.changeLanguage,
     SettingsActions.changeTheme,
     (state, action) => {
-      return { ...state, ...action };
+      const { type, ...rest } = action;
+      return { ...state, ...rest };
     }
   )
 );

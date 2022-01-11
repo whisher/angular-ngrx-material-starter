@@ -26,6 +26,6 @@ getTestBed().initTestEnvironment(
 );
 
 // Then we find all the tests.
-const context = require.context('./app/stores/account', true, /\.spec\.ts$/);
+const context = require.context('./app/stores/settings', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
