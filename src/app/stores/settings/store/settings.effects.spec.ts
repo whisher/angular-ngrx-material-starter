@@ -19,18 +19,15 @@ import { ThemePickerService } from '@shared/services/theme-picker';
 import { SettingsEffects } from './settings.effects';
 import { initialState } from './settings.reducer';
 import * as SettingsActions from './settings.actions';
-/*import { SettingsState } from './settings.state';
-const settings: SettingsState = {
-  language: 'it',
-  theme: 'dark'
-};*/
+import { SettingsState } from './settings.state';
+
 describe('SettingsEffects', () => {
   const localStorageService = jasmine.createSpyObj('LocalStorageService', [
     'setItem'
   ]);
   let effects: SettingsEffects;
   let actions: Observable<any>;
-  let store: MockStore<any>;
+  let store: MockStore<SettingsState>;
   let testScheduler: any;
 
   beforeEach(() => {
@@ -67,7 +64,6 @@ describe('SettingsEffects', () => {
 
       testScheduler.run(({ cold, expectObservable, hot }: RunHelpers) => {
         actions = hot('-a', { a: action });
-
         expectObservable(effects.changeLanguage$).toBe('-b', { b: outcome });
       });
     });
@@ -80,7 +76,6 @@ describe('SettingsEffects', () => {
 
       testScheduler.run(({ cold, expectObservable, hot }: RunHelpers) => {
         actions = hot('-a', { a: action });
-
         expectObservable(effects.changeTheme$).toBe('-b', { b: outcome });
       });
     });
@@ -89,7 +84,6 @@ describe('SettingsEffects', () => {
   describe('updateSettingsStorage$', () => {
     it('should call setItem with updateSettingsStorage action', () => {
       const action = SettingsActions.updateSettingsStorage();
-
       testScheduler.run(({ hot }: RunHelpers) => {
         actions = hot('-a', { a: action });
         effects.updateSettingsStorage$.subscribe((data) => {

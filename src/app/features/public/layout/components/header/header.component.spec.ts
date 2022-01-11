@@ -4,6 +4,7 @@ import { Component, Input } from '@angular/core';
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslatePipeStubsModule } from '@testing';
 
 // Material
 import { MatButtonModule } from '@angular/material/button';
@@ -32,6 +33,12 @@ export class MockPublicLayoutHeaderAccountComponent {
 }
 
 @Component({
+  selector: 'public-layout-lang-picker',
+  template: ''
+})
+export class MockPublicLayoutLangPickerComponent {}
+
+@Component({
   selector: 'public-layout-nav',
   template: ''
 })
@@ -40,10 +47,10 @@ export class MockPublicLayoutNavComponent {
 }
 
 @Component({
-  selector: 'iwdf-theme-switch',
+  selector: 'public-layout-theme-picker',
   template: ''
 })
-export class MockIwdfThemeSwitchComponent {}
+export class MockIwdfThemePickerComponent {}
 
 describe('PublicLayoutHeaderComponent', () => {
   let component: PublicLayoutHeaderComponent;
@@ -54,6 +61,7 @@ describe('PublicLayoutHeaderComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           RouterTestingModule,
+          TranslatePipeStubsModule,
           MatButtonModule,
           MatToolbarModule,
           IwdfFortawesomeModule,
@@ -61,8 +69,9 @@ describe('PublicLayoutHeaderComponent', () => {
         ],
         declarations: [
           MockPublicLayoutHeaderAccountComponent,
+          MockPublicLayoutLangPickerComponent,
           MockPublicLayoutNavComponent,
-          MockIwdfThemeSwitchComponent,
+          MockIwdfThemePickerComponent,
           PublicLayoutHeaderComponent
         ],
         providers: []

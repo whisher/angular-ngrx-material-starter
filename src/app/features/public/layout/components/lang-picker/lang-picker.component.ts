@@ -32,6 +32,7 @@ import { SettingsFacade } from '@stores/settings';
 export class PublicLayoutLangPickerComponent {
   language$ = this.settingsFacade.language$;
   languages = ['en', 'it'] as Language[];
+
   constructor(private settingsFacade: SettingsFacade) {}
   onUseLanguage(event: MatSelectChange) {
     this.settingsFacade.useLanguage(event.value);

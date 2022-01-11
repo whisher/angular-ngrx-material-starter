@@ -1,27 +1,22 @@
 // Core
-import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// Models
-import { Theme } from '@api/models';
+// Ngrx
+import { Store, StoreModule } from '@ngrx/store';
+import { ReactiveComponentModule } from '@ngrx/component';
+
+// Store
+import { SettingsFacade } from '@stores/settings';
+import { settingsReducer } from '@stores/settings/store/settings.reducer';
 
 // UI
 import { IwdfThemePickerModule } from '@shared/ui/theme-picker';
 
 // Components
 import { PublicLayoutThemePickerComponent } from './theme-picker.component';
-
-// Mocks
-@Component({
-  selector: 'iwdf-theme-switch',
-  template: ''
-})
-export class MockIwdfThemePickerComponent {
-  @Input() theme!: Theme;
-  @Input() themes: Theme[] = [];
-}
 
 describe('PublicLayoutThemePickerComponent', () => {
   let component: PublicLayoutThemePickerComponent;
@@ -30,12 +25,16 @@ describe('PublicLayoutThemePickerComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [IwdfThemePickerModule],
-        declarations: [
-          MockIwdfThemePickerComponent,
-          PublicLayoutThemePickerComponent
+        imports: [
+          FormsModule,
+          StoreModule.forRoot({
+            settings: settingsReducer
+          }),
+          ReactiveComponentModule,
+          IwdfThemePickerModule
         ],
-        providers: []
+        declarations: [PublicLayoutThemePickerComponent],
+        providers: [Store, SettingsFacade]
       }).compileComponents();
     })
   );
