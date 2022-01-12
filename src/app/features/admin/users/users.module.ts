@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import { AdminUsersRoutingModule } from './users-routing.module';
 
 // Components
-
+import * as fromComponents from './components';
 import * as fromContainers from './containers';
 
 @NgModule({
   imports: [CommonModule, AdminUsersRoutingModule],
-  declarations: [...fromContainers.containers]
+  declarations: [...fromComponents.components, ...fromContainers.components]
 })
 export class AdminUsersModule {}

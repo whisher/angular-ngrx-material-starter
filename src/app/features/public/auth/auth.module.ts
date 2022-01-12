@@ -26,8 +26,8 @@ import { IwdfAlertModule } from '@shared/ui/alert';
 import { IwdfButtonSpinnerModule } from '@shared/ui/button-spinner';
 
 // Components
-import * as fromContainers from './containers';
 import * as fromComponents from './components';
+import * as fromContainers from './containers';
 
 @NgModule({
   imports: [
@@ -44,7 +44,7 @@ import * as fromComponents from './components';
     IwdfButtonSpinnerModule,
     IwdfFortawesomeModule
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components],
+  declarations: [...fromComponents.components, ...fromContainers.components],
   providers: []
 })
 export class PublicAuthModule {}

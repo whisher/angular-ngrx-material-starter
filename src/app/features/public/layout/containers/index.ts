@@ -1,4 +1,4 @@
 import { PublicLayoutMainComponent } from './main/main.component';
-export const containers: any[] = [PublicLayoutMainComponent];
+export const components: any[] = [PublicLayoutMainComponent];
 
 export * from './main/main.component';

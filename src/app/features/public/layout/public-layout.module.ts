@@ -26,8 +26,8 @@ import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 import { IwdfThemePickerModule } from '@shared/ui/theme-picker';
 
 // Components
-import * as fromContainers from './containers';
 import * as fromComponents from './components';
+import * as fromContainers from './containers';
 
 @NgModule({
   imports: [
@@ -46,6 +46,6 @@ import * as fromComponents from './components';
     IwdfFortawesomeModule,
     IwdfThemePickerModule
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components]
+  declarations: [...fromComponents.components, ...fromContainers.components]
 })
 export class PublicLayoutModule {}

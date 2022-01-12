@@ -2,23 +2,24 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 // Components
-import { AdminUsersMainComponent } from './main.component';
+import { AdminUsersGridComponent } from './grid.component';
 
-describe('AdminUsersMainComponent', () => {
-  let component: AdminUsersMainComponent;
-  let fixture: ComponentFixture<AdminUsersMainComponent>;
+describe('AdminUsersGridComponent', () => {
+  let component: AdminUsersGridComponent;
+  let fixture: ComponentFixture<AdminUsersGridComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [],
-        declarations: [AdminUsersMainComponent]
+        declarations: [AdminUsersGridComponent],
+        providers: []
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminUsersMainComponent);
+    fixture = TestBed.createComponent(AdminUsersGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
