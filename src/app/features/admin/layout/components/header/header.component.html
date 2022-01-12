@@ -1,4 +1,69 @@
 <mat-toolbar>
-  <button mat-icon-button (click)="toggle()">TODO</button>
-  Responsive side navigation
+  <div class="flex items-center">
+    <h1 class="m-0">
+      <a routerLink="/" class="flex items-center gap-3">
+        <img
+          class="h-10 w-10 md:h-12 md:w-12 rounded-2xl shadow shadow-white/50"
+          src="assets/logo.png"
+          alt="logo"
+        />
+        <span class="hidden md:inline-block text-white text-xl">
+          Angular NgRx Material Starter
+        </span>
+      </a>
+    </h1>
+    <button color="primary" mat-icon-button (click)="sidenav.toggle()">
+      <fa-icon
+        class="color-icon"
+        size="2x"
+        [icon]="['fas', 'bars']"
+        aria-hidden="false"
+        aria-label="Show menu"
+      ></fa-icon>
+    </button>
+  </div>
+  <span class="flex-1"></span>
+  <button
+    mat-mini-fab
+    color="accent"
+    aria-label="open menu"
+    [matMenuTriggerFor]="navUserMenu"
+  >
+    <fa-icon
+      class="text-icon"
+      size="lg"
+      [icon]="['fas', 'user-circle']"
+    ></fa-icon>
+  </button>
+  <mat-menu #navUserMenu="matMenu">
+    <buttom routerLink="/logout" mat-menu-item>
+      <div class="flex">
+        <fa-icon
+          size="lg"
+          class="text-icon"
+          [icon]="['fas', 'power-off']"
+          aria-label="logout"
+        ></fa-icon>
+        <span class="flex-1 text-center">Log out</span>
+      </div>
+    </buttom>
+  </mat-menu>
+  <div class="w-14 pl-3" *ngIf="theme$ | ngrxPush as theme">
+    <iwdf-theme-picker
+      [theme]="theme"
+      [themes]="themes"
+      (themeChange)="onChangeTheme($event)"
+    ></iwdf-theme-picker>
+  </div>
+  <div class="w-14 ml-8" *ngIf="language$ | ngrxPush as language">
+    <mat-select
+      class="text-lg"
+      [ngModel]="language"
+      (selectionChange)="onUseLanguage($event)"
+    >
+      <mat-option *ngFor="let lang of languages" [value]="lang">
+        <span class="text-lg">{{ lang.toUpperCase() }}</span>
+      </mat-option>
+    </mat-select>
+  </div>
 </mat-toolbar>

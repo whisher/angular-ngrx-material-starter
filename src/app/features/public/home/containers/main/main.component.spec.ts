@@ -1,5 +1,12 @@
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslatePipeStubsModule } from '@testing';
+
+// Material
+import { MatCardModule } from '@angular/material/card';
+
+// Fortawesome
+import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
 // Components
 import { PublicHomeMainComponent } from './main.component';
@@ -10,7 +17,11 @@ describe('PublicHomeMainComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [],
+        imports: [
+          TranslatePipeStubsModule,
+          MatCardModule,
+          IwdfFortawesomeModule
+        ],
         declarations: [PublicHomeMainComponent],
         providers: []
       }).compileComponents();

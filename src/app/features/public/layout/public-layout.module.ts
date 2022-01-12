@@ -7,6 +7,9 @@ import { RouterModule } from '@angular/router';
 // Ngrx
 import { ReactiveComponentModule } from '@ngrx/component';
 
+// Ngx Translate
+import { TranslateModule } from '@ngx-translate/core';
+
 // Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -32,6 +35,7 @@ import * as fromComponents from './components';
     FormsModule,
     RouterModule,
     ReactiveComponentModule,
+    TranslateModule,
     MatButtonModule,
     MatDividerModule,
     MatListModule,

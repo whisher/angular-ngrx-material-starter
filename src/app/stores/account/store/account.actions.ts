@@ -18,11 +18,6 @@ export const loadWithoutRedirect = createAction(
   '[Account Api] Load without redirect'
 );
 
-export const loadWithoutRedirectFailure = createAction(
-  '[Account Api] Load without redirect Failure',
-  props<{ error: ErrorDto }>()
-);
-
 export const loadWithoutRedirectSuccess = createAction(
   '[Account Api] Load without redirect Success',
   props<{ data: UserAccountResponseDto }>()

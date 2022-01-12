@@ -7,7 +7,23 @@ $iwdf-custom-typography: mat.define-typography-config(
 
 @import "./light-theme";
 
-@mixin iwdf-app($theme) {
+@mixin iwdf-app-component($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $accentColor: mat.get-color-from-palette($accent);
+  $primaryColor: mat.get-color-from-palette($primary);
+  $warnColor: mat.get-color-from-palette($warn);
+  /*
+  With a single theme, you can use
+  css var to set color in tailwind,
+  take a look at tailwind.config.js file.
+  */
+  :root {
+    --iwdf-accent-color: #{$accentColor};
+    --iwdf-primary-color: #{$primaryColor};
+    --iwdf-warn-color: #{$warnColor};
+  }
   .dark-theme {
     h1,
     h2,
@@ -33,7 +49,7 @@ $iwdf-custom-typography: mat.define-typography-config(
   }
 }
 
-@include iwdf-app-theme($iwdf-theme);
+@include iwdf-app-component($iwdf-theme);
 $focus-indicator: true;
 
 @if $focus-indicator {

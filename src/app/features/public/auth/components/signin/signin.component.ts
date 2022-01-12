@@ -36,12 +36,13 @@ export class PublicAuthSigninFormComponent implements OnInit {
   createForm() {
     this.frm = this.fb.group(
       {
+        username: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
         passwordConfirm: ['', Validators.required],
-        acceptPrivacyPolicy: [false, Validators.required]
+        acceptPrivacyPolicy: [false, Validators.requiredTrue]
       },
-      { validators: [passwordMatchValidator('password', 'passwordConfirm')] }
+      { validators: passwordMatchValidator('password', 'passwordConfirm') }
     );
   }
 

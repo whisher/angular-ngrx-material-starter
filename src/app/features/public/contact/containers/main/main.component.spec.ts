@@ -1,5 +1,9 @@
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslatePipeStubsModule } from '@testing';
+
+// Material
+import { MatCardModule } from '@angular/material/card';
 
 // Components
 import { PublicContactMainComponent } from './main.component';
@@ -10,7 +14,7 @@ describe('PublicContactMainComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [],
+        imports: [TranslatePipeStubsModule, MatCardModule],
         declarations: [PublicContactMainComponent],
         providers: []
       }).compileComponents();

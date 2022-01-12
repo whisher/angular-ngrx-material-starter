@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Ngrx
 import { ReactiveComponentModule } from '@ngrx/component';
 
+// Ngx Translate
+import { TranslateModule } from '@ngx-translate/core';
+
 // Material
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -31,6 +34,7 @@ import * as fromComponents from './components';
     CommonModule,
     ReactiveFormsModule,
     ReactiveComponentModule,
+    TranslateModule,
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,

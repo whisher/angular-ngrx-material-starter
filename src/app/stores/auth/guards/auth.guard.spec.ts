@@ -5,15 +5,16 @@ import { MemoizedSelector } from '@ngrx/store';
 
 // Store
 import { AuthFacade } from '../store/auth.facade';
-import { initialState, State } from '../store/auth.reducer';
+import { initialState } from '../store/auth.reducer';
 import { selectIsAuthenticated } from '../store/auth.selectors';
+import { AuthState } from '../store/auth.state';
 
 import { AuthGuard } from './auth.guard';
 
 describe('AuthGuard', () => {
   let authGuard: AuthGuard;
   let store: MockStore;
-  let isAuthenticated: MemoizedSelector<State, boolean>;
+  let isAuthenticated: MemoizedSelector<AuthState, boolean>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],

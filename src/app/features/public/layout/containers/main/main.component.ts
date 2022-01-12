@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // Stores
-import { AuthFacade } from '@stores/auth';
+import { AccountFacade } from '@stores/account';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,6 +10,6 @@ import { AuthFacade } from '@stores/auth';
   templateUrl: './main.component.html'
 })
 export class PublicLayoutMainComponent {
-  isAuthenticated$ = this.authFacade.isAuthenticated$;
-  constructor(private authFacade: AuthFacade) {}
+  account$ = this.accountFacade.data$;
+  constructor(private accountFacade: AccountFacade) {}
 }

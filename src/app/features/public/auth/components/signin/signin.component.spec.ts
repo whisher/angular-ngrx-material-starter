@@ -4,6 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslatePipeStubsModule } from '@testing';
 
 // Material
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -24,10 +25,11 @@ import { IwdfButtonSpinnerModule } from '@shared/ui/button-spinner';
 import { PublicAuthSigninFormComponent } from './signin.component';
 
 const signInRequestData: SignInRequestDto = {
+  acceptPrivacyPolicy: true,
   email: 'test@test.test',
   password: 'abcd',
   passwordConfirm: 'abcd',
-  acceptPrivacyPolicy: true
+  username: 'test'
 };
 
 describe('PublicAuthSigninFormComponent', () => {
@@ -38,6 +40,7 @@ describe('PublicAuthSigninFormComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
+          TranslatePipeStubsModule,
           ReactiveFormsModule,
           NoopAnimationsModule,
           MatCheckboxModule,

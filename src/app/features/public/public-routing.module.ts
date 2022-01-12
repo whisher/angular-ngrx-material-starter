@@ -27,23 +27,27 @@ export const routes: Routes = [
       {
         path: 'contact-us',
         loadChildren: () =>
-          import('./contact/contact.module').then((m) => m.PublicContactModule)
+          import('./contact/contact.module').then((m) => m.PublicContactModule),
+        data: { title: 'iwdf.meta.title.contact' }
       },
       {
         path: 'home',
         loadChildren: () =>
-          import('./home/home.module').then((m) => m.PublicHomeModule)
+          import('./home/home.module').then((m) => m.PublicHomeModule),
+        data: { title: 'iwdf.meta.title.home' }
       },
       {
         path: 'about-us',
         loadChildren: () =>
-          import('./about/about.module').then((m) => m.PublicAboutModule)
+          import('./about/about.module').then((m) => m.PublicAboutModule),
+        data: { title: 'iwdf.meta.title.about' }
       },
       {
         path: 'user',
         canLoad: [AuthGuard, AccountUserGuard],
         loadChildren: () =>
-          import('./user/user.module').then((m) => m.PublicUserModule)
+          import('./user/user.module').then((m) => m.PublicUserModule),
+        data: { title: 'iwdf.meta.title.user' }
       }
     ]
   }

@@ -1,12 +1,11 @@
 <mat-toolbar color="primary">
   <div class="block md:hidden pr-3">
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <fa-icon
-        size="2x"
-        [icon]="['fas', 'bars']"
-        aria-hidden="false"
-        aria-label="Show menu"
-      ></fa-icon>
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      [attr.aria-label]="'iwdf.header.show_menu' | translate"
+    >
+      <fa-icon size="2x" [icon]="['fas', 'bars']" aria-hidden="false"></fa-icon>
     </button>
   </div>
   <h1 class="flex items-center m-0">
@@ -28,7 +27,7 @@
     </div>
   </div>
   <public-layout-header-account
-    [isAuthenticated]="isAuthenticated"
+    [account]="account"
   ></public-layout-header-account>
 
   <div class="w-14 pl-3 hidden md:block">

@@ -8,7 +8,8 @@ import { UserAccountResponseDto, UserRoleDto } from '@api/models';
 
 // Store
 import { AccountFacade } from '../store/account.facade';
-import { initialState, State } from '../store/account.reducer';
+import { AccountState } from '../store/account.state';
+import { initialState } from '../store/account.reducer';
 import { selectAccount, selectLoaded } from '../store/account.selectors';
 
 import { AccountAdminGuard } from './account-admin.guard';
@@ -17,18 +18,23 @@ import { AccountAdminGuard } from './account-admin.guard';
 export const loadResponseAdminPayload: UserAccountResponseDto = {
   id: 'abc',
   email: 'test@test.test',
-  role: UserRoleDto.admin
+  role: UserRoleDto.admin,
+  username: 'test'
 };
 export const loadResponseUserPayload: UserAccountResponseDto = {
   id: 'abc',
   email: 'test@test.test',
-  role: UserRoleDto.user
+  role: UserRoleDto.user,
+  username: 'test'
 };
 describe('AccountAdminGuard', () => {
   let accountAdminGuard: AccountAdminGuard;
   let store: MockStore;
-  let account: MemoizedSelector<State, UserAccountResponseDto | undefined>;
-  let loaded: MemoizedSelector<State, boolean>;
+  let account: MemoizedSelector<
+    AccountState,
+    UserAccountResponseDto | undefined
+  >;
+  let loaded: MemoizedSelector<AccountState, boolean>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [],

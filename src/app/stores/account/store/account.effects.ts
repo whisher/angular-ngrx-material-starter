@@ -38,15 +38,13 @@ export class AccountEffects {
       mergeMap(() =>
         this.service.account().pipe(
           map((data) => AccountActions.loadWithoutRedirectSuccess({ data })),
-          catchError((error) =>
-            of(AccountActions.loadWithoutRedirectFailure({ error }))
-          )
+          catchError((error) => of(AccountActions.loadFailure({ error })))
         )
       )
     )
   );
 
-  accountSuccess$ = createEffect(() =>
+  loadSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountActions.loadSuccess),
       map(({ data }: { data: UserAccountResponseDto }) => {

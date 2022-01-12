@@ -1,11 +1,14 @@
-<admin-layout-header (toggled)="onToggle()"></admin-layout-header>
+<admin-layout-header [sidenav]="sidenav"></admin-layout-header>
 <mat-drawer-container>
-  <mat-drawer #drawer mode="side">
-    <p>Auto-resizing sidenav</p>
+  <mat-drawer #sidenav mode="side">
+    <admin-layout-nav></admin-layout-nav>
   </mat-drawer>
   <mat-drawer-content>
-    <main>
-      <router-outlet></router-outlet>
+    <main class="min-h-[calc(100vh-64px)] flex flex-col bg-orange-300">
+      <div class="flex-1">
+        <router-outlet></router-outlet>
+      </div>
+      <admin-layout-footer></admin-layout-footer>
     </main>
   </mat-drawer-content>
 </mat-drawer-container>

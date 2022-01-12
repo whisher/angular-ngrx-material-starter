@@ -4,6 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslatePipeStubsModule } from '@testing';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,6 +36,7 @@ describe('PublicAuthLoginFormComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
+          TranslatePipeStubsModule,
           ReactiveFormsModule,
           NoopAnimationsModule,
           MatFormFieldModule,

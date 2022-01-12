@@ -10,11 +10,13 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: 'login',
-    component: PublicAuthLoginComponent
+    component: PublicAuthLoginComponent,
+    data: { title: 'iwdf.meta.title.login' }
   },
   {
     path: 'signin',
-    component: PublicAuthSigninComponent
+    component: PublicAuthSigninComponent,
+    data: { title: 'iwdf.meta.title.signin' }
   }
 ];
 

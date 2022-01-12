@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 // Modules
 import { AdminRoutingModule } from './admin-routing.module';
-import { AdminLayoutModule } from './layout/layout.module';
+import { AdminLayoutModule } from './layout/admin-layout.module';
 
 @NgModule({
-  imports: [AdminRoutingModule, AdminLayoutModule],
+  imports: [AdminRoutingModule, AdminLayoutModule]
 })
 export class AdminModule {}

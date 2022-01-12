@@ -2,8 +2,9 @@
 import { ErrorDto, LoginRequestDto, LoginResponseDto } from '@api/models';
 
 // Store
-import { authReducer, initialState, State } from './auth.reducer';
 import * as AuthActions from './auth.actions';
+import { authReducer, initialState } from './auth.reducer';
+import { AuthState } from '../store/auth.state';
 
 // Mocks
 export const loginRequestPayload: LoginRequestDto = {
@@ -17,17 +18,17 @@ export const loginSuccessPayload: LoginResponseDto = {
 export const loginFailurePayload: ErrorDto = {
   message: 'Error'
 };
-export const loginState: State = {
+export const loginState: AuthState = {
   error: null,
   loading: true,
   data: undefined
 };
-export const loginFailureState: State = {
+export const loginFailureState: AuthState = {
   error: loginFailurePayload,
   loading: false,
   data: undefined
 };
-export const loginSuccessState: State = {
+export const loginSuccessState: AuthState = {
   error: null,
   loading: false,
   data: loginSuccessPayload

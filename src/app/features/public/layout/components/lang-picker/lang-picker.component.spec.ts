@@ -1,8 +1,19 @@
+// Core
+import { FormsModule } from '@angular/forms';
+
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Ngrx
+import { Store, StoreModule } from '@ngrx/store';
+import { ReactiveComponentModule } from '@ngrx/component';
+
 // Material
 import { MatSelectModule } from '@angular/material/select';
+
+// Store
+import { SettingsFacade } from '@stores/settings';
+import { settingsReducer } from '@stores/settings/store/settings.reducer';
 
 // Components
 import { PublicLayoutLangPickerComponent } from './lang-picker.component';
@@ -14,9 +25,16 @@ describe('PublicLayoutLangPickerComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [MatSelectModule],
+        imports: [
+          FormsModule,
+          StoreModule.forRoot({
+            settings: settingsReducer
+          }),
+          ReactiveComponentModule,
+          MatSelectModule
+        ],
         declarations: [PublicLayoutLangPickerComponent],
-        providers: []
+        providers: [Store, SettingsFacade]
       }).compileComponents();
     })
   );

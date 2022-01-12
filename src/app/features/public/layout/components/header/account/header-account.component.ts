@@ -1,4 +1,8 @@
+// Core
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+// Models
+import { UserAccountResponseDto } from '@api/models';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -6,5 +10,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   templateUrl: './header-account.component.html'
 })
 export class PublicLayoutHeaderAccountComponent {
-  @Input() isAuthenticated: boolean | undefined = undefined;
+  @Input() account: UserAccountResponseDto | undefined = undefined;
 }

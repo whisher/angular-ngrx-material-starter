@@ -5,19 +5,19 @@ import { Renderer2 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 // Service
-import { IwdfThemePickerService } from './theme-picker.service';
+import { ThemePickerService } from './theme-picker.service';
 
-describe('IwdfThemePickerService', () => {
-  let iwdfThemePickerService: IwdfThemePickerService;
+describe('ThemePickerService', () => {
+  let themePickerService: ThemePickerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [Renderer2, IwdfThemePickerService]
+      providers: [Renderer2, ThemePickerService]
     });
-    iwdfThemePickerService = TestBed.inject(IwdfThemePickerService);
+    themePickerService = TestBed.inject(ThemePickerService);
   });
 
   it('should be created', () => {
-    expect(iwdfThemePickerService).toBeTruthy();
+    expect(themePickerService).toBeTruthy();
   });
 });
