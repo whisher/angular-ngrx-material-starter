@@ -1,10 +1,12 @@
 // Core
-import { Directive, NgModule, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Input, NgModule, Pipe, PipeTransform } from '@angular/core';
 /* eslint-disable  */
 @Directive({
   selector: '[translate]'
 })
-export class TranslateDirectiveStub {}
+export class TranslateDirectiveStub {
+  @Input() translateParams: any;
+}
 
 @Pipe({
   name: 'translate'

@@ -28,10 +28,11 @@ const loginResponseData: LoginResponseDto = {
 };
 
 const signInRequestData: SignInRequestDto = {
+  acceptPrivacyPolicy: true,
   email: 'test@test.test',
   password: 'abcd',
   passwordConfirm: 'abcd',
-  acceptPrivacyPolicy: true
+  username: 'test'
 };
 
 const signInResponseData: SignInResponseDto = {

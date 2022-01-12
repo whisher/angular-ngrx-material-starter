@@ -26,10 +26,6 @@ getTestBed().initTestEnvironment(
 );
 
 // Then we find all the tests.
-const context = require.context(
-  './app/features/public/layout/components',
-  true,
-  /\.spec\.ts$/
-);
+const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

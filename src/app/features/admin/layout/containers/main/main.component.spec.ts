@@ -21,6 +21,18 @@ import { AdminLayoutMainComponent } from './main.component';
 })
 class MockAdminLayoutHeaderComponent {}
 
+@Component({
+  selector: 'admin-layout-footer',
+  template: ''
+})
+class MockAdminLayoutFooterComponent {}
+
+@Component({
+  selector: 'admin-layout-nav',
+  template: ''
+})
+class MockAdminLayoutNavComponent {}
+
 describe('AdminLayoutMainComponent', () => {
   let component: AdminLayoutMainComponent;
   let el: DebugElement;
@@ -32,6 +44,8 @@ describe('AdminLayoutMainComponent', () => {
         imports: [NoopAnimationsModule, RouterTestingModule, MatSidenavModule],
         declarations: [
           MockAdminLayoutHeaderComponent,
+          MockAdminLayoutFooterComponent,
+          MockAdminLayoutNavComponent,
           AdminLayoutMainComponent
         ],
         providers: []

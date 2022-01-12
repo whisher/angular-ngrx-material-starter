@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslatePipeStubsModule } from '@testing';
 
 // Ngrx
 import { Store, StoreModule } from '@ngrx/store';
@@ -39,6 +40,7 @@ describe('PublicAuthLoginComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
+          TranslatePipeStubsModule,
           ReactiveComponentModule,
           MatCardModule,
           StoreModule.forRoot({

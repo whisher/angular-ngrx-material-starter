@@ -1,6 +1,7 @@
 // Core
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+// Models
 import { Theme } from '@api/models';
 
 @Component({

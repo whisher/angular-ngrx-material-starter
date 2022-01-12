@@ -9,10 +9,11 @@ export interface LoginResponseDto {
 }
 
 export interface SignInRequestDto {
+  acceptPrivacyPolicy: boolean;
   email: string;
   password: string;
   passwordConfirm: string;
-  acceptPrivacyPolicy: boolean;
+  username: string;
 }
 
 export interface SignInResponseDto {

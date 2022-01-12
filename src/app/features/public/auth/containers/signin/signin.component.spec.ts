@@ -5,6 +5,7 @@ import { Component, Input } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslatePipeStubsModule } from '@testing';
 
 // Ngrx
 import { ReactiveComponentModule } from '@ngrx/component';
@@ -36,6 +37,7 @@ describe('PublicAuthSigninComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           HttpClientTestingModule,
+          TranslatePipeStubsModule,
           RouterTestingModule,
           ReactiveComponentModule,
           MatCardModule

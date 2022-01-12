@@ -17,9 +17,13 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+// Models
+import { UserAccountResponseDto } from '@api/models';
+
 // Store
 import { AccountFacade } from '@stores/account';
 import { accountReducer } from '@stores/account/store/account.reducer';
+import { authReducer } from '@stores/auth/store/auth.reducer';
 
 // Components
 import { PublicLayoutMainComponent } from './main.component';
@@ -36,7 +40,7 @@ class MockPublicLayoutFooterComponent {}
   template: ''
 })
 class MockPublicLayoutHeaderComponent {
-  @Input() isAuthenticated: boolean | undefined = undefined;
+  @Input() account: UserAccountResponseDto | undefined = undefined;
   @Input() sidenav!: MatDrawer;
 }
 
@@ -59,7 +63,8 @@ describe('PublicLayoutMainComponent', () => {
           RouterTestingModule,
           NoopAnimationsModule,
           StoreModule.forRoot({
-            account: accountReducer
+            account: accountReducer,
+            auth: authReducer
           }),
           ReactiveComponentModule,
           MatSidenavModule

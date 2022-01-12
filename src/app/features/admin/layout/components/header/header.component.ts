@@ -28,7 +28,6 @@ export class AdminLayoutHeaderComponent {
     this.settingsFacade.changeTheme(theme);
   }
   onUseLanguage(event: MatSelectChange) {
-    console.log(event.value);
     this.settingsFacade.useLanguage(event.value);
   }
 }
