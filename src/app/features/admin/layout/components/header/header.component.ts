@@ -9,6 +9,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { Language, Theme } from '@api/models';
 
 // Store
+import { AccountFacade } from '@stores/account';
 import { SettingsFacade } from '@stores/settings';
 
 @Component({
@@ -18,12 +19,16 @@ import { SettingsFacade } from '@stores/settings';
 })
 export class AdminLayoutHeaderComponent {
   @Input() sidenav!: MatDrawer;
+  account$ = this.accountFacade.data$;
   language$ = this.settingsFacade.language$;
   theme$ = this.settingsFacade.theme$;
   languages = ['en', 'it'] as Language[];
 
   themes = ['blue', 'light', 'dark'] as Theme[];
-  constructor(private settingsFacade: SettingsFacade) {}
+  constructor(
+    private accountFacade: AccountFacade,
+    private settingsFacade: SettingsFacade
+  ) {}
   onChangeTheme(theme: Theme) {
     this.settingsFacade.changeTheme(theme);
   }

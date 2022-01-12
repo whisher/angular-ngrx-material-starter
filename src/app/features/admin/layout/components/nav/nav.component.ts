@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class AdminLayoutNavComponent {
   navigation = [
     { link: '/admin/dashboard', label: 'Dashboard' },
-    { link: 'about-us', label: 'About' },
-    { link: 'contact-us', label: 'Contact' }
+    { link: '/admin/users', label: 'Users' }
   ];
 }
