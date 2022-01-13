@@ -1,5 +1,17 @@
 <h1>USERS</h1>
-{{ vm$ | async | json }}
-<div class="flex justify-center">
-  <iwdf-spinner color="accent"></iwdf-spinner>
-</div>
+<ng-container *ngrxLet="vm$ as vm">
+  <div *ngIf="!vm.loaded" class="flex justify-center mt-3">
+    <iwdf-spinner color="primary"></iwdf-spinner>
+  </div>
+  <div class="flex justify-center" *ngIf="vm.error">
+    <div class="w-full md:w-2/5">
+      <iwdf-alert color="warn" [msg]="vm.error.message"></iwdf-alert>
+    </div>
+  </div>
+  <ng-container *ngIf="vm.loaded && !vm.error">
+    <admin-users-grid
+      [data]="vm.users"
+      (selected)="handleUserAction($event)"
+    ></admin-users-grid>
+  </ng-container>
+</ng-container>

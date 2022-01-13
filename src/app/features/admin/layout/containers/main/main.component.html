@@ -1,14 +1,16 @@
 <admin-layout-header [sidenav]="sidenav"></admin-layout-header>
-<mat-drawer-container>
-  <mat-drawer #sidenav mode="side">
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened>
     <admin-layout-nav></admin-layout-nav>
-  </mat-drawer>
-  <mat-drawer-content>
-    <main class="min-h-[calc(100vh-64px)] flex flex-col bg-orange-300">
-      <div class="flex-1">
-        <router-outlet></router-outlet>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main class="min-h-[calc(100vh-64px)] flex flex-col">
+      <div class="flex-1 px-3 bg-slate-50">
+        <div class="bg-white py-3">
+          <router-outlet></router-outlet>
+        </div>
       </div>
       <admin-layout-footer></admin-layout-footer>
     </main>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>

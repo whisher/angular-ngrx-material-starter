@@ -9,6 +9,7 @@ import {
 import {
   faBars,
   faCheckCircle,
+  faEdit,
   faExclamationCircle,
   faEye,
   faEyeSlash,
@@ -16,6 +17,7 @@ import {
   faLockOpen,
   faPalette,
   faPowerOff,
+  faTrash,
   faUserCircle,
   faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +32,7 @@ export class IwdfFortawesomeModule {
     faIconLibrary.addIcons(
       faBars,
       faCheckCircle,
+      faEdit,
       faExclamationCircle,
       faEye,
       faEyeSlash,
@@ -37,6 +40,7 @@ export class IwdfFortawesomeModule {
       faLockOpen,
       faPalette,
       faPowerOff,
+      faTrash,
       faUserCircle,
       faUserPlus,
       faGithub,

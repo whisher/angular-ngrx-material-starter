@@ -13,7 +13,7 @@ const enum AlertColor {
 })
 export class IwdfAlertComponent implements OnInit {
   @Input() msg: string | undefined = 'Something went wrong';
-  private readonly PREFIX = 'alert';
+  private readonly PREFIX = 'bg';
   cls!: string;
   icons = {
     accent: 'info-circle',
@@ -21,9 +21,7 @@ export class IwdfAlertComponent implements OnInit {
     warn: 'exclamation-circle'
   };
   type!: IconName;
-  constructor(
-    @Attribute('color') public color: AlertColor = AlertColor.primary
-  ) {}
+  constructor(@Attribute('color') public color: AlertColor) {}
 
   ngOnInit(): void {
     this.cls = `${this.PREFIX}-${this.color}`;

@@ -82,11 +82,11 @@ export class UsersStore extends ComponentStore<UsersState> {
                 };
               });
             },
-            error: (err) => {
+            error: (error) => {
               this.setState((state) => {
                 return {
                   ...state,
-                  error: err
+                  error
                 };
               });
             }
