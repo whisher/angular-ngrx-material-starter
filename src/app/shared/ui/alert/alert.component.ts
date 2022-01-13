@@ -1,9 +1,9 @@
 import { Attribute, Component, Input, OnInit } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-common-types';
 
-export enum AlertColor {
+const enum AlertColor {
   accent = 'accent',
-  primary = 'accent',
+  primary = 'primary',
   warn = 'warn'
 }
 
@@ -21,7 +21,9 @@ export class IwdfAlertComponent implements OnInit {
     warn: 'exclamation-circle'
   };
   type!: IconName;
-  constructor(@Attribute('color') public color: AlertColor) {}
+  constructor(
+    @Attribute('color') public color: AlertColor = AlertColor.primary
+  ) {}
 
   ngOnInit(): void {
     this.cls = `${this.PREFIX}-${this.color}`;

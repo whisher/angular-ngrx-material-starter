@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { UserAccountResponseDto } from '../models';
+import { UserAccountResponseDto, UserResponseDto } from '../models';
 import { paths, PathsUserDto } from '../config';
 
 @Injectable({ providedIn: 'root' })
@@ -16,5 +16,9 @@ export class UserService {
 
   account(): Observable<UserAccountResponseDto> {
     return this.http.get<UserAccountResponseDto>(this.endpoint.account);
+  }
+
+  all(): Observable<UserResponseDto[]> {
+    return this.http.get<UserResponseDto[]>(this.endpoint.all);
   }
 }

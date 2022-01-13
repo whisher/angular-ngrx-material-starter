@@ -8,3 +8,12 @@ export interface UserAccountResponseDto {
   role: UserRoleDto;
   username: string;
 }
+
+export interface UserResponseDto {
+  id: string;
+  email: string;
+  role: UserRoleDto;
+  username: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
