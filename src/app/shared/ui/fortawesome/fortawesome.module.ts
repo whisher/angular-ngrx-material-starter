@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import {
   faBars,
+  faChartBar,
   faCheckCircle,
   faEdit,
   faExclamationCircle,
@@ -16,10 +17,12 @@ import {
   faInfoCircle,
   faLockOpen,
   faPalette,
+  faPlus,
   faPowerOff,
   faTrash,
   faUserCircle,
-  faUserPlus
+  faUserPlus,
+  faUsers
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -31,6 +34,7 @@ export class IwdfFortawesomeModule {
   constructor(faIconLibrary: FaIconLibrary) {
     faIconLibrary.addIcons(
       faBars,
+      faChartBar,
       faCheckCircle,
       faEdit,
       faExclamationCircle,
@@ -39,10 +43,12 @@ export class IwdfFortawesomeModule {
       faInfoCircle,
       faLockOpen,
       faPalette,
+      faPlus,
       faPowerOff,
       faTrash,
       faUserCircle,
       faUserPlus,
+      faUsers,
       faGithub,
       faTwitter
     );

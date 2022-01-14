@@ -1,14 +1,14 @@
 <div class="flex flex-col h-full">
-  <mat-nav-list class="nav-menu">
-    <a
-      class="!text-3xl !text-bold"
-      mat-list-item
-      *ngFor="let item of navigation"
-      [routerLink]="[item.link]"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      {{ item.label }}
-    </a>
+  <mat-nav-list role="list">
+    <mat-list-item role="listitem" *ngFor="let item of navigation">
+      <a
+        class="!flex gap-2 items-center w-full"
+        [routerLink]="[item.link]"
+        routerLinkActive="active"
+      >
+        <fa-icon class="text-icon" size="sm" [icon]="item.icon"></fa-icon>
+        <span class="!text-lg !text-bold">{{ item.label }}</span>
+      </a>
+    </mat-list-item>
   </mat-nav-list>
 </div>
