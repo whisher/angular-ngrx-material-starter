@@ -1,32 +1,38 @@
 // Core
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+// Rxjs
+import { Observable, Subject } from 'rxjs';
 
 // Material
 import { MatDialog } from '@angular/material/dialog';
 
 // Models
-import { UserRequestDto, UserResponseDto } from '@api/models';
+import { UserResponseDto } from '@api/models';
 
 // Components
 import { AdminUsersDialogFormComponent } from './form.component';
 
 @Injectable()
 export class UsersDialogFormService {
+  private subject = new Subject<UserResponseDto | undefined>();
+  private store = this.subject.asObservable();
   constructor(private dialog: MatDialog) {}
-  open(
-    data: UserResponseDto | undefined
-  ): Observable<UserRequestDto | undefined> {
+
+  open(data: UserResponseDto | undefined) {
     const dialogRef = this.dialog.open(AdminUsersDialogFormComponent, {
       width: '650px',
       data
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log('The dialog was service', result);
+        console.log('result', result);
+        this.subject.next(result);
       }
     });
-    return dialogRef.afterClosed();
+  }
+
+  getData(): Observable<UserResponseDto | undefined> {
+    return this.store;
   }
 }

@@ -29,14 +29,13 @@ export class AdminUsersFormComponent implements OnInit {
 
   frm!: FormGroup;
   hide = true;
-  userId!: string;
+
   constructor(private sf: UsersFormService) {}
 
   ngOnInit() {
     this.frm = this.sf.form;
     if (this.user) {
-      const { id, email, username } = this.user;
-      this.userId = id;
+      const { email, username } = this.user;
       this.frm.patchValue({ email, username });
       this.sf.disablePasswordFields();
     }
@@ -44,7 +43,11 @@ export class AdminUsersFormComponent implements OnInit {
 
   onSubmit() {
     if (this.frm.valid) {
-      this.submitted.emit(this.frm.value);
+      if (this.user) {
+        this.submitted.emit({ ...this.user, ...this.frm.value });
+      } else {
+        this.submitted.emit(this.frm.value);
+      }
     }
   }
 }

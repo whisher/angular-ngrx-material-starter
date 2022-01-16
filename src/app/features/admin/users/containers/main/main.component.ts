@@ -1,5 +1,5 @@
 // Core
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 // Rxjs
 import { Observable } from 'rxjs';
@@ -19,12 +19,21 @@ import { UsersState, UsersStore } from '../../services';
   templateUrl: './main.component.html',
   providers: [UsersStore]
 })
-export class AdminUsersMainComponent {
+export class AdminUsersMainComponent implements OnInit {
   readonly vm$: Observable<UsersState> = this.store.vm$;
   constructor(
     private dialogService: UsersDialogFormService,
     private readonly store: UsersStore
   ) {}
+
+  ngOnInit() {
+    this.dialogService.getData().subscribe((result) => {
+      if (result) {
+        console.log('container', result);
+      }
+      console.log('container', result);
+    });
+  }
 
   handleUserAction(row: UserActionDto) {
     const { action, data } = row;

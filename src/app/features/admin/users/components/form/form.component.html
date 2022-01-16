@@ -38,7 +38,7 @@
       <span translate>iwdf.auth.form.error.email</span>
     </mat-error>
   </mat-form-field>
-  <ng-container *ngIf="!userId">
+  <ng-container *ngIf="!user">
     <div class="flex flex-col md:flex-row gap-3">
       <mat-form-field class="w-full md:w-1/2" appearance="outline">
         <mat-label>{{ 'iwdf.auth.form.label.password' | translate }}</mat-label>
@@ -100,7 +100,7 @@
   </ng-container>
   <div class="mt-3">
     <iwdf-button-spinner [loading]="!!status?.loading">
-      <span>Add user</span>
+      <span>{{ user ? 'Update user' : 'Add user' }}</span>
     </iwdf-button-spinner>
   </div>
 </form>
