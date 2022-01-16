@@ -1,24 +1,28 @@
 // Core
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 // Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+// Models
+import { UserRequestDto, UserResponseDto } from '@api/models';
 
 @Component({
   selector: 'admin-users-dialog-form',
   templateUrl: './form.component.html'
 })
-export class AdminUsersDialogFormComponent implements OnInit {
+export class AdminUsersDialogFormComponent {
+  status = undefined;
   constructor(
     public dialogRef: MatDialogRef<AdminUsersDialogFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number; email: string }
+    @Inject(MAT_DIALOG_DATA) public data: UserResponseDto | undefined
   ) {}
 
-  ngOnInit(): void {
-    console.log('pp');
+  close(data: UserRequestDto) {
+    this.dialogRef.close(data);
   }
 
-  close() {
-    this.dialogRef.close(true);
+  onSubmit(data: UserRequestDto) {
+    this.close(data);
   }
 }

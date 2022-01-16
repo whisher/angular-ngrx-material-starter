@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, switchMap, tap } from 'rxjs/operators';
+import { catchError, concatMap, switchMap, tap } from 'rxjs/operators';
 import { UserService } from '@api/services/user.service';
-import { ErrorDto, UserResponseDto } from '@api/models';
+import { ErrorDto, UserRequestDto, UserResponseDto } from '@api/models';
 
 export interface UsersState {
   error: ErrorDto | null;
@@ -63,10 +63,10 @@ export class UsersStore extends ComponentStore<UsersState> {
     })
   );
 
-  /* private readonly setLoading = this.updater((state, loading: boolean) => ({
+  private readonly setLoading = this.updater((state, loading: boolean) => ({
     ...state,
     loading
-  }));*/
+  }));
 
   private readonly all = this.effect<void>((users$: Observable<void>) => {
     return users$.pipe(
@@ -96,35 +96,37 @@ export class UsersStore extends ComponentStore<UsersState> {
       )
     );
   });
-  /*
-  readonly create = this.effect<TodoDto>((todos$: Observable<TodoDto>) => {
-    return todos$.pipe(
-      tap({
-        next: () => {
-          this.setLoading(true);
-        }
-      }),
-      concatMap((todo: TodoDto) =>
-        this.service.create(todo).pipe(
-          tap({
-            next: (res) => {
-              this.all();
-            },
-            error: (e) => {
-              this.setState((state) => {
-                return {
-                  ...state,
-                  error: true
-                };
-              });
-            }
-          }),
-          catchError(() => EMPTY)
-        )
-      )
-    );
-  });
 
+  readonly create = this.effect<UserResponseDto>(
+    (users$: Observable<UserResponseDto>) => {
+      return users$.pipe(
+        tap({
+          next: () => {
+            this.setLoading(true);
+          }
+        }),
+        concatMap((user: UserRequestDto) =>
+          this.service.create(user).pipe(
+            tap({
+              next: (res) => {
+                this.all();
+              },
+              error: (error) => {
+                this.setState((state) => {
+                  return {
+                    ...state,
+                    error
+                  };
+                });
+              }
+            }),
+            catchError(() => EMPTY)
+          )
+        )
+      );
+    }
+  );
+  /*
   readonly update = this.effect<TodoDto>((todos$: Observable<TodoDto>) => {
     return todos$.pipe(
       tap({

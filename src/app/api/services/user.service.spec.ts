@@ -7,6 +7,7 @@ import { TestBed } from '@angular/core/testing';
 
 import {
   UserAccountResponseDto,
+  UserRequestDto,
   UserResponseDto,
   UserRoleDto
 } from '../models';
@@ -28,6 +29,19 @@ const usersResponseData: UserResponseDto[] = [
     username: 'test'
   }
 ];
+const userRequestData: UserRequestDto = {
+  email: 'test@test.test',
+  password: 'abcd',
+  passwordConfirm: 'abcd',
+  username: 'test'
+};
+const userResponseData: UserResponseDto = {
+  id: 'abcde',
+  email: 'test@test.test',
+  role: UserRoleDto.user,
+  username: 'test'
+};
+
 describe('UserService', () => {
   let httpTestingController: HttpTestingController;
   let userService: UserService;
@@ -63,5 +77,13 @@ describe('UserService', () => {
     });
     const req = httpTestingController.expectOne(userService.endpoint.all);
     req.flush(usersResponseData);
+  });
+
+  it('create should be return userAccountResponseData', () => {
+    userService.create(userRequestData).subscribe((data) => {
+      expect(data).toEqual(userResponseData);
+    });
+    const req = httpTestingController.expectOne(userService.endpoint.create);
+    req.flush(userResponseData);
   });
 });

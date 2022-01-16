@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 // Models
 import { UserActionDto } from '../../models';
 
+// Services
+import { UsersDialogFormService } from '../../dialogs';
+
 // Store
 import { UsersState, UsersStore } from '../../services';
 
@@ -18,12 +21,16 @@ import { UsersState, UsersStore } from '../../services';
 })
 export class AdminUsersMainComponent {
   readonly vm$: Observable<UsersState> = this.store.vm$;
-  constructor(private readonly store: UsersStore) {}
+  constructor(
+    private dialogService: UsersDialogFormService,
+    private readonly store: UsersStore
+  ) {}
 
   handleUserAction(row: UserActionDto) {
     const { action, data } = row;
-    console.log('data', action, data);
+
     if (action === 'edit') {
+      this.dialogService.open(data);
     } else {
     }
   }

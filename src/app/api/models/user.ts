@@ -17,3 +17,9 @@ export interface UserResponseDto {
   createdAt?: Date;
   updatedAt?: Date;
 }
+export interface UserCreateRequestDto {
+  email: string;
+  password?: string;
+  passwordConfirm?: string;
+  username: string;
+}

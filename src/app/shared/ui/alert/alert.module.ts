@@ -8,9 +8,11 @@ import { IwdfFortawesomeModule } from '../fortawesome';
 // Components
 import { IwdfAlertComponent } from './alert.component';
 
+const declarations = [IwdfAlertComponent];
+
 @NgModule({
   imports: [CommonModule, IwdfFortawesomeModule],
-  declarations: [IwdfAlertComponent],
-  exports: [IwdfAlertComponent]
+  declarations,
+  exports: [...declarations]
 })
 export class IwdfAlertModule {}
