@@ -10,11 +10,9 @@ export class UsersFormService {
   get form(): FormGroup {
     return this.frm;
   }
+
   constructor(private fb: FormBuilder) {}
-  disablePasswordFields() {
-    this.frm.get('password')!.disable();
-    this.frm.get('passwordConfirm')!.disable();
-  }
+
   private createForm() {
     return this.fb.group(
       {

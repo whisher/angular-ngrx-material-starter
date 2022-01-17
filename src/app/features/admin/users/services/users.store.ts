@@ -102,6 +102,7 @@ export class UsersStore extends ComponentStore<UsersState> {
       return users$.pipe(
         tap({
           next: () => {
+            console.log('pippo');
             this.setLoading(true);
           }
         }),

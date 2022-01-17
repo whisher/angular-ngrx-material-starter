@@ -26,6 +26,6 @@ export const paths: PathsDto = {
   user: {
     account: `${apiEndpoint}/api/user/account`,
     all: `${apiEndpoint}/api/user/all`,
-    create: `${apiEndpoint}/api/user`
+    create: `${apiEndpoint}/api/user/create`
   }
 };

@@ -37,17 +37,22 @@ export class AdminUsersFormComponent implements OnInit {
     if (this.user) {
       const { email, username } = this.user;
       this.frm.patchValue({ email, username });
-      this.sf.disablePasswordFields();
+      this.disablePasswordFields();
     }
   }
 
   onSubmit() {
     if (this.frm.valid) {
       if (this.user) {
-        this.submitted.emit({ ...this.user, ...this.frm.value });
+        const { id } = this.user;
+        this.submitted.emit({ id, ...this.frm.value });
       } else {
         this.submitted.emit(this.frm.value);
       }
     }
+  }
+  private disablePasswordFields(): void {
+    this.frm.get('password')!.disable();
+    this.frm.get('passwordConfirm')!.disable();
   }
 }

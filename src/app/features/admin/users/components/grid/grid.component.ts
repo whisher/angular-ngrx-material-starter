@@ -25,7 +25,10 @@ import { UserActionDto } from '../../models';
   templateUrl: './grid.component.html'
 })
 export class AdminUsersGridComponent implements AfterViewInit {
-  @Input() data!: UserResponseDto[];
+  @Input() set data(data: UserResponseDto[]) {
+    this.hasData = data.length > 0;
+    this.init(data);
+  }
   @Output() selected = new EventEmitter<UserActionDto>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -41,21 +44,17 @@ export class AdminUsersGridComponent implements AfterViewInit {
     'role',
     'actions'
   ];
-  get hasData(): boolean {
-    return this.data.length > 0;
-  }
+  hasData!: boolean;
 
   constructor(private liveAnnouncer: LiveAnnouncer) {}
-
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
   handleUserAction(row: UserActionDto) {
     this.selected.emit(row);
   }
 
-  ngAfterViewInit() {
-    this.dataSource = new MatTableDataSource(this.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
   /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
@@ -67,5 +66,11 @@ export class AdminUsersGridComponent implements AfterViewInit {
     } else {
       this.liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  private init(data: UserResponseDto[]) {
+    this.dataSource = new MatTableDataSource(data);
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
   }
 }

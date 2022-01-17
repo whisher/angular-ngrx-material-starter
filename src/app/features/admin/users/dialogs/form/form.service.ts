@@ -26,13 +26,12 @@ export class UsersDialogFormService {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log('result', result);
         this.subject.next(result);
       }
     });
   }
 
-  getData(): Observable<UserResponseDto | undefined> {
+  getInsertedData(): Observable<UserResponseDto | undefined> {
     return this.store;
   }
 }

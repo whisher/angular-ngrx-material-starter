@@ -1,8 +1,13 @@
 // Core
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 
 // Rxjs
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 // Models
 import { UserActionDto } from '../../models';
@@ -19,7 +24,8 @@ import { UsersState, UsersStore } from '../../services';
   templateUrl: './main.component.html',
   providers: [UsersStore]
 })
-export class AdminUsersMainComponent implements OnInit {
+export class AdminUsersMainComponent implements OnDestroy, OnInit {
+  private subscription: Subscription = new Subscription();
   readonly vm$: Observable<UsersState> = this.store.vm$;
   constructor(
     private dialogService: UsersDialogFormService,
@@ -27,20 +33,28 @@ export class AdminUsersMainComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.dialogService.getData().subscribe((result) => {
-      if (result) {
-        console.log('container', result);
-      }
-      console.log('container', result);
-    });
+    this.subscription.add(
+      this.dialogService.getInsertedData().subscribe((result) => {
+        if (result) {
+          if ('id' in result) {
+            console.log('container update', result);
+          } else {
+            this.store.create(result);
+            console.log('container create', result);
+          }
+        }
+      })
+    );
   }
 
   handleUserAction(row: UserActionDto) {
     const { action, data } = row;
-
     if (action === 'edit') {
       this.dialogService.open(data);
     } else {
     }
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
