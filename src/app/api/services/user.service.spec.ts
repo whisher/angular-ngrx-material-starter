@@ -79,11 +79,18 @@ describe('UserService', () => {
     req.flush(usersResponseData);
   });
 
-  it('create should be return userAccountResponseData', () => {
+  it('create should be return userResponseData', () => {
     userService.create(userRequestData).subscribe((data) => {
       expect(data).toEqual(userResponseData);
     });
     const req = httpTestingController.expectOne(userService.endpoint.create);
+    req.flush(userResponseData);
+  });
+  it('update should be return userResponseData', () => {
+    userService.update(userRequestData).subscribe((data) => {
+      expect(data).toEqual(userResponseData);
+    });
+    const req = httpTestingController.expectOne(userService.endpoint.update);
     req.flush(userResponseData);
   });
 });

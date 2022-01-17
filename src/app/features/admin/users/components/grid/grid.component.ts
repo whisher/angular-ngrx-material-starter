@@ -3,11 +3,15 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  OnDestroy,
   EventEmitter,
   Input,
   Output,
   ViewChild
 } from '@angular/core';
+
+// Rxjs
+import { merge, Subscription } from 'rxjs';
 
 // Material
 import { LiveAnnouncer } from '@angular/cdk/a11y';
@@ -24,7 +28,7 @@ import { UserActionDto } from '../../models';
   selector: 'admin-users-grid',
   templateUrl: './grid.component.html'
 })
-export class AdminUsersGridComponent implements AfterViewInit {
+export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
   @Input() set data(data: UserResponseDto[]) {
     this.hasData = data.length > 0;
     this.init(data);
@@ -32,6 +36,7 @@ export class AdminUsersGridComponent implements AfterViewInit {
   @Output() selected = new EventEmitter<UserActionDto>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  private subscription: Subscription = new Subscription();
   clickedRows = new Set<UserResponseDto>();
   dataSource!: MatTableDataSource<UserResponseDto>;
 
@@ -45,12 +50,8 @@ export class AdminUsersGridComponent implements AfterViewInit {
     'actions'
   ];
   hasData!: boolean;
-
   constructor(private liveAnnouncer: LiveAnnouncer) {}
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+
   handleUserAction(row: UserActionDto) {
     this.selected.emit(row);
   }
@@ -70,7 +71,18 @@ export class AdminUsersGridComponent implements AfterViewInit {
 
   private init(data: UserResponseDto[]) {
     this.dataSource = new MatTableDataSource(data);
-    //this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+    this.subscription.add(
+      merge(this.sort.sortChange, this.paginator.page).subscribe((data) => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
+    );
   }
 }

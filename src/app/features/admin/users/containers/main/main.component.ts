@@ -37,6 +37,7 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
       this.dialogService.getInsertedData().subscribe((result) => {
         if (result) {
           if ('id' in result) {
+            this.store.update(result);
             console.log('container update', result);
           } else {
             this.store.create(result);

@@ -78,6 +78,7 @@ export class UsersStore extends ComponentStore<UsersState> {
                 return {
                   ...state,
                   loaded: true,
+                  loading: false,
                   users
                 };
               });
@@ -102,7 +103,6 @@ export class UsersStore extends ComponentStore<UsersState> {
       return users$.pipe(
         tap({
           next: () => {
-            console.log('pippo');
             this.setLoading(true);
           }
         }),
@@ -127,47 +127,49 @@ export class UsersStore extends ComponentStore<UsersState> {
       );
     }
   );
-  /*
-  readonly update = this.effect<TodoDto>((todos$: Observable<TodoDto>) => {
-    return todos$.pipe(
-      tap({
-        next: () => {
-          this.setLoading(true);
-        }
-      }),
-      concatMap((todo: TodoDto) =>
-        this.service.update(todo).pipe(
-          tap({
-            next: (res) => {
-              const { id } = todo;
-              this.setState((state) => {
-                return {
-                  ...state,
-                  loading: false,
-                  todos: state.todos.map((current) => {
-                    if (Number(current.id) === Number(id)) {
-                      return res;
-                    }
-                    return current;
-                  })
-                };
-              });
-            },
-            error: (e) => {
-              this.setState((state) => {
-                return {
-                  ...state,
-                  error: true
-                };
-              });
-            }
-          }),
-          catchError(() => EMPTY)
-        )
-      )
-    );
-  });
 
+  readonly update = this.effect<UserResponseDto>(
+    (users$: Observable<UserResponseDto>) => {
+      return users$.pipe(
+        tap({
+          next: () => {
+            this.setLoading(true);
+          }
+        }),
+        concatMap((user: UserResponseDto) =>
+          this.service.update(user).pipe(
+            tap({
+              next: (res) => {
+                const { id } = user;
+                this.setState((state) => {
+                  return {
+                    ...state,
+                    loading: false,
+                    users: state.users.map((current) => {
+                      if (current.id === id) {
+                        return res;
+                      }
+                      return current;
+                    })
+                  };
+                });
+              },
+              error: (error) => {
+                this.setState((state) => {
+                  return {
+                    ...state,
+                    error
+                  };
+                });
+              }
+            }),
+            catchError(() => EMPTY)
+          )
+        )
+      );
+    }
+  );
+  /*
   readonly remove = this.effect<TodoDto>((todos$: Observable<TodoDto>) => {
     return todos$.pipe(
       tap({
