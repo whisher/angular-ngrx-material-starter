@@ -27,6 +27,7 @@ import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 // UI
 import { IwdfAlertModule } from '@shared/ui/alert';
 import { IwdfButtonSpinnerModule } from '@shared/ui/button-spinner';
+import { IwdfConfirmModule } from '@shared/ui/confirm';
 import { IwdfSpinnerModule } from '@shared/ui/spinner';
 
 // Services
@@ -54,6 +55,7 @@ import * as fromDialogs from './dialogs';
     IwdfFortawesomeModule,
     IwdfAlertModule,
     IwdfButtonSpinnerModule,
+    IwdfConfirmModule,
     IwdfSpinnerModule
   ],
   declarations: [

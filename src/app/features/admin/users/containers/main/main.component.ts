@@ -13,6 +13,7 @@ import { Observable, Subscription } from 'rxjs';
 import { UserActionDto } from '../../models';
 
 // Services
+import { ConfirmService } from '@shared/ui/confirm';
 import { UsersDialogFormService } from '../../dialogs';
 
 // Store
@@ -28,6 +29,7 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
   private subscription: Subscription = new Subscription();
   readonly vm$: Observable<UsersState> = this.store.vm$;
   constructor(
+    private confirmService: ConfirmService,
     private dialogService: UsersDialogFormService,
     private readonly store: UsersStore
   ) {}
@@ -38,10 +40,8 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
         if (result) {
           if ('id' in result) {
             this.store.update(result);
-            console.log('container update', result);
           } else {
             this.store.create(result);
-            console.log('container create', result);
           }
         }
       })
@@ -53,6 +53,9 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
     if (action === 'edit') {
       this.dialogService.open(data);
     } else {
+      this.confirmService.open({
+        header: `Are you really sure you want delete ${data.username}?`
+      });
     }
   }
   ngOnDestroy() {

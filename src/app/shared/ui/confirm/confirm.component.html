@@ -1,0 +1,11 @@
+<mat-dialog-content>
+  <h3 class="text-xl">
+    {{ data.header }}
+  </h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="accent" (click)="no()" cdkFocusInitial>
+    No
+  </button>
+  <button mat-raised-button color="warn" (click)="yes()">Yes</button>
+</mat-dialog-actions>

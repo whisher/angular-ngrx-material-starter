@@ -33,6 +33,7 @@ export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
     this.hasData = data.length > 0;
     this.init(data);
   }
+  @Input() isLoading = false;
   @Output() selected = new EventEmitter<UserActionDto>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

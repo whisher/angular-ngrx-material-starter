@@ -10,6 +10,7 @@
   <ng-container *ngIf="vm.loaded && !vm.error">
     <admin-users-grid
       [data]="vm.users"
+      [isLoading]="vm.loading"
       (selected)="handleUserAction($event)"
     ></admin-users-grid>
   </ng-container>
