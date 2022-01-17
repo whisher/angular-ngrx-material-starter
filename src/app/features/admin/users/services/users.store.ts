@@ -128,6 +128,36 @@ export class UsersStore extends ComponentStore<UsersState> {
     }
   );
 
+  readonly remove = this.effect<UserResponseDto>(
+    (users$: Observable<UserResponseDto>) => {
+      return users$.pipe(
+        tap({
+          next: () => {
+            this.setLoading(true);
+          }
+        }),
+        concatMap((user: UserResponseDto) =>
+          this.service.remove(user).pipe(
+            tap({
+              next: (res) => {
+                this.all();
+              },
+              error: (error) => {
+                this.setState((state) => {
+                  return {
+                    ...state,
+                    error
+                  };
+                });
+              }
+            }),
+            catchError(() => EMPTY)
+          )
+        )
+      );
+    }
+  );
+
   readonly update = this.effect<UserResponseDto>(
     (users$: Observable<UserResponseDto>) => {
       return users$.pipe(
@@ -169,36 +199,8 @@ export class UsersStore extends ComponentStore<UsersState> {
       );
     }
   );
-  /*
-  readonly remove = this.effect<TodoDto>((todos$: Observable<TodoDto>) => {
-    return todos$.pipe(
-      tap({
-        next: () => {
-          this.setLoading(true);
-        }
-      }),
-      concatMap((todo: TodoDto) =>
-        this.service.remove(todo).pipe(
-          tap({
-            next: (res) => {
-              this.all();
-            },
-            error: (e) => {
-              this.setState((state) => {
-                return {
-                  ...state,
-                  error: true
-                };
-              });
-            }
-          }),
-          catchError(() => EMPTY)
-        )
-      )
-    );
-  });
-*/
-  selectTodo(userId: string): Observable<UserResponseDto | undefined> {
+
+  selectUser(userId: string): Observable<UserResponseDto | undefined> {
     return this.select((state: UsersState) =>
       state.users.find((user) => user.id === userId)
     );

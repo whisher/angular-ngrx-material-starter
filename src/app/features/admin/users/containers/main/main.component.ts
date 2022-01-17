@@ -53,11 +53,18 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
     if (action === 'edit') {
       this.dialogService.open(data);
     } else {
-      this.confirmService.open({
-        header: `Are you really sure you want delete ${data.username}?`
-      });
+      this.subscription.add(
+        this.confirmService
+          .open({
+            header: `Are you sure do you want to delete ${data.username}?`
+          })
+          .subscribe((result) => {
+            this.store.remove(result);
+          })
+      );
     }
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

@@ -74,16 +74,19 @@ export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
     this.dataSource = new MatTableDataSource(data);
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
   ngAfterViewInit() {
+    this.subscription.add(
+      this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
+    );
     this.subscription.add(
       merge(this.sort.sortChange, this.paginator.page).subscribe((data) => {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       })
     );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

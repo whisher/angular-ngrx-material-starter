@@ -11,6 +11,7 @@ export interface PathsUserDto {
   account: string;
   all: string;
   create: string;
+  remove: string;
   update: string;
 }
 export interface PathsDto {
@@ -28,6 +29,7 @@ export const paths: PathsDto = {
     account: `${apiEndpoint}/api/user/account`,
     all: `${apiEndpoint}/api/user/all`,
     create: `${apiEndpoint}/api/user/create`,
+    remove: `${apiEndpoint}/api/user/remove`,
     update: `${apiEndpoint}/api/user/update`
   }
 };
