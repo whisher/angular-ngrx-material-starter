@@ -1,7 +1,7 @@
 import { Attribute, Component, Input, OnInit } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-common-types';
 
-const enum AlertColor {
+export const enum AlertColor {
   accent = 'accent',
   primary = 'primary',
   warn = 'warn'

@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { OgConfirmService } from './confirm.service';
+import { ConfirmService } from './confirm.service';
 
-import { OgConfirmComponent } from './confirm.component';
+import { IwdfConfirmComponent } from './confirm.component';
 
-describe('OgConfirmService', () => {
+describe('ConfirmService', () => {
   const mockDialogRef = {
     open: jasmine.createSpy('open').and.returnValue({ afterClosed: () => {} })
   };
-  let ogConfirmService: OgConfirmService;
+  let confirmService: ConfirmService;
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
@@ -18,23 +18,23 @@ describe('OgConfirmService', () => {
           provide: MatDialog,
           useValue: mockDialogRef
         },
-        OgConfirmService
+        ConfirmService
       ]
     })
   );
 
   beforeEach(() => {
-    ogConfirmService = TestBed.inject(OgConfirmService);
+    confirmService = TestBed.inject(ConfirmService);
   });
 
   it('should be created', () => {
-    expect(ogConfirmService).toBeTruthy();
+    expect(ConfirmService).toBeTruthy();
   });
 
   it('dialogRef open should have been called with data', () => {
-    const data = { type: '' };
-    ogConfirmService.openDialog(data);
-    expect(mockDialogRef.open).toHaveBeenCalledWith(OgConfirmComponent, {
+    const data = { header: '' };
+    confirmService.open(data);
+    expect(mockDialogRef.open).toHaveBeenCalledWith(IwdfConfirmComponent, {
       width: '350px',
       data
     });
