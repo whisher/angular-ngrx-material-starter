@@ -21,7 +21,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 // Models
 import { UserResponseDto } from '@api/models';
-import { UserActionDto } from '../../models';
+import { SearchValuesDto, UserActionDto } from '../../models';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,6 +57,10 @@ export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
     this.selected.emit(row);
   }
 
+  onSearch(searchValues: SearchValuesDto) {
+    this.dataSource.filter = JSON.stringify(searchValues);
+  }
+
   /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
@@ -71,7 +75,41 @@ export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
   }
 
   private init(data: UserResponseDto[]) {
-    this.dataSource = new MatTableDataSource(data);
+    this.dataSource = new MatTableDataSource<UserResponseDto>(data);
+    this.dataSource.filterPredicate = this.createFilter();
+  }
+
+  private createFilter(): (data: UserResponseDto, filter: string) => boolean {
+    const filterPredicate = (
+      data: UserResponseDto,
+      filter: string
+    ): boolean => {
+      const searchString: SearchValuesDto = JSON.parse(filter);
+
+      const emailFound = data.email
+        .toString()
+        .trim()
+        .toLowerCase()
+        .includes(searchString.email.trim().toLowerCase());
+
+      const roleFound =
+        searchString.role !== 'All'
+          ? data.role
+              .toString()
+              .trim()
+              .toLowerCase()
+              .includes(searchString.role.trim().toLowerCase())
+          : true;
+
+      const usernameFound = data.username
+        .toString()
+        .trim()
+        .toLowerCase()
+        .includes(searchString.username.trim().toLowerCase());
+
+      return emailFound && roleFound && usernameFound;
+    };
+    return filterPredicate;
   }
 
   ngAfterViewInit() {

@@ -14,7 +14,7 @@ import { environment } from '../../environments/environment';
 
 // Meta
 import {
-  debugReducer,
+  //debugReducer,
   initStateFromLocalStorageReducer,
   resetStateReducer
 } from './meta-reducers';
@@ -44,7 +44,7 @@ export const metaReducers: MetaReducer<AppState>[] = [
 
 if (!environment.production) {
   if (!environment.test) {
-    metaReducers.unshift(debugReducer);
+    //  metaReducers.unshift(debugReducer);
   }
 }
 

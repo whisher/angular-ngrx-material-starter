@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, concatMap, switchMap, tap } from 'rxjs/operators';
+import { catchError, switchMap, tap } from 'rxjs/operators';
 import { UserService } from '@api/services/user.service';
 import { ErrorDto, UserRequestDto, UserResponseDto } from '@api/models';
 
@@ -68,7 +68,7 @@ export class UsersStore extends ComponentStore<UsersState> {
     loading
   }));
 
-  private readonly all = this.effect<void>((users$: Observable<void>) => {
+  private readonly all = this.effect((users$: Observable<void>) => {
     return users$.pipe(
       switchMap(() =>
         this.service.all().pipe(
@@ -98,107 +98,101 @@ export class UsersStore extends ComponentStore<UsersState> {
     );
   });
 
-  readonly create = this.effect<UserResponseDto>(
-    (users$: Observable<UserResponseDto>) => {
-      return users$.pipe(
-        tap({
-          next: () => {
-            this.setLoading(true);
-          }
-        }),
-        concatMap((user: UserRequestDto) =>
-          this.service.create(user).pipe(
-            tap({
-              next: (res) => {
-                this.all();
-              },
-              error: (error) => {
-                this.setState((state) => {
-                  return {
-                    ...state,
-                    error
-                  };
-                });
-              }
-            }),
-            catchError(() => EMPTY)
-          )
+  readonly create = this.effect((user$: Observable<UserRequestDto>) => {
+    return user$.pipe(
+      tap({
+        next: () => {
+          this.setLoading(true);
+        }
+      }),
+      switchMap((user: UserRequestDto) =>
+        this.service.create(user).pipe(
+          tap({
+            next: (res) => {
+              this.all();
+            },
+            error: (error) => {
+              this.setState((state) => {
+                return {
+                  ...state,
+                  error
+                };
+              });
+            }
+          }),
+          catchError(() => EMPTY)
         )
-      );
-    }
-  );
+      )
+    );
+  });
 
-  readonly remove = this.effect<UserResponseDto>(
-    (users$: Observable<UserResponseDto>) => {
-      return users$.pipe(
-        tap({
-          next: () => {
-            this.setLoading(true);
-          }
-        }),
-        concatMap((user: UserResponseDto) =>
-          this.service.remove(user).pipe(
-            tap({
-              next: (res) => {
-                this.all();
-              },
-              error: (error) => {
-                this.setState((state) => {
-                  return {
-                    ...state,
-                    error
-                  };
-                });
-              }
-            }),
-            catchError(() => EMPTY)
-          )
+  readonly remove = this.effect((user$: Observable<{ id: string }>) => {
+    return user$.pipe(
+      tap({
+        next: () => {
+          this.setLoading(true);
+        }
+      }),
+      switchMap((user: { id: string }) =>
+        this.service.remove(user).pipe(
+          tap({
+            next: (res) => {
+              this.all();
+            },
+            error: (error) => {
+              this.setState((state) => {
+                return {
+                  ...state,
+                  error
+                };
+              });
+            }
+          }),
+          catchError(() => EMPTY)
         )
-      );
-    }
-  );
+      )
+    );
+  });
 
-  readonly update = this.effect<UserResponseDto>(
-    (users$: Observable<UserResponseDto>) => {
-      return users$.pipe(
-        tap({
-          next: () => {
-            this.setLoading(true);
-          }
-        }),
-        concatMap((user: UserResponseDto) =>
-          this.service.update(user).pipe(
-            tap({
-              next: (res) => {
-                const { id } = user;
-                this.setState((state) => {
-                  return {
-                    ...state,
-                    loading: false,
-                    users: state.users.map((current) => {
-                      if (current.id === id) {
-                        return res;
-                      }
-                      return current;
-                    })
-                  };
-                });
-              },
-              error: (error) => {
-                this.setState((state) => {
-                  return {
-                    ...state,
-                    error
-                  };
-                });
-              }
-            }),
-            catchError(() => EMPTY)
-          )
+  readonly update = this.effect((user$: Observable<UserRequestDto>) => {
+    return user$.pipe(
+      tap({
+        next: () => {
+          this.setLoading(true);
+        }
+      }),
+      switchMap((user: UserRequestDto) =>
+        this.service.update(user).pipe(
+          tap({
+            next: (res) => {
+              const { id } = user;
+              this.setState((state) => {
+                return {
+                  ...state,
+                  loading: false,
+                  users: state.users.map((current) => {
+                    if (current.id === id) {
+                      return res;
+                    }
+                    return current;
+                  })
+                };
+              });
+            },
+            error: (error) => {
+              this.setState((state) => {
+                return {
+                  ...state,
+                  error
+                };
+              });
+            }
+          }),
+          catchError(() => EMPTY)
         )
-      );
-    }
-  );
+      )
+    );
+  });
 
   selectUser(userId: string): Observable<UserResponseDto | undefined> {
     return this.select((state: UsersState) =>

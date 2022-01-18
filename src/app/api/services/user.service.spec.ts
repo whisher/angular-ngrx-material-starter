@@ -71,7 +71,7 @@ describe('UserService', () => {
     req.flush(usersAccountResponseData);
   });
 
-  it('all should be return usersAccountResponseData', () => {
+  it('all should GET void and return usersAccountResponseData', () => {
     userService.all().subscribe((data) => {
       expect(data).toEqual(usersResponseData);
     });
@@ -79,7 +79,7 @@ describe('UserService', () => {
     req.flush(usersResponseData);
   });
 
-  it('create should be return userResponseData', () => {
+  it('create should POST userRequestData and return userResponseData', () => {
     userService.create(userRequestData).subscribe((data) => {
       expect(data).toEqual(userResponseData);
     });
@@ -87,14 +87,14 @@ describe('UserService', () => {
     req.flush(userResponseData);
   });
 
-  it('remove should be return userResponseData', () => {
-    userService.remove(userRequestData).subscribe((data) => {
+  it('remove should POST {id: test} and return userResponseData', () => {
+    userService.remove({ id: 'test' }).subscribe((data) => {
       expect(data).toEqual(userResponseData);
     });
     const req = httpTestingController.expectOne(userService.endpoint.remove);
     req.flush(userResponseData);
   });
-  it('update should be return userResponseData', () => {
+  it('update should PUT userRequestData and return userResponseData', () => {
     userService.update(userRequestData).subscribe((data) => {
       expect(data).toEqual(userResponseData);
     });

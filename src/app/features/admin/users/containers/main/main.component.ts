@@ -59,7 +59,10 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
             header: `Are you sure do you want to delete ${data.username}?`
           })
           .subscribe((result) => {
-            this.store.remove(result);
+            if (result) {
+              const { id } = data;
+              this.store.remove({ id });
+            }
           })
       );
     }

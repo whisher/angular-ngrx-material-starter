@@ -1,6 +1,11 @@
-<div class="flex justify-end mb-3">
-  <admin-users-add></admin-users-add>
-</div>
+<mat-card class="mb-3">
+  <div class="flex justify-start items-center w-full">
+    <admin-users-search (search)="onSearch($event)"></admin-users-search>
+    <div class="ml-auto">
+      <admin-users-add></admin-users-add>
+    </div>
+  </div>
+</mat-card>
 <ng-container *ngTemplateOutlet="hasData ? withData : noData"></ng-container>
 <ng-template #withData>
   <div class="relative">

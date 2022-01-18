@@ -30,7 +30,7 @@ export class UserService {
     return this.http.post<UserResponseDto>(this.endpoint.create, data);
   }
 
-  remove(data: UserRequestDto): Observable<UserResponseDto> {
+  remove(data: { id: string }): Observable<UserResponseDto> {
     return this.http.post<UserResponseDto>(this.endpoint.remove, data);
   }
 
