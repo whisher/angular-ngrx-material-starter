@@ -133,8 +133,8 @@ export class UsersStore extends ComponentStore<UsersState> {
           this.setLoading(true);
         }
       }),
-      switchMap((user: { id: string }) =>
-        this.service.remove(user).pipe(
+      switchMap((id: { id: string }) =>
+        this.service.remove(id).pipe(
           tap({
             next: (res) => {
               this.all();

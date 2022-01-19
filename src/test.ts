@@ -26,6 +26,10 @@ getTestBed().initTestEnvironment(
 );
 
 // Then we find all the tests.
-const context = require.context('./app/api', true, /\.spec\.ts$/);
+const context = require.context(
+  './app/features/admin/users/components/search',
+  true,
+  /\.spec\.ts$/
+);
 // And load the modules.
 context.keys().map(context);

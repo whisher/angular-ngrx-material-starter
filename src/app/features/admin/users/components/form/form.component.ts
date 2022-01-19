@@ -11,7 +11,6 @@ import { FormGroup } from '@angular/forms';
 
 // Models
 import { UserRequestDto, UserResponseDto } from '@api/models';
-import { FormStatusDto } from '@shared/services/form-status';
 
 // Services
 import { UsersFormService } from './form.service';
@@ -23,7 +22,6 @@ import { UsersFormService } from './form.service';
   providers: [UsersFormService]
 })
 export class AdminUsersFormComponent implements OnInit {
-  @Input() status: FormStatusDto | undefined = undefined;
   @Input() user: UserResponseDto | undefined = undefined;
   @Output() submitted = new EventEmitter<UserRequestDto>();
 
@@ -51,6 +49,7 @@ export class AdminUsersFormComponent implements OnInit {
       }
     }
   }
+
   private disablePasswordFields(): void {
     this.frm.get('password')!.disable();
     this.frm.get('passwordConfirm')!.disable();

@@ -9,6 +9,10 @@ import { TranslatePipeStubsModule } from '@testing';
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+// Services
+import { UsersSearchService } from './search.service';
 
 // Components
 import { AdminUsersSearchComponent } from './search.component';
@@ -24,9 +28,11 @@ describe('AdminUsersSearchComponent', () => {
           ReactiveFormsModule,
           NoopAnimationsModule,
           MatFormFieldModule,
-          MatInputModule
+          MatInputModule,
+          MatSelectModule
         ],
-        declarations: [AdminUsersSearchComponent]
+        declarations: [AdminUsersSearchComponent],
+        providers: [UsersSearchService]
       }).compileComponents();
     })
   );

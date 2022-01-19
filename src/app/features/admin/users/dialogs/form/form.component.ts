@@ -12,7 +12,6 @@ import { UserRequestDto, UserResponseDto } from '@api/models';
   templateUrl: './form.component.html'
 })
 export class AdminUsersDialogFormComponent {
-  status = undefined;
   constructor(
     public dialogRef: MatDialogRef<AdminUsersDialogFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserResponseDto | undefined

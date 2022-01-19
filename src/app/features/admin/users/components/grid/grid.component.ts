@@ -113,15 +113,20 @@ export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.subscription.add(
-      this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
-    );
-    this.subscription.add(
-      merge(this.sort.sortChange, this.paginator.page).subscribe((data) => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      })
-    );
+    /* test without this check get error 
+    Cannot read properties of undefined 
+    (reading 'sortChange') */
+    if (this.sort) {
+      this.subscription.add(
+        this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0))
+      );
+      this.subscription.add(
+        merge(this.sort.sortChange, this.paginator.page).subscribe((data) => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        })
+      );
+    }
   }
 
   ngOnDestroy() {

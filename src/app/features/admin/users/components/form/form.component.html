@@ -4,10 +4,6 @@
   [formGroup]="frm"
   autocomplete="off"
 >
-  <ng-container *ngIf="status?.error">
-    <iwdf-alert color="warn" [msg]="status?.error?.message"></iwdf-alert>
-  </ng-container>
-
   <mat-form-field class="w-full" appearance="outline">
     <mat-label>{{ 'iwdf.auth.form.label.username' | translate }}</mat-label>
     <input type="text" matInput formControlName="username" placeholder="" />
@@ -99,8 +95,8 @@
     </div>
   </ng-container>
   <div class="mt-3">
-    <iwdf-button-spinner [loading]="!!status?.loading">
+    <button mat-raised-button color="primary" class="block w-full">
       <span>{{ user ? 'Update user' : 'Add user' }}</span>
-    </iwdf-button-spinner>
+    </button>
   </div>
 </form>

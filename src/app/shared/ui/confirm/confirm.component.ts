@@ -17,12 +17,4 @@ export class IwdfConfirmComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogConfirmDto,
     public dialogRef: MatDialogRef<IwdfConfirmComponent>
   ) {}
-
-  yes() {
-    this.dialogRef.close(true);
-  }
-
-  no() {
-    this.dialogRef.close(false);
-  }
 }

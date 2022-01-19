@@ -7,7 +7,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslatePipeStubsModule } from '@testing';
 
 // Material
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -17,14 +17,13 @@ import { UserRequestDto } from '@api/models';
 // Fortawesome
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
-// Ui
-import { IwdfAlertModule } from '@shared/ui/alert';
-import { IwdfButtonSpinnerModule } from '@shared/ui/button-spinner';
+// Services
+import { UsersFormService } from './form.service';
 
 // Components
 import { AdminUsersFormComponent } from './form.component';
 
-const signInRequestData: UserRequestDto = {
+const userRequestData: UserRequestDto = {
   email: 'test@test.test',
   password: 'abcd',
   passwordConfirm: 'abcd',
@@ -42,14 +41,13 @@ describe('AdminUsersFormComponent', () => {
           TranslatePipeStubsModule,
           ReactiveFormsModule,
           NoopAnimationsModule,
-          MatCheckboxModule,
+          MatButtonModule,
           MatFormFieldModule,
           MatInputModule,
-          IwdfFortawesomeModule,
-          IwdfAlertModule,
-          IwdfButtonSpinnerModule
+          IwdfFortawesomeModule
         ],
-        declarations: [AdminUsersFormComponent]
+        declarations: [AdminUsersFormComponent],
+        providers: [UsersFormService]
       }).compileComponents();
     })
   );
@@ -57,35 +55,19 @@ describe('AdminUsersFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminUsersFormComponent);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should not show alert component when error is null', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('iwdf-alert')).toBeFalsy();
-  });
-
-  it('should show alert component when error is present', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    component.status = {
-      error: { message: 'Error' },
-      loading: false
-    };
-    fixture.detectChanges();
-    expect(compiled.querySelector('iwdf-alert')).toBeTruthy();
-  });
-  it('should emit loginRequestData after onSubmit', () => {
-    fixture.detectChanges();
+  it('should emit userRequestData after onSubmit', () => {
     let data: UserRequestDto = component.frm.value;
     component.submitted.subscribe((value) => {
       data = value;
     });
-    component.frm.setValue(signInRequestData);
+    component.frm.setValue(userRequestData);
     component.onSubmit();
-    expect(data).toEqual(signInRequestData);
+    expect(data).toEqual(userRequestData);
   });
 });
