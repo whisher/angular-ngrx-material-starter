@@ -86,7 +86,9 @@ export class UsersStore extends ComponentStore<UsersState> {
             error: (error) => {
               this.setState((state) => {
                 return {
-                  ...state,
+                  loaded: false,
+                  loading: false,
+                  users: [],
                   error
                 };
               });
@@ -114,7 +116,9 @@ export class UsersStore extends ComponentStore<UsersState> {
             error: (error) => {
               this.setState((state) => {
                 return {
-                  ...state,
+                  loaded: false,
+                  loading: false,
+                  users: [],
                   error
                 };
               });
@@ -142,7 +146,9 @@ export class UsersStore extends ComponentStore<UsersState> {
             error: (error) => {
               this.setState((state) => {
                 return {
-                  ...state,
+                  loaded: false,
+                  loading: false,
+                  users: [],
                   error
                 };
               });
@@ -182,7 +188,9 @@ export class UsersStore extends ComponentStore<UsersState> {
             error: (error) => {
               this.setState((state) => {
                 return {
-                  ...state,
+                  loaded: false,
+                  loading: false,
+                  users: [],
                   error
                 };
               });

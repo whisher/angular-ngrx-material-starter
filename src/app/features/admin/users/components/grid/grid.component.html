@@ -6,8 +6,7 @@
     </div>
   </div>
 </mat-card>
-<ng-container *ngTemplateOutlet="hasData ? withData : noData"></ng-container>
-<ng-template #withData>
+<ng-container *ngIf="hasData; else noData">
   <div class="relative">
     <div
       [ngClass]="isLoading ? 'flex' : 'hidden'"
@@ -148,7 +147,7 @@
     showFirstLastButtons
     aria-label="Select page of users"
   ></mat-paginator>
-</ng-template>
+</ng-container>
 <ng-template #noData>
   <div class="flex justify-center">
     <div class="w-full md:w-2/5">

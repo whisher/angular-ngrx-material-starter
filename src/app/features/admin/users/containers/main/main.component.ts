@@ -27,7 +27,7 @@ import { UsersState, UsersStore } from '../../services';
 })
 export class AdminUsersMainComponent implements OnDestroy, OnInit {
   private subscription: Subscription = new Subscription();
-  readonly vm$: Observable<UsersState> = this.store.vm$;
+  vm$: Observable<UsersState> = this.store.vm$;
   constructor(
     private confirmService: ConfirmService,
     private dialogService: UsersDialogFormService,

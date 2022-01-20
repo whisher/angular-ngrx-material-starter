@@ -31,7 +31,9 @@ import { SearchValuesDto, UserActionDto } from '../../models';
 export class AdminUsersGridComponent implements AfterViewInit, OnDestroy {
   @Input() set data(data: UserResponseDto[]) {
     this.hasData = data.length > 0;
-    this.init(data);
+    if (this.hasData) {
+      this.init(data);
+    }
   }
   @Input() isLoading = false;
   @Output() selected = new EventEmitter<UserActionDto>();

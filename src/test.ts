@@ -27,7 +27,7 @@ getTestBed().initTestEnvironment(
 
 // Then we find all the tests.
 const context = require.context(
-  './app/features/admin/users/dialogs',
+  './app/features/admin/layout',
   true,
   /\.spec\.ts$/
 );
