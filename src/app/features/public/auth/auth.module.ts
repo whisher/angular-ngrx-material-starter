@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-// Ngrx
-import { ReactiveComponentModule } from '@ngrx/component';
-
-// Ngx Translate
-import { TranslateModule } from '@ngx-translate/core';
-
 // Material
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+
+// Ngrx
+import { ReactiveComponentModule } from '@ngrx/component';
+
+// Ngx Translate
+import { TranslateModule } from '@ngx-translate/core';
 
 // Routing
 import { PublicAuthRoutingModule } from './auth-routing.module';
@@ -26,8 +26,8 @@ import { IwdfAlertModule } from '@shared/ui/alert';
 import { IwdfButtonSpinnerModule } from '@shared/ui/button-spinner';
 
 // Components
-import * as fromContainers from './containers';
 import * as fromComponents from './components';
+import * as fromContainers from './containers';
 
 @NgModule({
   imports: [
@@ -44,7 +44,7 @@ import * as fromComponents from './components';
     IwdfButtonSpinnerModule,
     IwdfFortawesomeModule
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components],
+  declarations: [...fromComponents.components, ...fromContainers.components],
   providers: []
 })
 export class PublicAuthModule {}

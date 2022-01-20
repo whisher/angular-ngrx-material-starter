@@ -1,9 +1,9 @@
 import { Attribute, Component, Input, OnInit } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-common-types';
 
-export enum AlertColor {
+export const enum AlertColor {
   accent = 'accent',
-  primary = 'accent',
+  primary = 'primary',
   warn = 'warn'
 }
 
@@ -13,7 +13,7 @@ export enum AlertColor {
 })
 export class IwdfAlertComponent implements OnInit {
   @Input() msg: string | undefined = 'Something went wrong';
-  private readonly PREFIX = 'alert';
+  private readonly PREFIX = 'bg';
   cls!: string;
   icons = {
     accent: 'info-circle',

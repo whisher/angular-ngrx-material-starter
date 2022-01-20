@@ -1,5 +1,5 @@
 import { AdminLayoutMainComponent } from './main/main.component';
 
-export const containers: any[] = [AdminLayoutMainComponent];
+export const components: any[] = [AdminLayoutMainComponent];
 
 export * from './main/main.component';

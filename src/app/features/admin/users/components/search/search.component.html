@@ -1,0 +1,29 @@
+<form
+  class="flex justify-start items-center gap-3 w-full"
+  [formGroup]="frm"
+  autocomplete="off"
+>
+  <mat-form-field class="w-full" appearance="outline">
+    <mat-label>{{ 'iwdf.auth.form.label.username' | translate }}</mat-label>
+    <input type="text" matInput formControlName="username" placeholder="" />
+  </mat-form-field>
+
+  <mat-form-field class="w-full" appearance="outline">
+    <mat-label>{{ 'iwdf.auth.form.label.email' | translate }}</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="email"
+      autocomplete="email"
+      placeholder=""
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role">
+      <mat-option *ngFor="let role of roles" [value]="role">
+        {{ role }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

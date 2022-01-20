@@ -13,7 +13,7 @@ const declarations = [IwdfButtonSpinnerComponent];
 
 @NgModule({
   imports: [CommonModule, MatButtonModule, MatProgressSpinnerModule],
-  declarations: [...declarations],
+  declarations,
   exports: [...declarations]
 })
 export class IwdfButtonSpinnerModule {}

@@ -1,7 +1,7 @@
 import { PublicAuthLoginComponent } from './login/login.component';
 import { PublicAuthSigninComponent } from './signin/signin.component';
 
-export const containers: any[] = [
+export const components: any[] = [
   PublicAuthLoginComponent,
   PublicAuthSigninComponent
 ];

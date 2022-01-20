@@ -2,14 +2,16 @@
   <mat-sidenav class="w-full" #sidenav mode="push">
     <public-layout-nav [sidenav]="sidenav"></public-layout-nav>
   </mat-sidenav>
-  <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
-    <public-layout-header
-      [account]="account$ | ngrxPush"
-      [sidenav]="sidenav"
-    ></public-layout-header>
-    <main class="md:container md:mx-auto mx-3 mt-3 prose prose-slate">
-      <router-outlet></router-outlet>
-    </main>
-    <public-layout-footer></public-layout-footer>
-  </div>
+  <mat-sidenav-content>
+    <div class="grid min-h-screen grid-rows-[auto_1fr_auto]">
+      <public-layout-header
+        [account]="account$ | ngrxPush"
+        [sidenav]="sidenav"
+      ></public-layout-header>
+      <main class="md:container md:mx-auto mx-3 mt-3 prose prose-slate">
+        <router-outlet></router-outlet>
+      </main>
+      <public-layout-footer></public-layout-footer>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

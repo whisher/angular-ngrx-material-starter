@@ -1,0 +1,157 @@
+<mat-card class="mb-3">
+  <div class="flex justify-start items-center w-full">
+    <admin-users-search (search)="onSearch($event)"></admin-users-search>
+    <div class="ml-auto pb-6">
+      <admin-users-add></admin-users-add>
+    </div>
+  </div>
+</mat-card>
+<ng-container *ngIf="hasData; else noData">
+  <div class="relative">
+    <div
+      [ngClass]="isLoading ? 'flex' : 'hidden'"
+      class="absolute top-0 right-0 bottom-0 left-0 justify-center pt-32 bg-slate-600/30"
+    >
+      <iwdf-spinner color="primary"></iwdf-spinner>
+    </div>
+    <mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="announceSortChange($event)"
+      class="mat-elevation-z3 w-full"
+    >
+      <!-- UserId -->
+      <ng-container matColumnDef="userId">
+        <mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by userId"
+        >
+          <span class="uppercase">UserId</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.id }}
+        </mat-cell>
+      </ng-container>
+      <!-- username -->
+      <ng-container matColumnDef="username">
+        <mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by username"
+        >
+          <span class="uppercase">Username</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.username }}
+        </mat-cell>
+      </ng-container>
+      <!-- Email -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by email"
+        >
+          <span class="uppercase">Email</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.email }}
+        </mat-cell>
+      </ng-container>
+      <!-- Created -->
+      <ng-container matColumnDef="createdAt">
+        <mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by createdAt"
+        >
+          <span class="uppercase">Created</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.createdAt | date: 'mediumDate' }}
+        </mat-cell>
+      </ng-container>
+      <!-- Updated -->
+      <ng-container matColumnDef="updatedAt">
+        <mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by updatedAt"
+        >
+          <span class="uppercase">Update</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.updatedAt | date: 'mediumDate' }}
+        </mat-cell>
+      </ng-container>
+      <!-- Role -->
+      <ng-container matColumnDef="role">
+        <mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by role"
+        >
+          <span class="uppercase">Role</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.role }}
+        </mat-cell>
+      </ng-container>
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <span class="uppercase">Actions</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div class="flex gap-3 justify-end w-full">
+            <button
+              mat-mini-fab
+              color="accent"
+              aria-label="Delete user"
+              (click)="handleUserAction({ action: 'delete', data: element })"
+            >
+              <fa-icon
+                class="text-icon"
+                size="lg"
+                [icon]="['fas', 'trash']"
+              ></fa-icon>
+            </button>
+            <button
+              mat-mini-fab
+              color="accent"
+              aria-label="Edit user"
+              (click)="handleUserAction({ action: 'edit', data: element })"
+            >
+              <fa-icon
+                class="text-icon"
+                size="lg"
+                [icon]="['fas', 'edit']"
+              ></fa-icon>
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        (click)="
+          clickedRows.has(row) ? clickedRows.delete(row) : clickedRows.add(row)
+        "
+        [class.font-bold]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns"
+      ></mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of users"
+  ></mat-paginator>
+</ng-container>
+<ng-template #noData>
+  <div class="flex justify-center">
+    <div class="w-full md:w-2/5">
+      <iwdf-alert color="accent" [msg]="'No data yet'"></iwdf-alert>
+    </div>
+  </div>
+</ng-template>

@@ -12,6 +12,8 @@ import { IwdfFortawesomeModule } from '../fortawesome';
 // Components
 import { IwdfThemePickerComponent } from './theme-picker.component';
 
+const declarations = [IwdfThemePickerComponent];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +21,7 @@ import { IwdfThemePickerComponent } from './theme-picker.component';
     MatMenuModule,
     IwdfFortawesomeModule
   ],
-  declarations: [IwdfThemePickerComponent],
-  exports: [IwdfThemePickerComponent]
+  declarations,
+  exports: [...declarations]
 })
 export class IwdfThemePickerModule {}

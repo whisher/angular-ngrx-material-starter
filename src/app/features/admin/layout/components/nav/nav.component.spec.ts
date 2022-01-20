@@ -5,6 +5,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 // Material
 import { MatListModule } from '@angular/material/list';
 
+// Fortawesome
+import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
+
 // Components
 import { AdminLayoutNavComponent } from './nav.component';
 
@@ -15,7 +18,7 @@ describe('PublicLayoutFooterComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule, MatListModule],
+        imports: [RouterTestingModule, MatListModule, IwdfFortawesomeModule],
         declarations: [AdminLayoutNavComponent],
         providers: []
       }).compileComponents();

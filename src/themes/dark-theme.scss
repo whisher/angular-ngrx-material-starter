@@ -25,6 +25,7 @@ $iwdf-theme: mat.define-dark-theme(
   @include mat.button-color($iwdf-theme);
   @include mat.card-color($iwdf-theme);
   @include mat.checkbox-color($iwdf-theme);
+  @include mat.dialog-color($iwdf-theme);
   @include mat.divider-color($iwdf-theme);
   @include mat.form-field-color($iwdf-theme);
   @include mat.input-color($iwdf-theme);

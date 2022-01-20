@@ -1,0 +1,17 @@
+<ng-container *ngrxLet="vm$ as vm">
+  <div *ngIf="!vm.loaded && !vm.error" class="flex justify-center mt-3">
+    <iwdf-spinner color="primary"></iwdf-spinner>
+  </div>
+  <div class="flex justify-center" *ngIf="vm.error && !vm.loaded">
+    <div class="w-full md:w-2/5">
+      <iwdf-alert color="warn" [msg]="vm.error.message"></iwdf-alert>
+    </div>
+  </div>
+  <ng-container *ngIf="vm.loaded && !vm.error">
+    <admin-users-grid
+      [data]="vm.users"
+      [isLoading]="vm.loading"
+      (selected)="handleUserAction($event)"
+    ></admin-users-grid>
+  </ng-container>
+</ng-container>

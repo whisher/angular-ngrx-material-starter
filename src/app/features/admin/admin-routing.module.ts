@@ -23,6 +23,11 @@ export const routes: Routes = [
           import('./dashboard/dashboard.module').then(
             (m) => m.AdminDashboardModule
           )
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./users/users.module').then((m) => m.AdminUsersModule)
       }
     ]
   }

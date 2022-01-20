@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <div class="flex items-center">
     <h1 class="m-0">
       <a routerLink="/" class="flex items-center gap-3">
@@ -48,6 +48,9 @@
       </div>
     </buttom>
   </mat-menu>
+  <ng-container *ngIf="account$ | ngrxPush as account">
+    <span class="pl-1 text-sm">@{{ account?.username }}</span>
+  </ng-container>
   <div class="w-14 pl-3" *ngIf="theme$ | ngrxPush as theme">
     <iwdf-theme-picker
       [theme]="theme"
