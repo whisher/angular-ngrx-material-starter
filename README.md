@@ -2,7 +2,7 @@
 
 by [@ilwebdifabio](https://twitter.com/ilwebdifabio)
 
-[![license](https://img.shields.io/github/license/whisher/angular-ngrx-material-starter.svg)](https://github.com/whisher/angular-ngrx-material-starter/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## Table of Content
@@ -27,7 +27,7 @@ npm start
 - Server
 
 ```bash
-git clonehttps://github.com/whisher/express-prisma-starter.git server-project
+git clone https://github.com/whisher/express-prisma-starter.git server-project
 cd server-project
 npm install
 npm start
