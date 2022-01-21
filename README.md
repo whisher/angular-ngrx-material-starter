@@ -1,8 +1,6 @@
-# Angular 13 Ngrx And Material Starter
+# Angular 13, NgRx, Angular Material and Tailwindcss Starter
 
 by [@ilwebdifabio](https://twitter.com/ilwebdifabio)
-
-Buy me a coofee (todo)
 
 ## Getting Started
 
