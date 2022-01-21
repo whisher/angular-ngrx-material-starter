@@ -15,9 +15,20 @@ by [@ilwebdifabio](https://twitter.com/ilwebdifabio)
 
 ## Getting Started
 
+- Client
+
 ```bash
-git clone https://github.com/whisher/angular-ngrx-material-starter.git my-new-project
-cd my-new-project
+git clone https://github.com/whisher/angular-ngrx-material-starter.git client-project
+cd client-project
+npm install
+npm start
+```
+
+- Server
+
+```bash
+git clonehttps://github.com/whisher/express-prisma-starter.git server-project
+cd server-project
 npm install
 npm start
 ```
@@ -68,3 +79,7 @@ The main goal of this repository is to provide a real word (you can use [express
 
 - [angular-ngrx-material-starter](https://github.com/tomastrajan/angular-ngrx-material-starter)
 - [Dharmen Shah](https://indepth.dev/tutorials/angular/angular-material-theming-system-complete-guide)
+
+```
+
+```
