@@ -2,7 +2,7 @@
 
 by [@ilwebdifabio](https://twitter.com/ilwebdifabio)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/whisher/angular-ngrx-material-starter/blob/main/LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## Table of Content
@@ -61,12 +61,13 @@ The main goal of this repository is to provide a real word (you can use [express
 
 - Two layout public and admin
 - Auth with guard
-- Zone less
-- No scss files
-- lazy-loading of feature modules
-- localStorage ui state persistence
+- Zoneless
+- Lazy-loading of feature modules
+- LocalStorage ui state persistence
 - `@ngrx/effects` for API requests
-- fully responsive design
+- I18n
+- No scss files in the components
+- Use material color in tailwindcss as well
 
 ## Stack
 

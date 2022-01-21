@@ -1,9 +1,18 @@
+// Core
 import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
+
+// Rxjs
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
-import { UserService } from '@api/services/user.service';
+
+// Ngrx
+import { ComponentStore } from '@ngrx/component-store';
+
+// Models
 import { ErrorDto, UserRequestDto, UserResponseDto } from '@api/models';
+
+// Services
+import { UserService } from '@api/services/user.service';
 
 export interface UsersState {
   error: ErrorDto | null;
