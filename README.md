@@ -64,7 +64,7 @@ The main goal of this repository is to provide a real word (you can use [express
 - Angular Material
 - Tailwindcss
 
-## Credits
+### Credits
 
-[angular-ngrx-material-starter](https://github.com/tomastrajan/angular-ngrx-material-starter)
-[Dharmen Shah](https://indepth.dev/tutorials/angular/angular-material-theming-system-complete-guide)
+- [angular-ngrx-material-starter](https://github.com/tomastrajan/angular-ngrx-material-starter)
+- [Dharmen Shah](https://indepth.dev/tutorials/angular/angular-material-theming-system-complete-guide)
