@@ -24,6 +24,8 @@ import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 // Store
 import { AccountFacade } from '@stores/account';
 import { accountReducer } from '@stores/account/store/account.reducer';
+import { AuthFacade } from '@stores/auth';
+import { authReducer } from '@stores/auth/store/auth.reducer';
 import { SettingsFacade } from '@stores/settings';
 import { settingsReducer } from '@stores/settings/store/settings.reducer';
 
@@ -51,6 +53,7 @@ describe('AdminLayoutHeaderComponent', () => {
           ReactiveComponentModule,
           StoreModule.forRoot({
             account: accountReducer,
+            auth: authReducer,
             settings: settingsReducer
           }),
           MatButtonModule,
@@ -63,7 +66,7 @@ describe('AdminLayoutHeaderComponent', () => {
           MockIwdfThemePickerComponent,
           AdminLayoutHeaderComponent
         ],
-        providers: [Store, AccountFacade, SettingsFacade]
+        providers: [Store, AccountFacade, AuthFacade, SettingsFacade]
       }).compileComponents();
     })
   );

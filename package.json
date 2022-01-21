@@ -2,18 +2,19 @@
   "name": "angular-ngrx-material-starter",
   "version": "1.0.0",
   "scripts": {
-    "sass": "sass ./src/themes/dark-theme.scss ./src/themes/dark-theme.css",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:prod": "ng build --configuration production",
+    "start:prod": "npm run build && npm run server",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --configuration=test",
+    "test": "npm run lint && ng test --configuration=test",
     "test:coverage": "ng test --no-watch --code-coverage",
     "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "format:write": "prettier --write \"./{src}/**/*.{ts,js,html,scss}\"",
-    "format:test": "prettier --list-different \"./{src}/**/*.{ts,js,html,scss}\""
+    "format:test": "prettier --list-different \"./{src}/**/*.{ts,js,html,scss}\"",
+    "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer ./dist/angular-ngrx-material-starter/stats.json",
+    "server": "node ./server/server.js"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +61,7 @@
     "@typescript-eslint/parser": "5.3.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.2.0",
+    "express": "^4.17.2",
     "husky": "^7.0.4",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
@@ -71,7 +73,8 @@
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.2",
     "tailwindcss": "^3.0.7",
-    "typescript": "~4.5.2"
+    "typescript": "~4.5.2",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "husky": {
     "hooks": {
