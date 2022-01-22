@@ -35,17 +35,19 @@ const userResponseCreateData: UserResponseDto = {
   role: UserRoleDto.user,
   username: 'test2'
 };
-/*
+
 const userRequestUpdateData: UserRequestDto = {
-  email: 'test2@test.test',
-  username: 'test3'
-};*/
-const userResponseUpdateData: UserResponseDto = {
-  id: '2',
-  email: 'test2@test.test',
-  role: UserRoleDto.user,
-  username: 'test3'
+  id: '1',
+  email: 'test1@test.test',
+  username: 'test1'
 };
+const userResponseUpdateData: UserResponseDto = {
+  id: '1',
+  email: 'test1@test.test',
+  role: UserRoleDto.user,
+  username: 'test1'
+};
+
 // Mocks
 export class MockUserService {
   users = usersResponseData;
@@ -65,16 +67,15 @@ export class MockUserService {
 
   update(data: UserRequestDto): Observable<UserResponseDto> {
     const index = this.users.findIndex((user) => user.id === data.id); //finding index of the item
-    const newArray = [...this.users];
-    newArray[index].username = data.username;
-    this.users = newArray;
+    const users = [...this.users];
+    users[index].username = data.username;
+    this.users = users;
     return of(userResponseUpdateData);
   }
 }
 
 describe('UsersStore', () => {
   let store: UsersStore;
-  let userService: UserService;
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
@@ -85,41 +86,52 @@ describe('UsersStore', () => {
   );
   beforeEach(() => {
     store = TestBed.inject(UsersStore);
-    userService = TestBed.inject(UserService);
-    console.log(userService);
   });
   it('should be created', () => {
-    const stepConfirmService = TestBed.inject(UsersStore);
-    expect(stepConfirmService).toBeTruthy();
+    expect(store).toBeTruthy();
   });
   describe('all', () => {
-    it('should state users equal to usersResponseData', () => {
+    it('should users state equal to usersResponseData', () => {
       store.vm$.subscribe((state) => {
-        expect(state.users).toEqual(usersResponseData);
-      });
-    });
-    it('should state loaded equal to true', () => {
-      store.vm$.subscribe((state) => {
+        expect(state.error).toEqual(null);
         expect(state.loaded).toEqual(true);
+        expect(state.loading).toEqual(false);
+        expect(state.users).toEqual(usersResponseData);
       });
     });
   });
   describe('create', () => {
-    it('should state users length equal to 2', () => {
+    it('should users state length equal to 2', () => {
       store.create(userRequestCreateData);
       store.vm$.subscribe((state) => {
-        expect(state.users.length).toBe(2);
+        expect(state.error).toEqual(null);
         expect(state.loaded).toEqual(true);
+        expect(state.loading).toEqual(false);
+        expect(state.users.length).toBe(2);
       });
     });
   });
 
   describe('remove', () => {
-    it('should state users length equal to 1', () => {
+    it('should users state length equal to 0', () => {
       store.remove({ id: '1' });
       store.vm$.subscribe((state) => {
-        expect(state.users.length).toBe(1);
+        expect(state.error).toEqual(null);
         expect(state.loaded).toEqual(true);
+        expect(state.loading).toEqual(false);
+        expect(state.users.length).toBe(0);
+      });
+    });
+  });
+
+  describe('update', () => {
+    it('should users state username update', () => {
+      store.update(userRequestUpdateData);
+      store.vm$.subscribe((state) => {
+        expect(state.error).toEqual(null);
+        expect(state.loaded).toEqual(true);
+        expect(state.loading).toEqual(false);
+        expect(state.users[0].username).toBe('test1');
       });
     });
   });

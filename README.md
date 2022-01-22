@@ -55,6 +55,7 @@ The main goal of this repository is to provide a real word (you can use [express
 - `@angular/material` - material design component library, theming, ...
 - routing
 - testing of all the above mentioned concepts
+- a few useful testing stubs
 - Angular CLI configuration (prod build, budgets, ...)
 
 ## Features
