@@ -9,7 +9,9 @@
         [sidenav]="sidenav"
       ></public-layout-header>
       <main class="md:container md:mx-auto mx-3 mt-3 prose prose-slate">
-        <router-outlet></router-outlet>
+        <div class="w-full md:w-2/5 md:mx-auto">
+          <router-outlet></router-outlet>
+        </div>
       </main>
       <public-layout-footer></public-layout-footer>
     </div>
