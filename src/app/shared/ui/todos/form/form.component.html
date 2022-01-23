@@ -1,0 +1,22 @@
+<form
+  class="flex flex-col"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="frm"
+  autocomplete="off"
+>
+  <div
+    class="flex items-center border border-white bg-white rounded-lg mat-elevation-z1"
+  >
+    <input
+      type="text"
+      formControlName="name"
+      class="rounded-l-full w-full py-2 px-3 leading-tight focus:outline-none"
+      placeholder="Write a new task"
+    />
+    <div class="p-4">
+      <button mat-mini-fab color="primary" aria-label="Submit form">
+        <fa-icon class="text-icon" size="lg" [icon]="['fas', 'plus']"></fa-icon>
+      </button>
+    </div>
+  </div>
+</form>

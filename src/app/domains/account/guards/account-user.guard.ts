@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';
 
 // Models
-import { UserAccountResponseDto } from '@api/models/user';
+import { UserAccountResponseDto } from '@api/models';
 
 // Facade
 import { AccountFacade } from '../store/account.facade';

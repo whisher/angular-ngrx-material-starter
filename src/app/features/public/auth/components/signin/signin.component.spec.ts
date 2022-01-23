@@ -11,7 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-// Model
+// Models
 import { SignInRequestDto } from '@api/models';
 
 // Fortawesome

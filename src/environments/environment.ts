@@ -1,4 +1,4 @@
-import { EnvironmentDto } from '@api/models';
+import { EnvironmentDto } from './environment.model';
 
 export const environment: EnvironmentDto = {
   apiEndpoint: 'http://localhost:5000',

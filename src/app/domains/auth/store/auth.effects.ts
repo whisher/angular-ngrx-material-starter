@@ -9,8 +9,8 @@ import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 // Models
-import { ErrorDto } from '@api/models/error';
-import { LoginResponseDto } from '@api/models/auth';
+import { ErrorDto } from '@api/models';
+import { LoginResponseDto } from '@api/models/auth.model';
 
 // Services
 import { AuthService } from '@api/services/auth.service';

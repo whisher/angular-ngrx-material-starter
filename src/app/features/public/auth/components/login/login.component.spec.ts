@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 // Model
-import { LoginRequestDto } from '@api/models/auth';
+import { LoginRequestDto } from '@api/models/auth.model';
 
 // Fortawesome
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
