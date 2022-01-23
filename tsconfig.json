@@ -23,7 +23,7 @@
     "paths": {
       "@api/*": ["src/app/api/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@stores/*": ["src/app/stores/*"],
+      "@domains/*": ["src/app/domains/*"],
       "@testing": ["src/testing/index"]
     }
   },

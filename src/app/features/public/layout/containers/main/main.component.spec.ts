@@ -21,9 +21,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { UserAccountResponseDto } from '@api/models';
 
 // Store
-import { AccountFacade } from '@stores/account';
-import { accountReducer } from '@stores/account/store/account.reducer';
-import { authReducer } from '@stores/auth/store/auth.reducer';
+import { AccountFacade } from '@domains/account';
+import { accountReducer } from '@domains/account/store/account.reducer';
+import { authReducer } from '@domains/auth/store/auth.reducer';
 
 // Components
 import { PublicLayoutMainComponent } from './main.component';

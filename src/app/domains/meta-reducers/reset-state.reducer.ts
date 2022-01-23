@@ -2,7 +2,7 @@
 import { ActionReducer } from '@ngrx/store';
 
 // Store
-import { AppState } from '../stores.state';
+import { AppState } from '../domains.state';
 import * as AuthActions from '../auth/store/auth.actions';
 
 export function resetStateReducer(

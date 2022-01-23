@@ -8,7 +8,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { Language } from '@api/models';
 
 // Store
-import { SettingsFacade } from '@stores/settings';
+import { SettingsFacade } from '@domains/settings';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

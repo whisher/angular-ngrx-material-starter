@@ -12,8 +12,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { MatSelectModule } from '@angular/material/select';
 
 // Store
-import { SettingsFacade } from '@stores/settings';
-import { settingsReducer } from '@stores/settings/store/settings.reducer';
+import { SettingsFacade } from '@domains/settings';
+import { settingsReducer } from '@domains/settings/store/settings.reducer';
 
 // Components
 import { PublicLayoutLangPickerComponent } from './lang-picker.component';

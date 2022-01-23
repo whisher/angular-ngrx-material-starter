@@ -5,8 +5,8 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Store, StoreModule } from '@ngrx/store';
 
 // Store
-import { AuthFacade } from '@stores/auth';
-import { authReducer } from '@stores/auth/store/auth.reducer';
+import { AuthFacade } from '@domains/auth';
+import { authReducer } from '@domains/auth/store/auth.reducer';
 
 // Component
 import { LogoutPageComponent } from './logout.component';

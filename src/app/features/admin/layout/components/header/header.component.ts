@@ -9,8 +9,8 @@ import { MatSelectChange } from '@angular/material/select';
 import { Language, Theme } from '@api/models';
 
 // Store
-import { AccountFacade } from '@stores/account';
-import { SettingsFacade } from '@stores/settings';
+import { AccountFacade } from '@domains/account';
+import { SettingsFacade } from '@domains/settings';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Theme } from '@api/models';
 
 // Store
-import { SettingsFacade } from '@stores/settings';
+import { SettingsFacade } from '@domains/settings';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

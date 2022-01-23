@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Guards
-import { AccountUserGuard } from '@stores/account';
-import { AuthGuard, AuthLoggedGuard } from '@stores/auth';
+import { AccountUserGuard } from '@domains/account';
+import { AuthGuard, AuthLoggedGuard } from '@domains/auth';
 
 // Component
 import { PublicLayoutMainComponent } from './layout/containers';

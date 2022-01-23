@@ -22,12 +22,12 @@ import { Theme } from '@api/models';
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
 
 // Store
-import { AccountFacade } from '@stores/account';
-import { accountReducer } from '@stores/account/store/account.reducer';
-import { AuthFacade } from '@stores/auth';
-import { authReducer } from '@stores/auth/store/auth.reducer';
-import { SettingsFacade } from '@stores/settings';
-import { settingsReducer } from '@stores/settings/store/settings.reducer';
+import { AccountFacade } from '@domains/account';
+import { accountReducer } from '@domains/account/store/account.reducer';
+import { AuthFacade } from '@domains/auth';
+import { authReducer } from '@domains/auth/store/auth.reducer';
+import { SettingsFacade } from '@domains/settings';
+import { settingsReducer } from '@domains/settings/store/settings.reducer';
 
 // Components
 import { AdminLayoutHeaderComponent } from './header.component';
