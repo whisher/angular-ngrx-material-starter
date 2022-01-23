@@ -2,7 +2,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 // Facades
-import { AuthFacade } from '@stores/auth';
+import { AuthFacade } from '@domains/auth';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

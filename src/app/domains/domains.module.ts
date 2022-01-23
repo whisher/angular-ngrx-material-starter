@@ -20,7 +20,7 @@ import {
 } from './meta-reducers';
 
 // Stores
-import { AppState } from './stores.state';
+import { AppState } from './domains.state';
 import { AccountEffects } from './account/store/account.effects';
 import { accountReducer } from './account/store/account.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
@@ -78,11 +78,11 @@ if (!environment.production) {
   ],
   providers: [...fromInterceptors.interceptors]
 })
-export class StoresModule {
-  constructor(@Optional() @SkipSelf() parentModule: StoresModule) {
+export class DomainsModule {
+  constructor(@Optional() @SkipSelf() parentModule: DomainsModule) {
     if (parentModule) {
       throw new Error(
-        'StoresModule is already loaded. Import only in AppModule'
+        'DomainsModule is already loaded. Import only in AppModule'
       );
     }
   }

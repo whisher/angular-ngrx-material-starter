@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Models
 import { LoginRequestDto } from '@api/models';
-import { AuthStatus } from '@stores/auth';
+import { AuthStatus } from '@domains/auth';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

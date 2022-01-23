@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Guards
-import { AccountUserGuard } from '@stores/account';
-import { AuthGuard } from '@stores/auth';
+import { AccountUserGuard } from '@domains/account';
+import { AuthGuard } from '@domains/auth';
 
 const routes: Routes = [
   {

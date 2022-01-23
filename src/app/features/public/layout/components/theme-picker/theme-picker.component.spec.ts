@@ -9,8 +9,8 @@ import { Store, StoreModule } from '@ngrx/store';
 import { ReactiveComponentModule } from '@ngrx/component';
 
 // Store
-import { SettingsFacade } from '@stores/settings';
-import { settingsReducer } from '@stores/settings/store/settings.reducer';
+import { SettingsFacade } from '@domains/settings';
+import { settingsReducer } from '@domains/settings/store/settings.reducer';
 
 // UI
 import { IwdfThemePickerModule } from '@shared/ui/theme-picker';

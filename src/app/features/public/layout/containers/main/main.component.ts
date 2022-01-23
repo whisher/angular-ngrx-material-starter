@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // Stores
-import { AccountFacade } from '@stores/account';
+import { AccountFacade } from '@domains/account';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

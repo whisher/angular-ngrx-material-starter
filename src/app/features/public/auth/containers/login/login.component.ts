@@ -10,8 +10,8 @@ import {
 import { Observable, Subscription } from 'rxjs';
 
 // Store
-import { AccountFacade } from '@stores/account';
-import { AuthFacade, AuthStatus } from '@stores/auth';
+import { AccountFacade } from '@domains/account';
+import { AuthFacade, AuthStatus } from '@domains/auth';
 
 // Models
 import { LoginRequestDto } from '@api/models';
