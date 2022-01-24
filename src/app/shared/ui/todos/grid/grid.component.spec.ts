@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IwdfTodosRowComponent } from './row.component';
+import { IwdfTodosGridComponent } from './grid.component';
 
-describe('IwdfTodosRowComponent', () => {
-  let component: IwdfTodosRowComponent;
-  let fixture: ComponentFixture<IwdfTodosRowComponent>;
+describe('IwdfTodosGridComponent', () => {
+  let component: IwdfTodosGridComponent;
+  let fixture: ComponentFixture<IwdfTodosGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IwdfTodosRowComponent]
+      declarations: [IwdfTodosGridComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IwdfTodosRowComponent);
+    fixture = TestBed.createComponent(IwdfTodosGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

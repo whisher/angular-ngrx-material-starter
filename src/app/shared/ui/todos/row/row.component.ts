@@ -1,39 +1,39 @@
+// Core
 import {
-  ChangeDetectorRef,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  HostBinding,
-  HostListener,
   Input,
-  Output,
+  Output
 } from '@angular/core';
 
-import { TodoDto, TodoActions, TodoActionsType } from '../../models';
+// Material
+import { MatCheckboxChange } from '@angular/material/checkbox';
+
+// Models
+import { TodoDto } from '@api/models';
+import { TodoActions, TodoActionsType } from '../model';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-todos-row',
-  templateUrl: './row.component.html',
+  selector: 'iwdf-todos-row',
+  templateUrl: './row.component.html'
 })
-export class TodosRowComponent {
-  @HostBinding('class') classList = 'w-full';
-  @Input() data!: TodoDto;
+export class IwdfTodosRowComponent {
+  @Input() todo!: TodoDto;
   @Output() handleAcions = new EventEmitter<TodoActions>();
-  isVisible = false;
-  @HostListener('mouseenter') onEnter(): void {
-    this.isVisible = true;
-    this.ref.detectChanges();
+
+  constructor() {}
+
+  onHandleActions(data: TodoActions): void {
+    this.handleAcions.emit(data);
   }
-
-  @HostListener('mouseleave') onLeave(): void {
-    this.isVisible = false;
-    this.ref.detectChanges();
-  }
-
-  constructor(private ref: ChangeDetectorRef) {}
-
-  onHandleAcions(action: TodoActionsType, data: TodoDto): void {
-    this.handleAcions.emit({ action, data });
+  onHandleIsComplete(event: MatCheckboxChange) {
+    const data = {
+      action: 'update' as TodoActionsType,
+      data: { ...this.todo, isDone: event.checked }
+    };
+    this.todo = data.data;
+    this.handleAcions.emit(data);
   }
 }

@@ -1,0 +1,6 @@
+<div *ngFor="let todo of todos" class="mb-1">
+  <iwdf-todos-row
+    [todo]="todo"
+    (handleAcions)="onHandleAcions($event)"
+  ></iwdf-todos-row>
+</div>
