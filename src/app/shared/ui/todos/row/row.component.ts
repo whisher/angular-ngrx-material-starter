@@ -22,12 +22,13 @@ import { TodoActions, TodoActionsType } from '../model';
 export class IwdfTodosRowComponent {
   @Input() todo!: TodoDto;
   @Output() handleAcions = new EventEmitter<TodoActions>();
+  isDeleted = false;
 
-  constructor() {}
-
-  onHandleActions(data: TodoActions): void {
+  onHandleDelete(data: TodoActions): void {
+    this.isDeleted = true;
     this.handleAcions.emit(data);
   }
+
   onHandleIsComplete(event: MatCheckboxChange) {
     const data = {
       action: 'update' as TodoActionsType,

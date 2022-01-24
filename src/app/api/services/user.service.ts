@@ -22,11 +22,11 @@ export class UserService {
     return this.http.get<UserAccountResponseDto>(this.endpoint.account);
   }
 
-  all(): Observable<UserResponseDto[]> {
+  getAll(): Observable<UserResponseDto[]> {
     return this.http.get<UserResponseDto[]>(this.endpoint.all);
   }
 
-  create(data: UserRequestDto): Observable<UserResponseDto> {
+  add(data: UserRequestDto): Observable<UserResponseDto> {
     return this.http.post<UserResponseDto>(this.endpoint.create, data);
   }
 

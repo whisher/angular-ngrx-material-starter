@@ -1,6 +1,6 @@
 export interface TodoDto {
   id?: string;
-  isDone: boolean;
+  isDone?: boolean;
   name: string;
   createdAt?: Date;
   updatedAt?: Date;

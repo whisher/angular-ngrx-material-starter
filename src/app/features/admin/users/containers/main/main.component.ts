@@ -41,7 +41,7 @@ export class AdminUsersMainComponent implements OnDestroy, OnInit {
           if ('id' in result) {
             this.store.update(result);
           } else {
-            this.store.create(result);
+            this.store.add(result);
           }
         }
       })

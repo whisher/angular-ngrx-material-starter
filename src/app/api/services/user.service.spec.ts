@@ -71,16 +71,16 @@ describe('UserService', () => {
     req.flush(usersAccountResponseData);
   });
 
-  it('all should GET void and return usersAccountResponseData', () => {
-    userService.all().subscribe((data) => {
+  it('getAll should GET void and return usersAccountResponseData', () => {
+    userService.getAll().subscribe((data) => {
       expect(data).toEqual(usersResponseData);
     });
     const req = httpTestingController.expectOne(userService.endpoint.all);
     req.flush(usersResponseData);
   });
 
-  it('create should POST userRequestData and return userResponseData', () => {
-    userService.create(userRequestData).subscribe((data) => {
+  it('add should POST userRequestData and return userResponseData', () => {
+    userService.add(userRequestData).subscribe((data) => {
       expect(data).toEqual(userResponseData);
     });
     const req = httpTestingController.expectOne(userService.endpoint.create);

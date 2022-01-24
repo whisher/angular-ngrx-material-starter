@@ -51,11 +51,11 @@ const userResponseUpdateData: UserResponseDto = {
 // Mocks
 export class MockUserService {
   users = usersResponseData;
-  all(): Observable<UserResponseDto[]> {
+  getAll(): Observable<UserResponseDto[]> {
     return of(this.users);
   }
 
-  create(data: UserRequestDto): Observable<UserResponseDto> {
+  add(data: UserRequestDto): Observable<UserResponseDto> {
     this.users = [...this.users, userResponseCreateData];
     return of(userResponseCreateData);
   }
@@ -90,7 +90,7 @@ describe('UsersStore', () => {
   it('should be created', () => {
     expect(store).toBeTruthy();
   });
-  describe('all', () => {
+  describe('getAll', () => {
     it('should users state equal to usersResponseData', () => {
       store.vm$.subscribe((state) => {
         expect(state.error).toEqual(null);
@@ -100,9 +100,9 @@ describe('UsersStore', () => {
       });
     });
   });
-  describe('create', () => {
+  describe('add', () => {
     it('should users state length equal to 2', () => {
-      store.create(userRequestCreateData);
+      store.add(userRequestCreateData);
       store.vm$.subscribe((state) => {
         expect(state.error).toEqual(null);
         expect(state.loaded).toEqual(true);

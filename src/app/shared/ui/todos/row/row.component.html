@@ -1,5 +1,6 @@
 <div
-  class="flex justify-start items-center rounded-lg mat-elevation-z1 px-3 py-2"
+  class="flex justify-start items-center rounded-lg mat-elevation-z1 px-3 py-2 transition-opacity duration-500"
+  [ngClass]="isDeleted ? 'opacity-0' : 'opacity-100'"
 >
   <div class="flex-1">
     <mat-checkbox [checked]="todo.isDone" (change)="onHandleIsComplete($event)">
@@ -12,7 +13,7 @@
     mat-mini-fab
     color="warn"
     aria-label="Delete todo"
-    (click)="onHandleActions({ action: 'delete', data: todo })"
+    (click)="onHandleDelete({ action: 'delete', data: todo })"
   >
     <fa-icon class="text-icon" size="lg" [icon]="['fas', 'trash']"></fa-icon>
   </button>
