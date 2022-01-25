@@ -1,17 +1,27 @@
 // Ngrx
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 
+// Models
+import { TodoDto } from '@api/models';
+
 // Store
-import { AccountState } from './account.state';
-import * as AccountActions from './account.actions';
+import { TodosState } from './todos-entity.state';
+import * as TodosActions from './todos-entity.actions';
 
-export const initialState: AccountState = {
+export function sortByName(a: TodoDto, b: TodoDto): number {
+  return a.name.localeCompare(b.name);
+}
+
+export const todosAdapter: EntityAdapter<TodoDto> = createEntityAdapter<Book>({
+  sortComparer: sortByName
+});
+
+export const initialState: TodosState = todosAdapter.getInitialState({
   error: null,
-  loaded: false,
-  data: undefined
-};
-
-const _accountReducer = createReducer<AccountState>(
+  loading: false
+});
+const _todosReducer = createReducer<AccountState>(
   initialState,
   on(AccountActions.load, () => {
     return initialState;

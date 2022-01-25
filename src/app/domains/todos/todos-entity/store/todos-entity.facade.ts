@@ -18,8 +18,8 @@ import * as AccountActions from './account.actions';
 // Models
 import { ErrorDto, UserAccountResponseDto } from '@api/models';
 
-@Injectable({ providedIn: 'root' })
-export class AccountFacade {
+@Injectable()
+export class TodoFacade {
   get data$(): Observable<UserAccountResponseDto | undefined> {
     return this.store.pipe(select(selectAccount));
   }

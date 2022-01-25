@@ -1,7 +1,7 @@
-import { ErrorDto, UserAccountResponseDto } from '@api/models';
+import { EntityState } from '@ngrx/entity';
+import { ErrorDto, TodoDto } from '@api/models';
 
-export interface AccountState {
+export interface TodosState extends EntityState<TodoDto> {
   error: ErrorDto | null;
-  loaded: boolean;
-  data: UserAccountResponseDto | undefined;
+  loading: boolean;
 }
