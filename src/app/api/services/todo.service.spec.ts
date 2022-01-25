@@ -15,13 +15,7 @@ const todoResponseData: TodoDto = {
   isDone: false
 };
 
-const todosResponseData: TodoDto[] = [
-  {
-    id: 'abcde',
-    name: 'my test todo',
-    isDone: false
-  }
-];
+const todosResponseData: TodoDto[] = [todoResponseData];
 const todoRequestData: TodoDto = {
   name: 'my test todo'
 };
@@ -68,16 +62,16 @@ describe('TodoService', () => {
       expect(data).toEqual(todoResponseData);
     });
     const req = httpTestingController.expectOne(
-      `${todoService.endpoint.todo}/'abcde'`
+      `${todoService.endpoint.todo}/abcde`
     );
     req.flush(todoResponseData);
   });
   it('update should PUT todoRequestData and return todoResponseData', () => {
-    todoService.update(todoRequestData).subscribe((data) => {
+    todoService.update(todoResponseData).subscribe((data) => {
       expect(data).toEqual(todoResponseData);
     });
     const req = httpTestingController.expectOne(
-      `${todoService.endpoint.todo}/'abcde'`
+      `${todoService.endpoint.todo}/abcde`
     );
     req.flush(todoResponseData);
   });

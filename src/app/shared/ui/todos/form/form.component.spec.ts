@@ -1,6 +1,6 @@
 // Core
-import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -23,8 +23,7 @@ import { TodosFormService } from './form.service';
 import { IwdfTodosFormComponent } from './form.component';
 
 const todoRequestData: TodoDto = {
-  name: 'Do the test!',
-  done: false
+  name: 'Do the test!'
 };
 
 describe('IwdfTodosFormComponent', () => {
@@ -35,8 +34,8 @@ describe('IwdfTodosFormComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
-          ReactiveFormsModule,
           NoopAnimationsModule,
+          ReactiveFormsModule,
           MatButtonModule,
           MatFormFieldModule,
           MatInputModule,

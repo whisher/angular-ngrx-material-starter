@@ -1,4 +1,4 @@
-import { Language, Theme } from '@api/models';
+import { Language, Theme } from '../models';
 
 export interface SettingsState {
   language: Language;

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // Models
-import { Theme } from '@api/models';
+import { Theme } from '@domains/settings';
 
 // Store
 import { SettingsFacade } from '@domains/settings';

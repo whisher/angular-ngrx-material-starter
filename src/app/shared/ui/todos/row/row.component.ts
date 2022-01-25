@@ -24,6 +24,13 @@ export class IwdfTodosRowComponent {
   @Output() handleAcions = new EventEmitter<TodoActions>();
   isDeleted = false;
 
+  get isDone(): boolean {
+    if (this.todo && this.todo.isDone) {
+      return this.todo.isDone;
+    }
+    return false;
+  }
+
   onHandleDelete(data: TodoActions): void {
     this.isDeleted = true;
     this.handleAcions.emit(data);

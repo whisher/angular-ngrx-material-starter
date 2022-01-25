@@ -3,8 +3,8 @@
   [ngClass]="isDeleted ? 'opacity-0' : 'opacity-100'"
 >
   <div class="flex-1">
-    <mat-checkbox [checked]="todo.isDone" (change)="onHandleIsComplete($event)">
-      <span [ngClass]="{ 'line-through': +todo.isDone }">
+    <mat-checkbox [checked]="isDone" (change)="onHandleIsComplete($event)">
+      <span [ngClass]="{ 'line-through': isDone }">
         {{ todo.name }}
       </span>
     </mat-checkbox>

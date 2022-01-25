@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
-import { Theme } from '@api/models';
+import { Theme } from '@domains/settings';
 
 @Injectable({ providedIn: 'root' })
 export class ThemePickerService {
