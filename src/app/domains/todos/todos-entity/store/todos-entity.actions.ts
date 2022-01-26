@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Update } from '@ngrx/entity';
 
 import { ErrorDto, TodoDto } from '@api/models';
 
@@ -23,7 +24,7 @@ export const remove = createAction(
 
 export const removeSuccess = createAction(
   '[Todos Api] Remove Success',
-  props<{ data: TodoDto }>()
+  props<{ data: { id: string } }>()
 );
 
 export const update = createAction(
@@ -33,7 +34,7 @@ export const update = createAction(
 
 export const updateSuccess = createAction(
   '[Todos Api] Update Success',
-  props<{ data: TodoDto }>()
+  props<{ data: Update<TodoDto> }>()
 );
 
 export const todosFailure = createAction(

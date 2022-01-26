@@ -2,9 +2,9 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 // Store
-import { AuthState } from './auth.state';
+import { authFeatureKey, AuthState } from './auth.state';
 
-export const selectFeature = createFeatureSelector<AuthState>('auth');
+export const selectFeature = createFeatureSelector<AuthState>(authFeatureKey);
 
 export const selectError = createSelector(selectFeature, (state: AuthState) => {
   return state.error;

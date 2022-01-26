@@ -4,4 +4,5 @@ import { ErrorDto, TodoDto } from '@api/models';
 export interface TodosState extends EntityState<TodoDto> {
   error: ErrorDto | null;
   loading: boolean;
+  selectedTodoId: string | null;
 }

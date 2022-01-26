@@ -13,6 +13,7 @@ import { TodoActions } from '@shared/ui/todos';
 export class PublicTodosEntityMainComponent {
   todos = [
     {
+      id: 'iii',
       isDone: false,
       name: 'whats app ggth jji'
     }

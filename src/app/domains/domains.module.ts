@@ -21,20 +21,17 @@ import {
 
 // Stores
 import { AppState } from './domains.state';
-import { AccountEffects } from './account/store/account.effects';
-import { accountReducer } from './account/store/account.reducer';
-import { AuthEffects } from './auth/store/auth.effects';
-import { authReducer } from './auth/store/auth.reducer';
 import { CustomRouterSerializer, RouterEffects } from './router';
-import { SettingsEffects } from './settings/store/settings.effects';
-import { settingsReducer } from './settings/store/settings.reducer';
+import * as fromAccount from './account/store';
+import * as fromAuth from './auth/store';
+import * as fromSettings from './settings/store';
 import * as fromInterceptors from './auth/interceptors';
 
 const reducers: ActionReducerMap<AppState> = {
-  account: accountReducer,
-  auth: authReducer,
   router: routerReducer,
-  settings: settingsReducer
+  [fromAccount.accountFeatureKey]: fromAccount.accountReducer,
+  [fromAuth.authFeatureKey]: fromAuth.authReducer,
+  [fromSettings.settingsFeatureKey]: fromSettings.settingsReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [
@@ -63,9 +60,9 @@ if (!environment.production) {
     }),
     EffectsModule.forRoot([
       RouterEffects,
-      AccountEffects,
-      AuthEffects,
-      SettingsEffects
+      fromAccount.AccountEffects,
+      fromAuth.AuthEffects,
+      fromSettings.SettingsEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

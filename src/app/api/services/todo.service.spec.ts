@@ -57,14 +57,15 @@ describe('TodoService', () => {
     req.flush(todoResponseData);
   });
 
-  it('remove should DELETE {id: abcde} and return todoResponseData', () => {
-    todoService.remove({ id: 'abcde' }).subscribe((data) => {
-      expect(data).toEqual(todoResponseData);
+  it('remove should DELETE {id: abcde} and return { id: abcde }', () => {
+    const data = { id: 'abcde' };
+    todoService.remove(data).subscribe((res) => {
+      expect(res).toEqual(data);
     });
     const req = httpTestingController.expectOne(
       `${todoService.endpoint.todo}/abcde`
     );
-    req.flush(todoResponseData);
+    req.flush(data);
   });
   it('update should PUT todoRequestData and return todoResponseData', () => {
     todoService.update(todoResponseData).subscribe((data) => {

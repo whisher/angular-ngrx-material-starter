@@ -2,11 +2,11 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 // Store
-import { AccountState } from './account.state';
-
+import { accountFeatureKey, AccountState } from './account.state';
 import { selectIsAuthenticated } from '../../auth/store/auth.selectors';
 
-export const selectFeature = createFeatureSelector<AccountState>('account');
+export const selectFeature =
+  createFeatureSelector<AccountState>(accountFeatureKey);
 
 export const selectData = createSelector(
   selectFeature,

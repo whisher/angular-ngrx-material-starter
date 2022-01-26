@@ -22,8 +22,8 @@ export class TodoService {
     return this.http.post<TodoDto>(this.endpoint.todo, data);
   }
 
-  remove(data: { id: string }): Observable<TodoDto> {
-    return this.http.delete<TodoDto>(`${this.endpoint.todo}/${data.id}`);
+  remove(data: { id: string }): Observable<{ id: string }> {
+    return this.http.delete<{ id: string }>(`${this.endpoint.todo}/${data.id}`);
   }
 
   update(data: TodoDto): Observable<TodoDto> {
