@@ -1,8 +1,11 @@
+// Core
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+// Rxjs
 import { Observable } from 'rxjs';
 
+// Models
 import {
   UserAccountResponseDto,
   UserRequestDto,

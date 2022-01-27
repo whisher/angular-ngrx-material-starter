@@ -1,5 +1,5 @@
 import { PublicUserMainComponent } from './main/main.component';
 
-export const containers: any[] = [PublicUserMainComponent];
+export const components: any[] = [PublicUserMainComponent];
 
 export { PublicUserMainComponent } from './main/main.component';

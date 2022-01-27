@@ -12,17 +12,17 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TodoService } from '@api/services/todo.service';
 
 // Store
-import * as TodosActions from './todos-entity.actions';
+import * as TodosEntityActions from './todos-entity.actions';
 
 @Injectable()
-export class TodosEffects {
+export class TodosEntityEffects {
   add$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TodosActions.add),
+      ofType(TodosEntityActions.add),
       switchMap((action) =>
         this.service.add(action.data).pipe(
-          map((data) => TodosActions.addSuccess({ data })),
-          catchError((error) => of(TodosActions.todosFailure({ error })))
+          map((data) => TodosEntityActions.addSuccess({ data })),
+          catchError((error) => of(TodosEntityActions.todosFailure({ error })))
         )
       )
     )
@@ -30,11 +30,11 @@ export class TodosEffects {
 
   remove$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TodosActions.remove),
+      ofType(TodosEntityActions.remove),
       switchMap((action) =>
         this.service.remove(action.data).pipe(
-          map((data) => TodosActions.removeSuccess({ data })),
-          catchError((error) => of(TodosActions.todosFailure({ error })))
+          map((data) => TodosEntityActions.removeSuccess({ data })),
+          catchError((error) => of(TodosEntityActions.todosFailure({ error })))
         )
       )
     )
@@ -42,11 +42,11 @@ export class TodosEffects {
 
   update$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TodosActions.update),
+      ofType(TodosEntityActions.update),
       switchMap((action) =>
         this.service.update(action.data).pipe(
-          map((data) => TodosActions.updateSuccess({ data })),
-          catchError((error) => of(TodosActions.todosFailure({ error })))
+          map((data) => TodosEntityActions.updateSuccess({ data })),
+          catchError((error) => of(TodosEntityActions.todosFailure({ error })))
         )
       )
     )
@@ -54,11 +54,11 @@ export class TodosEffects {
 
   load$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TodosActions.load),
+      ofType(TodosEntityActions.load),
       mergeMap(() =>
         this.service.getAll().pipe(
-          map((data) => TodosActions.loadSuccess({ data })),
-          catchError((error) => of(TodosActions.todosFailure({ error })))
+          map((data) => TodosEntityActions.loadSuccess({ data })),
+          catchError((error) => of(TodosEntityActions.todosFailure({ error })))
         )
       )
     )

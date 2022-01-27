@@ -2,58 +2,45 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 // Store
-import { AccountState } from './account.state';
+import { todosEntityFeatureKey, TodosEntityState } from './todos-entity.state';
+import { todosEntityAdapter } from './todos-entity.reducer';
 
-import { selectIsAuthenticated } from '../../auth/store/auth.selectors';
-
-export const selectFeature = createFeatureSelector<AccountState>('account');
-
-export const selectData = createSelector(
-  selectFeature,
-  (state: AccountState) => {
-    if (state) {
-      return state.data;
-    }
-    return undefined;
-  }
+export const selectFeature = createFeatureSelector<TodosEntityState>(
+  todosEntityFeatureKey
 );
 
-export const selectAccount = createSelector(
-  selectIsAuthenticated,
-  selectData,
-  (isAuthenticated, account) => {
-    if (isAuthenticated) {
-      return account;
-    }
-    return undefined;
-  }
+export const { selectAll, selectEntities, selectIds, selectTotal } =
+  todosEntityAdapter.getSelectors(selectFeature);
+
+export const selectedId = createSelector(
+  selectFeature,
+  (state: TodosEntityState) => state.selectedTodoId
 );
 
 export const selectError = createSelector(
   selectFeature,
-  (state: AccountState) => {
-    return state.error;
+  (state: TodosEntityState) => state.error
+);
+
+export const selectLoading = createSelector(
+  selectFeature,
+  (state: TodosEntityState) => state.loading
+);
+
+export const selectSelectedTodo = createSelector(
+  selectEntities,
+  selectedId,
+  (entities, selectedId) => {
+    return selectedId && entities[selectedId];
   }
 );
 
-export const selectIsAdmin = createSelector(
-  selectFeature,
-  (state: AccountState) => {
-    if (!state.data) {
-      return false;
-    }
-    const role = state.data.role;
-    if (!role) {
-      return false;
-    }
-
-    return role === 'admin';
-  }
-);
-
-export const selectLoaded = createSelector(
-  selectFeature,
-  (state: AccountState) => {
-    return state.loaded;
+export const selectedVm = createSelector(
+  selectError,
+  selectLoading,
+  selectTotal,
+  selectAll,
+  (error, loading, total, todos) => {
+    return { error, loading, todos, total };
   }
 );

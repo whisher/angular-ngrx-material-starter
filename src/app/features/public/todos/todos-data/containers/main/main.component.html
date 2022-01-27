@@ -1,0 +1,15 @@
+<article>
+  <mat-card>
+    <div class="px-3">
+      <iwdf-todos-grid
+        [todos]="todos"
+        (handleAcions)="onHandleAcions($event)"
+      ></iwdf-todos-grid>
+
+      <iwdf-todos-form
+        (submitted)="onSubmit($event)"
+        [todo]="undefined"
+      ></iwdf-todos-form>
+    </div>
+  </mat-card>
+</article>

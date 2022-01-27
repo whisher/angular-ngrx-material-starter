@@ -9,6 +9,6 @@ import * as fromContainers from './containers';
 
 @NgModule({
   imports: [CommonModule, PublicUserRoutingModule],
-  declarations: [...fromContainers.containers]
+  declarations: [...fromContainers.components]
 })
 export class PublicUserModule {}

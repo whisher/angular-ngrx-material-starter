@@ -25,6 +25,6 @@ import * as fromContainers from './containers';
     PublicHomeRoutingModule,
     IwdfFortawesomeModule
   ],
-  declarations: [...fromContainers.containers]
+  declarations: [...fromContainers.components]
 })
 export class PublicHomeModule {}

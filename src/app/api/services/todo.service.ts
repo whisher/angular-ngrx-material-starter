@@ -1,8 +1,15 @@
+// Core
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+// Rxjs
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+// Ngrx
+import { Update } from '@ngrx/entity';
+
+// Models
 import { TodoDto } from '../models';
 import { paths, PathsTodoDto } from '../config';
 
@@ -26,8 +33,16 @@ export class TodoService {
     return this.http.delete<{ id: string }>(`${this.endpoint.todo}/${data.id}`);
   }
 
-  update(data: TodoDto): Observable<TodoDto> {
+  update(data: TodoDto): Observable<Update<TodoDto>> {
     const { id, ...rest } = data;
-    return this.http.put<TodoDto>(`${this.endpoint.todo}/${id}`, rest);
+    return this.http.put<TodoDto>(`${this.endpoint.todo}/${id}`, rest).pipe(
+      map((res) => {
+        const { id, ...rest } = res;
+        return {
+          id,
+          changes: { ...rest }
+        };
+      })
+    );
   }
 }

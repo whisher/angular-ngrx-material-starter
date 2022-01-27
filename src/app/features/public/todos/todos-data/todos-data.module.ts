@@ -2,14 +2,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-// Ngx Translate
-import { TranslateModule } from '@ngx-translate/core';
-
 // Material
 import { MatCardModule } from '@angular/material/card';
 
 // Routing
-import { PublicContactRoutingModule } from './contact-routing.module';
+import { PublicTodosDataRoutingModule } from './todos-data-routing.module';
+
+// Ui
+import { IwdfTodosModule } from '@shared/ui/todos';
 
 // Components
 import * as fromContainers from './containers';
@@ -17,10 +17,10 @@ import * as fromContainers from './containers';
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
     MatCardModule,
-    PublicContactRoutingModule
+    PublicTodosDataRoutingModule,
+    IwdfTodosModule
   ],
   declarations: [...fromContainers.components]
 })
-export class PublicContactModule {}
+export class PublicTodosDataModule {}

@@ -14,7 +14,7 @@ import { environment } from '../../environments/environment';
 
 // Meta
 import {
-  //debugReducer,
+  debugReducer,
   initStateFromLocalStorageReducer,
   resetStateReducer
 } from './meta-reducers';
@@ -39,10 +39,8 @@ export const metaReducers: MetaReducer<AppState>[] = [
   resetStateReducer
 ];
 
-if (!environment.production) {
-  if (!environment.test) {
-    //  metaReducers.unshift(debugReducer);
-  }
+if (environment.debug) {
+  metaReducers.unshift(debugReducer);
 }
 
 @NgModule({
