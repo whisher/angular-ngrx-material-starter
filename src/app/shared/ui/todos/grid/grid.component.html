@@ -1,4 +1,4 @@
-<div *ngFor="let todo of todos" class="mb-1">
+<div *ngFor="let todo of todos; trackBy: trackByFn" class="mb-1">
   <iwdf-todos-row
     [todo]="todo"
     (handleAcions)="onHandleAcions($event)"

@@ -2,30 +2,29 @@
   <article>
     <mat-card>
       <div class="px-3">
-        <iwdf-todos-grid
-          [todos]="vm.todos"
-          (handleAcions)="onHandleAcions($event)"
-        ></iwdf-todos-grid>
-
-        <iwdf-todos-form
-          (submitted)="onSubmit($event)"
-          [todo]="undefined"
-        ></iwdf-todos-form>
+        <ng-container class="w-full" *ngIf="vm.error && !vm.loading">
+          <iwdf-alert color="warn" [msg]="vm.error.message"></iwdf-alert>
+        </ng-container>
+        <div class="relative">
+          <div
+            [ngClass]="
+              vm.loading ? 'flex justify-center items-center' : 'hidden'
+            "
+            class="absolute w-full h-full bg-slate-600/30"
+          >
+            <iwdf-spinner color="primary"></iwdf-spinner>
+          </div>
+          <iwdf-todos-grid
+            [todos]="vm.todos"
+            (handleAcions)="onHandleAcions($event)"
+          ></iwdf-todos-grid>
+          <iwdf-todos-form (submitted)="onSubmit($event)"></iwdf-todos-form>
+        </div>
+        <h5>Todo n°: {{ vm.total }}</h5>
+        <div *ngIf="selectedTodo$ | ngrxPush as selectedTodo">
+          Selected: {{ selectedTodo.name }}
+        </div>
       </div>
     </mat-card>
   </article>
 </ng-container>
-{{ vm$ | async | json }}
-<!--
-<ng-container *ngrxLet="vm$ as vm">
-  <div *ngIf="!vm.loading && !vm.error" class="flex justify-center mt-3">
-    <iwdf-spinner color="primary"></iwdf-spinner>
-  </div>
-  <div class="flex justify-center" *ngIf="vm.error && !vm.loading">
-    <div class="w-full md:w-2/5">
-      <iwdf-alert color="warn" [msg]="vm.error.message"></iwdf-alert>
-    </div>
-  </div>
-  <ng-container *ngIf="!vm.loading && !vm.error"></ng-container>
-</ng-container>
--->

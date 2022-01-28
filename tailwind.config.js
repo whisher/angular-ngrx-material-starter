@@ -14,18 +14,14 @@ module.exports = {
       },
       typography: {
         DEFAULT: {
-          /*css: {
-            color: 'green',
+          css: {
             a: {
-              color: 'var(--iwdf-link-color)',
+              color: 'var(--iwdf-accent-color)',
               '&:hover': {
-                color: 'var(--iwdf-link-hover-color)'
+                color: 'var(--iwdf-accent-color)'
               }
-            },
-            p: {
-              margin: 0
             }
-          }*/
+          }
         }
       }
     }

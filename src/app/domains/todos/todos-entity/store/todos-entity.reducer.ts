@@ -43,7 +43,7 @@ const _todosEntityReducer = createReducer<TodosEntityState>(
     const current = {
       ...state,
       error: null,
-      loaded: false
+      loading: false
     };
     return todosEntityAdapter.addOne(data, current);
   }),
@@ -54,7 +54,7 @@ const _todosEntityReducer = createReducer<TodosEntityState>(
     const current = {
       ...state,
       error: null,
-      loaded: false
+      loading: false
     };
     return todosEntityAdapter.addMany(data, current);
   }),
@@ -69,9 +69,15 @@ const _todosEntityReducer = createReducer<TodosEntityState>(
     const current = {
       ...state,
       error: null,
-      loaded: false
+      loading: false
     };
     return todosEntityAdapter.removeOne(data.id, current);
+  }),
+  on(TodosActions.selectedTodo, (state, { data }) => {
+    return {
+      ...state,
+      selectedTodoId: data.id
+    };
   }),
   on(TodosActions.update, (state) => {
     return {
@@ -84,7 +90,7 @@ const _todosEntityReducer = createReducer<TodosEntityState>(
     const current = {
       ...state,
       error: null,
-      loaded: false
+      loading: false
     };
     return todosEntityAdapter.updateOne(data, current);
   }),

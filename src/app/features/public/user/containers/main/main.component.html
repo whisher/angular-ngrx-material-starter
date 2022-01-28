@@ -1,1 +1,12 @@
-<h1>User</h1>
+<mat-card>
+  <mat-nav-list>
+    <a
+      class="!text-3xl !text-bold !text-accent"
+      mat-list-item
+      *ngFor="let item of navigation"
+      [routerLink]="[item.link]"
+    >
+      {{ item.label }}
+    </a>
+  </mat-nav-list>
+</mat-card>

@@ -23,4 +23,7 @@ export class IwdfTodosGridComponent {
   onHandleAcions(data: TodoActions): void {
     this.handleAcions.emit(data);
   }
+  trackByFn(index: number, todo: TodoDto) {
+    return todo.id;
+  }
 }

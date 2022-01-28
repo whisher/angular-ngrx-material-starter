@@ -44,7 +44,7 @@ export const routes: Routes = [
       },
       {
         path: 'todos',
-        //canLoad: [AuthGuard, AccountUserGuard],
+        canLoad: [AuthGuard, AccountUserGuard],
         loadChildren: () =>
           import('./todos/todos.module').then((m) => m.PublicTodosModule),
         data: { title: 'iwdf.meta.title.todos' }

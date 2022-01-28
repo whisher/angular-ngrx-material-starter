@@ -27,6 +27,11 @@ export const removeSuccess = createAction(
   props<{ data: { id: string } }>()
 );
 
+export const selectedTodo = createAction(
+  '[Todos Page] Selected',
+  props<{ data: { id: string } }>()
+);
+
 export const update = createAction(
   '[Todos Api] Update',
   props<{ data: TodoDto }>()

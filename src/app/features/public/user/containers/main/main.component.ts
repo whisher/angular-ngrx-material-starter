@@ -5,4 +5,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'public-user-main',
   templateUrl: './main.component.html'
 })
-export class PublicUserMainComponent {}
+export class PublicUserMainComponent {
+  navigation = [
+    { link: '/todos/data', label: 'Todos Data' },
+    { link: '/todos/entity', label: 'Todos Entity' },
+    { link: '/todos/todos', label: 'Todos' }
+  ];
+}

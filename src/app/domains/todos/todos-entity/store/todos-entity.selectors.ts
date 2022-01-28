@@ -9,7 +9,7 @@ export const selectFeature = createFeatureSelector<TodosEntityState>(
   todosEntityFeatureKey
 );
 
-export const { selectAll, selectEntities, selectIds, selectTotal } =
+export const { selectAll, selectEntities, selectIds } =
   todosEntityAdapter.getSelectors(selectFeature);
 
 export const selectedId = createSelector(
@@ -31,16 +31,20 @@ export const selectSelectedTodo = createSelector(
   selectEntities,
   selectedId,
   (entities, selectedId) => {
-    return selectedId && entities[selectedId];
+    if (selectedId) {
+      const current = entities[selectedId];
+      return current ? current : null;
+    }
+    return null;
   }
 );
 
 export const selectedVm = createSelector(
   selectError,
   selectLoading,
-  selectTotal,
   selectAll,
-  (error, loading, total, todos) => {
+  (error, loading, todos) => {
+    const total = todos.filter((todo) => !todo.isDone).length;
     return { error, loading, todos, total };
   }
 );
