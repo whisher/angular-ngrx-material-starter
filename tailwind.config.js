@@ -1,3 +1,4 @@
+const { NONAME } = require('dns');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -16,9 +17,10 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              color: 'var(--iwdf-accent-color)',
+              color: 'var(--iwdf-link-color)',
+              'text-decoration': 'none',
               '&:hover': {
-                color: 'var(--iwdf-accent-color)'
+                color: 'var(--iwdf-link-hover-color)'
               }
             }
           }

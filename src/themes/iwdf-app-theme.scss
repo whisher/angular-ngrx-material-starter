@@ -4,8 +4,21 @@
   $warn: map-get($theme, warn);
   $linkColor: mat.get-color-from-palette($primary, lighter);
   $linkColorHover: mat.get-color-from-palette($primary, darker);
-  $accentColor: mat.get-color-from-palette($accent, darker);
-  $primaryColor: mat.get-color-from-palette($primary, darker);
+  $accentColor: mat.get-color-from-palette($accent);
+  $primaryColor: mat.get-color-from-palette($primary);
+  $warnColor: mat.get-color-from-palette($warn);
+  /*
+  With a single theme, you can use
+  css var to set color in tailwind,
+  take a look at tailwind.config.js file.
+  */
+  :root {
+    --iwdf-accent-color: #{$accentColor};
+    --iwdf-primary-color: #{$primaryColor};
+    --iwdf-warn-color: #{$warnColor};
+    --iwdf-link-color: #{$linkColor};
+    --iwdf-link-hover-color: #{$linkColorHover};
+  }
   .prose {
     a {
       color: $linkColor;
@@ -21,7 +34,7 @@
     }
   }
   .text-icon {
-    color: darken($accentColor, 5%);
+    color: darken($accentColor, 15%);
   }
   .stroke-primary {
     stroke: $linkColor;
