@@ -2,9 +2,10 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 // Store
-import { SettingsState } from './settings.state';
+import { settingsFeatureKey, SettingsState } from './settings.state';
 
-export const selectFeature = createFeatureSelector<SettingsState>('settings');
+export const selectFeature =
+  createFeatureSelector<SettingsState>(settingsFeatureKey);
 
 export const selectSettings = createSelector(
   selectFeature,

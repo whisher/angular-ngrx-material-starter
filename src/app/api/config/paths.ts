@@ -7,6 +7,11 @@ export interface PathsAuthDto {
   login: string;
   signIn: string;
 }
+
+export interface PathsTodoDto {
+  todo: string;
+}
+
 export interface PathsUserDto {
   account: string;
   all: string;
@@ -14,8 +19,10 @@ export interface PathsUserDto {
   remove: string;
   update: string;
 }
+
 export interface PathsDto {
   auth: PathsAuthDto;
+  todo: PathsTodoDto;
   user: PathsUserDto;
 }
 
@@ -24,6 +31,9 @@ export const paths: PathsDto = {
     current: `${apiEndpoint}/api/auth/current`,
     login: `${apiEndpoint}/api/auth/login`,
     signIn: `${apiEndpoint}/api/auth/signIn`
+  },
+  todo: {
+    todo: `${apiEndpoint}/api/todo`
   },
   user: {
     account: `${apiEndpoint}/api/user/account`,

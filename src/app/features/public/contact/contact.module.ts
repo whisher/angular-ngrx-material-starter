@@ -21,6 +21,6 @@ import * as fromContainers from './containers';
     MatCardModule,
     PublicContactRoutingModule
   ],
-  declarations: [...fromContainers.containers]
+  declarations: [...fromContainers.components]
 })
 export class PublicContactModule {}

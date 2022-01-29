@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Models
-import { Theme } from '@api/models';
+import { Theme } from '@domains/settings';
 
 @Component({
   selector: 'iwdf-theme-picker',

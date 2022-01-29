@@ -1,1 +1,7 @@
-export { paths, PathsAuthDto, PathsUserDto, PathsDto } from './paths';
+export {
+  paths,
+  PathsAuthDto,
+  PathsTodoDto,
+  PathsUserDto,
+  PathsDto
+} from './paths';

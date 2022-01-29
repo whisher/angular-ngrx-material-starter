@@ -32,7 +32,7 @@ const initialState: UsersState = {
 export class UsersStore extends ComponentStore<UsersState> {
   constructor(private readonly service: UserService) {
     super(initialState);
-    this.all();
+    this.getAll();
   }
 
   private readonly error$: Observable<ErrorDto | null> = this.select(
@@ -77,10 +77,10 @@ export class UsersStore extends ComponentStore<UsersState> {
     loading
   }));
 
-  private readonly all = this.effect((users$: Observable<void>) => {
+  private readonly getAll = this.effect((users$: Observable<void>) => {
     return users$.pipe(
       switchMap(() =>
-        this.service.all().pipe(
+        this.service.getAll().pipe(
           tap({
             next: (users) => {
               this.setState((state) => {
@@ -109,7 +109,7 @@ export class UsersStore extends ComponentStore<UsersState> {
     );
   });
 
-  readonly create = this.effect((user$: Observable<UserRequestDto>) => {
+  readonly add = this.effect((user$: Observable<UserRequestDto>) => {
     return user$.pipe(
       tap({
         next: () => {
@@ -117,10 +117,10 @@ export class UsersStore extends ComponentStore<UsersState> {
         }
       }),
       switchMap((user: UserRequestDto) =>
-        this.service.create(user).pipe(
+        this.service.add(user).pipe(
           tap({
             next: (res) => {
-              this.all();
+              this.getAll();
             },
             error: (error) => {
               this.setState((state) => {
@@ -150,7 +150,7 @@ export class UsersStore extends ComponentStore<UsersState> {
         this.service.remove(id).pipe(
           tap({
             next: (res) => {
-              this.all();
+              this.getAll();
             },
             error: (error) => {
               this.setState((state) => {

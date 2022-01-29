@@ -1,9 +1,7 @@
 export interface TodoDto {
-  id?: string;
-  done: boolean;
+  id: string;
+  isDone: boolean;
   name: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
-
-export type TodosFilter = 'ALL' | 'DONE' | 'ACTIVE';

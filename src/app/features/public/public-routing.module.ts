@@ -43,12 +43,10 @@ export const routes: Routes = [
         data: { title: 'iwdf.meta.title.about' }
       },
       {
-        path: 'todos-entity',
-        //canLoad: [AuthGuard, AccountUserGuard],
+        path: 'todos',
+        canLoad: [AuthGuard, AccountUserGuard],
         loadChildren: () =>
-          import('./todos-entity/todos-entity.module').then(
-            (m) => m.PublicTodosEntityModule
-          ),
+          import('./todos/todos.module').then((m) => m.PublicTodosModule),
         data: { title: 'iwdf.meta.title.todos' }
       },
       {

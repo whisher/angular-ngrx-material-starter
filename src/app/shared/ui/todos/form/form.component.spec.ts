@@ -1,6 +1,6 @@
 // Core
-import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -22,9 +22,8 @@ import { TodosFormService } from './form.service';
 // Components
 import { IwdfTodosFormComponent } from './form.component';
 
-const todoRequestData: TodoDto = {
-  name: 'Do the test!',
-  done: false
+const todoRequestData: Partial<TodoDto> = {
+  name: 'Do the test!'
 };
 
 describe('IwdfTodosFormComponent', () => {
@@ -35,8 +34,8 @@ describe('IwdfTodosFormComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
-          ReactiveFormsModule,
           NoopAnimationsModule,
+          ReactiveFormsModule,
           MatButtonModule,
           MatFormFieldModule,
           MatInputModule,
@@ -58,7 +57,7 @@ describe('IwdfTodosFormComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should emit todoRequestData after onSubmit', () => {
-    let data: TodoDto = component.frm.value;
+    let data: Partial<TodoDto> = component.frm.value;
     component.submitted.subscribe((value) => {
       data = value;
     });

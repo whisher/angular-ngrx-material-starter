@@ -6,10 +6,7 @@ import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 // Routing
-import { PublicTodosEntityRoutingModule } from './todos-entity-routing.module';
-
-// Fortawesome
-import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
+import { PublicTodosDataRoutingModule } from './todos-data-routing.module';
 
 // Ui
 import { IwdfTodosModule } from '@shared/ui/todos';
@@ -21,10 +18,9 @@ import * as fromContainers from './containers';
   imports: [
     CommonModule,
     MatCardModule,
-    PublicTodosEntityRoutingModule,
-    IwdfFortawesomeModule,
+    PublicTodosDataRoutingModule,
     IwdfTodosModule
   ],
-  declarations: [...fromContainers.containers]
+  declarations: [...fromContainers.components]
 })
-export class PublicTodosEntityModule {}
+export class PublicTodosDataModule {}

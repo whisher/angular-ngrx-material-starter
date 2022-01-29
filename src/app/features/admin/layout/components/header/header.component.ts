@@ -6,7 +6,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { MatSelectChange } from '@angular/material/select';
 
 // Models
-import { Language, Theme } from '@api/models';
+import { Language, Theme } from '@domains/settings';
 
 // Store
 import { AccountFacade } from '@domains/account';

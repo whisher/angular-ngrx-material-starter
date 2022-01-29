@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 
 // Models
-import { Language } from '@api/models';
+import { Language } from '@domains/settings';
 
 // Store
 import { SettingsFacade } from '@domains/settings';

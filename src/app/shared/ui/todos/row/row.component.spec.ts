@@ -1,20 +1,39 @@
+// Testings
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodosRowComponent } from './row.component';
+// Material
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-describe('TodosRowComponent', () => {
-  let component: TodosRowComponent;
-  let fixture: ComponentFixture<TodosRowComponent>;
+// Models
+import { TodoDto } from '@api/models';
+
+// Fortawesome
+import { IwdfFortawesomeModule } from '../../fortawesome';
+
+// Components
+import { IwdfTodosRowComponent } from './row.component';
+
+const todo: TodoDto = {
+  id: 'abcd',
+  name: 'my test todo',
+  isDone: false
+};
+describe('IwdfTodosRowComponent', () => {
+  let component: IwdfTodosRowComponent;
+  let fixture: ComponentFixture<IwdfTodosRowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TodosRowComponent],
+      imports: [MatButtonModule, MatCheckboxModule, IwdfFortawesomeModule],
+      declarations: [IwdfTodosRowComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TodosRowComponent);
+    fixture = TestBed.createComponent(IwdfTodosRowComponent);
     component = fixture.componentInstance;
+    component.todo = todo;
     fixture.detectChanges();
   });
 

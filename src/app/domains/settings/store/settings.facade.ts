@@ -8,7 +8,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 // Models
-import { Language, Theme } from '@api/models';
+import { Language, Theme } from '../models';
 
 // Store
 import { SettingsState } from './settings.state';

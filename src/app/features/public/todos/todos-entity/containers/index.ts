@@ -1,5 +1,5 @@
 import { PublicTodosEntityMainComponent } from './main/main.component';
 
-export const containers: any[] = [PublicTodosEntityMainComponent];
+export const components: any[] = [PublicTodosEntityMainComponent];
 
 export { PublicTodosEntityMainComponent } from './main/main.component';

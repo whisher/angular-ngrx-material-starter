@@ -1,7 +1,7 @@
 // Ngrx
 import { createAction, props } from '@ngrx/store';
 
-import { Language, Theme } from '@api/models';
+import { Language, Theme } from '../models';
 
 export const changeLanguage = createAction(
   '[Settings Page] Change Language',

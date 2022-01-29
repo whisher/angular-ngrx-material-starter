@@ -1,5 +1,10 @@
 // Testing
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
+// Material
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 // Components
 import { PublicUserMainComponent } from './main.component';
@@ -10,7 +15,7 @@ describe('PublicUserMainComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [],
+        imports: [RouterTestingModule, MatCardModule, MatListModule],
         declarations: [PublicUserMainComponent],
         providers: []
       }).compileComponents();

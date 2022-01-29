@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 // Models
-import { Theme } from '@api/models';
+import { Theme } from '@domains/settings';
 
 // Fortawesome
 import { IwdfFortawesomeModule } from '@shared/ui/fortawesome';
