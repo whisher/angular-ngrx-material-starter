@@ -37,16 +37,8 @@ describe('AccountReducer', () => {
 
   describe('load action', () => {
     it('should return initialState', () => {
-      const loginAction = AccountActions.load();
-      const result = accountReducer(initialState, loginAction);
-      expect(result).toEqual(initialState);
-    });
-  });
-
-  describe('load action', () => {
-    it('should return initialState', () => {
-      const loginAction = AccountActions.load();
-      const result = accountReducer(initialState, loginAction);
+      const loadAction = AccountActions.load();
+      const result = accountReducer(initialState, loadAction);
       expect(result).toEqual(initialState);
     });
   });
@@ -60,7 +52,6 @@ describe('AccountReducer', () => {
       expect(result).toEqual(loadFailureState);
     });
   });
-
   describe('load success action', () => {
     it('should return loadSuccessState', () => {
       const loadSuccessAction = AccountActions.loadSuccess({
