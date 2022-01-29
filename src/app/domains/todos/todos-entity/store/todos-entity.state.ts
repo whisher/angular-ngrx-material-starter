@@ -8,9 +8,3 @@ export interface TodosEntityState extends EntityState<TodoDto> {
   loading: boolean;
   selectedTodoId: string | null;
 }
-export interface TodosEntityVmState {
-  error: ErrorDto | null;
-  loading: boolean;
-  todos: TodoDto[];
-  total: number;
-}

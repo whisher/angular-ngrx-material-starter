@@ -15,7 +15,9 @@ import { IwdfFortawesomeModule } from '../../fortawesome';
 import { IwdfTodosRowComponent } from './row.component';
 
 const todo: TodoDto = {
-  name: 'my test todo'
+  id: 'abcd',
+  name: 'my test todo',
+  isDone: false
 };
 describe('IwdfTodosRowComponent', () => {
   let component: IwdfTodosRowComponent;

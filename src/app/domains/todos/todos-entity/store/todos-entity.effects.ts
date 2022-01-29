@@ -28,6 +28,18 @@ export class TodosEntityEffects {
     )
   );
 
+  load$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodosEntityActions.load),
+      mergeMap(() =>
+        this.service.getAll().pipe(
+          map((data) => TodosEntityActions.loadSuccess({ data })),
+          catchError((error) => of(TodosEntityActions.todosFailure({ error })))
+        )
+      )
+    )
+  );
+
   remove$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TodosEntityActions.remove),
@@ -46,18 +58,6 @@ export class TodosEntityEffects {
       switchMap((action) =>
         this.service.update(action.data).pipe(
           map((data) => TodosEntityActions.updateSuccess({ data })),
-          catchError((error) => of(TodosEntityActions.todosFailure({ error })))
-        )
-      )
-    )
-  );
-
-  load$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TodosEntityActions.load),
-      mergeMap(() =>
-        this.service.getAll().pipe(
-          map((data) => TodosEntityActions.loadSuccess({ data })),
           catchError((error) => of(TodosEntityActions.todosFailure({ error })))
         )
       )

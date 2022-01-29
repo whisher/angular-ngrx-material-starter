@@ -18,7 +18,7 @@ export class PublicTodosDataMainComponent {
       name: 'whats app ggth jji'
     }
   ];
-  onSubmit(todo: TodoDto) {
+  onSubmit(todo: Partial<TodoDto>) {
     console.log('todo', todo);
   }
   onHandleAcions(action: TodoActions): void {

@@ -10,7 +10,10 @@ export const loadSuccess = createAction(
   props<{ data: TodoDto[] }>()
 );
 
-export const add = createAction('[Todos Api] Add', props<{ data: TodoDto }>());
+export const add = createAction(
+  '[Todos Api] Add',
+  props<{ data: Partial<TodoDto> }>()
+);
 
 export const addSuccess = createAction(
   '[Todos Api] Add Success',

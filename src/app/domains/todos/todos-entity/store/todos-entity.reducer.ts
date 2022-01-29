@@ -15,7 +15,6 @@ export function sortByName(a: TodoDto, b: TodoDto): number {
 
 export const todosEntityAdapter: EntityAdapter<TodoDto> =
   createEntityAdapter<TodoDto>({
-    selectId: (todo: TodoDto) => todo.id,
     sortComparer: false
   });
 /*

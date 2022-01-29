@@ -22,7 +22,7 @@ import { TodosFormService } from './form.service';
 // Components
 import { IwdfTodosFormComponent } from './form.component';
 
-const todoRequestData: TodoDto = {
+const todoRequestData: Partial<TodoDto> = {
   name: 'Do the test!'
 };
 
@@ -57,7 +57,7 @@ describe('IwdfTodosFormComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should emit todoRequestData after onSubmit', () => {
-    let data: TodoDto = component.frm.value;
+    let data: Partial<TodoDto> = component.frm.value;
     component.submitted.subscribe((value) => {
       data = value;
     });

@@ -5,8 +5,13 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
+// Ngrx
+import { Update } from '@ngrx/entity';
+
+// Models
 import { TodoDto } from '../models';
 
+// Services
 import { TodoService } from './todo.service';
 
 const todoResponseData: TodoDto = {
@@ -14,9 +19,13 @@ const todoResponseData: TodoDto = {
   name: 'my test todo',
   isDone: false
 };
-
+const { id, ...rest } = todoResponseData;
+const todoResponseUpdateData: Update<TodoDto> = {
+  id,
+  changes: rest
+};
 const todosResponseData: TodoDto[] = [todoResponseData];
-const todoRequestData: TodoDto = {
+const todoRequestData: Partial<TodoDto> = {
   name: 'my test todo'
 };
 
@@ -69,7 +78,7 @@ describe('TodoService', () => {
   });
   it('update should PUT todoRequestData and return todoResponseData', () => {
     todoService.update(todoResponseData).subscribe((data) => {
-      expect(data).toEqual(todoResponseData);
+      expect(data).toEqual(todoResponseUpdateData);
     });
     const req = httpTestingController.expectOne(
       `${todoService.endpoint.todo}/abcde`

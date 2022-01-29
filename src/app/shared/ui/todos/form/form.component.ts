@@ -21,7 +21,7 @@ import { TodosFormService } from './form.service';
   providers: [TodosFormService]
 })
 export class IwdfTodosFormComponent implements OnInit {
-  @Output() submitted = new EventEmitter<TodoDto>();
+  @Output() submitted = new EventEmitter<Partial<TodoDto>>();
 
   frm!: FormGroup;
   hide = true;

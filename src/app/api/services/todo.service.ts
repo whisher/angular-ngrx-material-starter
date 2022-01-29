@@ -25,7 +25,7 @@ export class TodoService {
     return this.http.get<TodoDto[]>(this.endpoint.todo);
   }
 
-  add(data: TodoDto): Observable<TodoDto> {
+  add(data: Partial<TodoDto>): Observable<TodoDto> {
     return this.http.post<TodoDto>(this.endpoint.todo, data);
   }
 

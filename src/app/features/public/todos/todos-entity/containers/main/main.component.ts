@@ -24,7 +24,7 @@ export class PublicTodosEntityMainComponent implements OnInit {
   ngOnInit() {
     this.todosEntityFacade.load();
   }
-  onSubmit(todo: TodoDto) {
+  onSubmit(todo: Partial<TodoDto>) {
     this.todosEntityFacade.add(todo);
   }
   onHandleAcions(row: TodoActions): void {
