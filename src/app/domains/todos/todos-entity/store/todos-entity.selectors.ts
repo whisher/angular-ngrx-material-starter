@@ -9,7 +9,8 @@ export const selectFeature = createFeatureSelector<TodosEntityState>(
   todosEntityFeatureKey
 );
 
-export const { selectAll, selectEntities } = todosEntityAdapter.getSelectors();
+export const { selectAll, selectEntities } =
+  todosEntityAdapter.getSelectors(selectFeature);
 
 export const selectedId = createSelector(
   selectFeature,
