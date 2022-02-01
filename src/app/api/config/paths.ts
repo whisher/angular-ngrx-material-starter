@@ -28,18 +28,18 @@ export interface PathsDto {
 
 export const paths: PathsDto = {
   auth: {
-    current: `${apiEndpoint}/api/auth/current`,
-    login: `${apiEndpoint}/api/auth/login`,
-    signIn: `${apiEndpoint}/api/auth/signIn`
+    current: `${apiEndpoint}/auth/current`,
+    login: `${apiEndpoint}/auth/login`,
+    signIn: `${apiEndpoint}/auth/signIn`
   },
   todo: {
-    todo: `${apiEndpoint}/api/todo`
+    todo: `${apiEndpoint}/todo`
   },
   user: {
-    account: `${apiEndpoint}/api/user/account`,
-    all: `${apiEndpoint}/api/user/all`,
-    create: `${apiEndpoint}/api/user/create`,
-    remove: `${apiEndpoint}/api/user/remove`,
-    update: `${apiEndpoint}/api/user/update`
+    account: `${apiEndpoint}/user/account`,
+    all: `${apiEndpoint}/user/all`,
+    create: `${apiEndpoint}/user/create`,
+    remove: `${apiEndpoint}/user/remove`,
+    update: `${apiEndpoint}/user/update`
   }
 };

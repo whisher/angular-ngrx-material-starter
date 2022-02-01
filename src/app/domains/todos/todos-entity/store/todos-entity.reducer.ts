@@ -9,13 +9,20 @@ import { TodoDto } from '@api/models';
 import { TodosEntityState } from './todos-entity.state';
 import * as TodosActions from './todos-entity.actions';
 
-export function sortByName(a: TodoDto, b: TodoDto): number {
-  return a.name.localeCompare(b.name);
+export function sortDesc(a: TodoDto, b: TodoDto) {
+  if (new Date(a.createdAt).getTime() > new Date(b.createdAt).getTime()) {
+    return -1;
+  }
+  if (new Date(b.createdAt).getTime() > new Date(a.createdAt).getTime()) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
 }
 
 export const todosEntityAdapter: EntityAdapter<TodoDto> =
   createEntityAdapter<TodoDto>({
-    sortComparer: false
+    sortComparer: sortDesc
   });
 /*
 A compare function used to sort the collection. 

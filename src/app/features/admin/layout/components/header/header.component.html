@@ -12,15 +12,17 @@
         </span>
       </a>
     </h1>
-    <button color="primary" mat-icon-button (click)="sidenav.toggle()">
-      <fa-icon
-        class="color-icon"
-        size="2x"
-        [icon]="['fas', 'bars']"
-        aria-hidden="false"
-        aria-label="Show menu"
-      ></fa-icon>
-    </button>
+    <div class="pl-3 pt-2">
+      <button color="primary" mat-icon-button (click)="sidenav.toggle()">
+        <fa-icon
+          class="text-white"
+          size="2x"
+          [icon]="['fas', 'bars']"
+          aria-hidden="false"
+          aria-label="Show menu"
+        ></fa-icon>
+      </button>
+    </div>
   </div>
   <span class="flex-1"></span>
   <button

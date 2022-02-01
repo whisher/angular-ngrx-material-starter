@@ -1,12 +1,25 @@
 <article>
   <mat-card>
     <div class="px-3">
-      <iwdf-todos-grid
-        [todos]="todos"
-        (handleAcions)="onHandleAcions($event)"
-      ></iwdf-todos-grid>
-
-      <iwdf-todos-form (submitted)="onSubmit($event)"></iwdf-todos-form>
+      <div class="relative">
+        <div
+          [ngClass]="
+            (loading$ | ngrxPush)
+              ? 'flex justify-center items-center'
+              : 'hidden'
+          "
+          class="absolute w-full h-full bg-slate-600/30"
+        >
+          <iwdf-spinner color="primary"></iwdf-spinner>
+        </div>
+        <ng-container *ngIf="todos$ | ngrxPush as todos">
+          <iwdf-todos-grid
+            [todos]="todos"
+            (handleAcions)="onHandleAcions($event)"
+          ></iwdf-todos-grid>
+        </ng-container>
+        <iwdf-todos-form (submitted)="onSubmit($event)"></iwdf-todos-form>
+      </div>
     </div>
   </mat-card>
 </article>
