@@ -16,7 +16,9 @@ export const vm: TodosEntityVm = {
 const todo: TodoDto = {
   id: 'abcde',
   name: 'my test todo',
-  isDone: false
+  isDone: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
 };
 describe('Todos Entity Selectors', () => {
   it('should selectedVm return view model vm', () => {
