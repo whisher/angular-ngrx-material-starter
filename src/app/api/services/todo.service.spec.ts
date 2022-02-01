@@ -17,7 +17,9 @@ import { TodoService } from './todo.service';
 const todoResponseData: TodoDto = {
   id: 'abcde',
   name: 'my test todo',
-  isDone: false
+  isDone: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
 };
 const { id, ...rest } = todoResponseData;
 const todoResponseUpdateData: Update<TodoDto> = {

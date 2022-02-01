@@ -33,7 +33,9 @@ const todoRequestPayload: Partial<TodoDto> = {
 const todoPayload: TodoDto = {
   id: 'abcde',
   name: 'my test todo',
-  isDone: false
+  isDone: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
 };
 const { id, ...rest } = todoPayload;
 const todoResponseUpdateData: Update<TodoDto> = {

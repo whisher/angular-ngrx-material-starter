@@ -10,7 +10,13 @@ import * as TodosEntityActions from './todos-entity.actions';
 export const failurePayload: ErrorDto = {
   message: 'Error'
 };
-const todo: TodoDto = { id: 'abcd', name: 'test', isDone: false };
+const todo: TodoDto = {
+  id: 'abcd',
+  name: 'test',
+  isDone: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
+};
 export const failureState: TodosEntityState = {
   error: failurePayload,
   loading: false,

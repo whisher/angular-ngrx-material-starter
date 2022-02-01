@@ -8,7 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class PublicUserMainComponent {
   navigation = [
     { link: '/todos/data', label: 'Todos Data' },
-    { link: '/todos/entity', label: 'Todos Entity' },
-    { link: '/todos/todos', label: 'Todos' }
+    { link: '/todos/entity', label: 'Todos Entity' }
   ];
 }

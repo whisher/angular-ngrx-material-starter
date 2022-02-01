@@ -30,8 +30,12 @@ npm start
 git clone https://github.com/whisher/express-prisma-starter.git server-project
 cd server-project
 npm install
+git checkout feature/examples // Crud todo
 npm start
 ```
+
+- Insert two users via signin form (or Postman)
+- Using prisma studio to set an admin role
 
 ## Useful Commands
 
@@ -48,6 +52,7 @@ The main goal of this repository is to provide a real word (you can use [express
 - `@ngrx/store` - including reducers, actions, selectors
 - `@ngrx/effects` - for implementation of side effects like `http` requests, logging, notifications,...
 - `@ngrx/entity` - for CRUD operations
+- `@ngrx/data` - for CRUD operations
 - `@ngrx/component-store` - is a stand-alone library that helps to manage local/component state.
 - `@ngrx/component` - a set of primitive reactive helpers to enable fully reactive, Zoneless applications.
 - `@ngrx/router-store` - to connect the Angular Router to @ngrx/store
@@ -62,13 +67,11 @@ The main goal of this repository is to provide a real word (you can use [express
 
 - Two layout public and admin
 - Auth with guard
-- Zoneless
 - Lazy-loading of feature modules
 - LocalStorage ui state persistence
-- `@ngrx/effects` for API requests
 - I18n
 - No scss files in the components
-- Use material color in tailwindcss as well
+- Use material color in tailwindcss
 
 ## Stack
 
@@ -81,7 +84,3 @@ The main goal of this repository is to provide a real word (you can use [express
 
 - [angular-ngrx-material-starter](https://github.com/tomastrajan/angular-ngrx-material-starter)
 - [Dharmen Shah](https://indepth.dev/tutorials/angular/angular-material-theming-system-complete-guide)
-
-```
-
-```

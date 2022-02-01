@@ -17,7 +17,9 @@ import { IwdfTodosRowComponent } from './row.component';
 const todo: TodoDto = {
   id: 'abcd',
   name: 'my test todo',
-  isDone: false
+  isDone: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
 };
 describe('IwdfTodosRowComponent', () => {
   let component: IwdfTodosRowComponent;
